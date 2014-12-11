@@ -166,6 +166,7 @@
 		9D147F351A39FAE9006631F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MR;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = MuckRock;
 				TargetAttributes = {
