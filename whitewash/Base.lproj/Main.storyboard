@@ -14,21 +14,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="prototype" textLabel="90g-eR-aos" style="IBUITableViewCellStyleDefault" id="ah3-dq-YmO">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrototypePrototypeCell" textLabel="90g-eR-aos" style="IBUITableViewCellStyleDefault" id="ah3-dq-YmO">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ah3-dq-YmO" id="4EF-6C-CKV">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="90g-eR-aos">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Bq9-DQ-kUc" kind="show" id="fx6-2a-qk0"/>
+                                    <segue destination="uaw-2j-HbD" kind="show" identifier="PrototypeViewControllerSegue" id="coM-Td-Iqp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -42,11 +42,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3M-rJ-lno" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680" y="-283"/>
+            <point key="canvasLocation" x="4276" y="-1475"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0XE-T5-awa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JcF-Mq-BTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Bq9-DQ-kUc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucx-Yc-DK2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -56,13 +57,13 @@
                         <segue destination="uaw-2j-HbD" kind="relationship" relationship="rootViewController" id="dBc-pa-nu5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JcF-Mq-BTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3472" y="-639"/>
+            <point key="canvasLocation" x="3456" y="-671"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h7c-CD-JS1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aMC-VQ-xPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="LP6-N1-Pc5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dgv-EI-uNc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -72,9 +73,8 @@
                         <segue destination="BrO-Vu-bhU" kind="relationship" relationship="rootViewController" id="HqE-w8-7PK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aMC-VQ-xPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4264" y="-639"/>
+            <point key="canvasLocation" x="3456" y="113"/>
         </scene>
         <!--Settings-->
         <scene sceneID="bfT-Ng-9L3">
@@ -131,7 +131,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1q-V8-lnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="12F-di-Alg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4264" y="93"/>
+            <point key="canvasLocation" x="4276" y="113"/>
         </scene>
         <!--Prototype View Controller-->
         <scene sceneID="Ikn-oe-HkE">
@@ -147,7 +147,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1at-hl-KNZ">
                                 <rect key="frame" x="16" y="195" width="568" height="209"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="80"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -158,11 +158,25 @@
                             <constraint firstAttribute="centerX" secondItem="1at-hl-KNZ" secondAttribute="centerX" constant="-22.5" id="EEu-GV-yPZ"/>
                             <constraint firstAttribute="centerX" secondItem="1at-hl-KNZ" secondAttribute="centerX" id="Mim-Vb-L2Z"/>
                             <constraint firstItem="1at-hl-KNZ" firstAttribute="leading" secondItem="j8q-8v-kCy" secondAttribute="leadingMargin" constant="72" id="Yf6-gX-gQ1"/>
+                            <constraint firstAttribute="centerX" secondItem="1at-hl-KNZ" secondAttribute="centerX" id="aIh-wv-i82"/>
                             <constraint firstAttribute="centerY" secondItem="1at-hl-KNZ" secondAttribute="centerY" constant="0.5" id="aPE-kh-R4d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1at-hl-KNZ" secondAttribute="trailing" constant="65" id="afZ-lp-n8m"/>
                             <constraint firstItem="1at-hl-KNZ" firstAttribute="top" secondItem="Pa9-l1-ef7" secondAttribute="bottom" constant="131" id="baM-UX-Eoc"/>
+                            <constraint firstAttribute="centerY" secondItem="1at-hl-KNZ" secondAttribute="centerY" constant="0.5" id="bpi-mV-eFY"/>
                             <constraint firstAttribute="centerY" secondItem="1at-hl-KNZ" secondAttribute="centerY" constant="0.5" id="xn7-Iv-Pyz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DVA-xI-tFA"/>
+                                <exclude reference="EEu-GV-yPZ"/>
+                                <exclude reference="Mim-Vb-L2Z"/>
+                                <exclude reference="Yf6-gX-gQ1"/>
+                                <exclude reference="aPE-kh-R4d"/>
+                                <exclude reference="afZ-lp-n8m"/>
+                                <exclude reference="baM-UX-Eoc"/>
+                                <exclude reference="xn7-Iv-Pyz"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9Z9-6c-5te">
                         <barButtonItem key="backBarButtonItem" title="Prototypes" id="cZq-v9-GT8">
@@ -172,15 +186,18 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Bd6-5g-hLW">
                             <connections>
-                                <segue destination="LP6-N1-Pc5" kind="presentation" id="JuZ-EZ-w1L"/>
+                                <segue destination="LP6-N1-Pc5" kind="presentation" id="tRE-IM-l2z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="simpleLabel" destination="1at-hl-KNZ" id="gGc-pX-LDY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0k-nf-goI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zed-c3-fFO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3472" y="93"/>
+            <point key="canvasLocation" x="4276" y="-671"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EDI-3v-cvH">
@@ -198,7 +215,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhE-0Z-bZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="-283"/>
+            <point key="canvasLocation" x="3456" y="-1475"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="coM-Td-Iqp"/>
+    </inferredMetricsTieBreakers>
 </document>

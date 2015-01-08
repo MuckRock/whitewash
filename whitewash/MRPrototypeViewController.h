@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRPrototype.h"
 
 @interface MRPrototypeViewController : UIViewController
+
+@property (nonatomic, weak) MRPrototype *prototype;
+@property (nonatomic, weak) IBOutlet UILabel *simpleLabel;
 
 - (IBAction)unwindToPrototype:(UIStoryboardSegue *)segue;
 

@@ -7,11 +7,21 @@
 //
 
 #import "MRPrototypeViewController.h"
+#import "MRPrototype.h"
 
 @implementation MRPrototypeViewController
 
+@synthesize prototype, simpleLabel;
+
 - (IBAction)unwindToPrototype:(UIStoryboardSegue *)segue {
     
+}
+
+- (void)viewDidLoad {
+    if (self.prototype) {
+        NSLog([prototype description]);
+        self.simpleLabel.text = [self.prototype.simpleValue stringValue];
+    }
 }
 
 @end

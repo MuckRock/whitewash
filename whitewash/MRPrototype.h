@@ -11,10 +11,13 @@
 @interface MRPrototype : NSObject
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSNumber *simpleValue;
 
 - (instancetype)init;
-- (instancetype)initWithName:(NSString *)theName;
+- (instancetype)initWithName:(NSString *)theName andValue:(NSNumber *)theValue;
 
 - (NSString *)description;
+- (void)incrementValue;
+- (void)decrementValue;
 
 @end

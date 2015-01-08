@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *prototypes;
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end
