@@ -6,6 +6,12 @@
 // project.
 
 
+// Tweaks
+#define COCOAPODS_POD_AVAILABLE_Tweaks
+#define COCOAPODS_VERSION_MAJOR_Tweaks 1
+#define COCOAPODS_VERSION_MINOR_Tweaks 1
+#define COCOAPODS_VERSION_PATCH_Tweaks 0
+
 // ZLSwipeableView
 #define COCOAPODS_POD_AVAILABLE_ZLSwipeableView
 #define COCOAPODS_VERSION_MAJOR_ZLSwipeableView 0
