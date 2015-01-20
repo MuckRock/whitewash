@@ -10,15 +10,9 @@
 		9D147F431A39FAE9006631F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F421A39FAE9006631F8 /* main.m */; };
 		9D147F461A39FAE9006631F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F451A39FAE9006631F8 /* AppDelegate.m */; };
 		9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */; };
-		9D147F4C1A39FAE9006631F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F4B1A39FAE9006631F8 /* ViewController.m */; };
-		9D147F4F1A39FAE9006631F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D147F4D1A39FAE9006631F8 /* Main.storyboard */; };
 		9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D147F501A39FAE9006631F8 /* Images.xcassets */; };
-		9D147F541A39FAE9006631F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D147F521A39FAE9006631F8 /* LaunchScreen.xib */; };
-		9D147F601A39FAE9006631F8 /* whitewashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F5F1A39FAE9006631F8 /* whitewashTests.m */; };
-		9D8949811A43754D0039B425 /* MRPrototypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8949801A43754D0039B425 /* MRPrototypeViewController.m */; };
-		9D8949841A4376630039B425 /* MRPrototype.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8949831A4376630039B425 /* MRPrototype.m */; };
-		9D8949871A43818A0039B425 /* MRPrototypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8949861A43818A0039B425 /* MRPrototypeTableViewController.m */; };
-		9D89498A1A4397770039B425 /* MRPrototypeSettingsTableViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8949891A4397770039B425 /* MRPrototypeSettingsTableViewContainer.m */; };
+		9D1E9D291A6EEF3600B8927F /* MRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D281A6EEF3600B8927F /* MRGameViewController.m */; };
+		9D1E9D2C1A6EEF6A00B8927F /* MRGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2B1A6EEF6A00B8927F /* MRGameView.m */; };
 		D14E1686C143C8E7576C6878 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84891F4238620B0F6794F681 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -41,22 +35,13 @@
 		9D147F441A39FAE9006631F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9D147F451A39FAE9006631F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9D147F481A39FAE9006631F8 /* whitewash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = whitewash.xcdatamodel; sourceTree = "<group>"; };
-		9D147F4A1A39FAE9006631F8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9D147F4B1A39FAE9006631F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9D147F4E1A39FAE9006631F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D147F501A39FAE9006631F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9D147F531A39FAE9006631F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D147F591A39FAE9006631F8 /* whitewashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = whitewashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D147F5E1A39FAE9006631F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D147F5F1A39FAE9006631F8 /* whitewashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = whitewashTests.m; sourceTree = "<group>"; };
-		9D89497F1A43754D0039B425 /* MRPrototypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPrototypeViewController.h; sourceTree = "<group>"; };
-		9D8949801A43754D0039B425 /* MRPrototypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPrototypeViewController.m; sourceTree = "<group>"; };
-		9D8949821A4376630039B425 /* MRPrototype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPrototype.h; sourceTree = "<group>"; };
-		9D8949831A4376630039B425 /* MRPrototype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPrototype.m; sourceTree = "<group>"; };
-		9D8949851A43818A0039B425 /* MRPrototypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPrototypeTableViewController.h; sourceTree = "<group>"; };
-		9D8949861A43818A0039B425 /* MRPrototypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPrototypeTableViewController.m; sourceTree = "<group>"; };
-		9D8949881A4397770039B425 /* MRPrototypeSettingsTableViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPrototypeSettingsTableViewContainer.h; sourceTree = "<group>"; };
-		9D8949891A4397770039B425 /* MRPrototypeSettingsTableViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPrototypeSettingsTableViewContainer.m; sourceTree = "<group>"; };
+		9D1E9D271A6EEF3600B8927F /* MRGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameViewController.h; sourceTree = "<group>"; };
+		9D1E9D281A6EEF3600B8927F /* MRGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameViewController.m; sourceTree = "<group>"; };
+		9D1E9D2A1A6EEF6A00B8927F /* MRGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameView.h; sourceTree = "<group>"; };
+		9D1E9D2B1A6EEF6A00B8927F /* MRGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameView.m; sourceTree = "<group>"; };
 		C4593659F62CF388C7EC9252 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,14 +104,12 @@
 		9D147F3F1A39FAE9006631F8 /* whitewash */ = {
 			isa = PBXGroup;
 			children = (
+				9D1E9D261A6EEC3000B8927F /* View Controllers */,
+				9D1E9D251A6EEC2900B8927F /* Views */,
 				9D147F441A39FAE9006631F8 /* AppDelegate.h */,
 				9D147F451A39FAE9006631F8 /* AppDelegate.m */,
-				9D147F4A1A39FAE9006631F8 /* ViewController.h */,
-				9D147F4B1A39FAE9006631F8 /* ViewController.m */,
 				9D147F501A39FAE9006631F8 /* Images.xcassets */,
 				9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */,
-				9D94B7FE1A5DE891004EB0F0 /* Models */,
-				9D94B7FD1A5DE873004EB0F0 /* Views */,
 				9D147F401A39FAE9006631F8 /* Supporting Files */,
 			);
 			path = whitewash;
@@ -144,7 +127,6 @@
 		9D147F5C1A39FAE9006631F8 /* whitewashTests */ = {
 			isa = PBXGroup;
 			children = (
-				9D147F5F1A39FAE9006631F8 /* whitewashTests.m */,
 				9D147F5D1A39FAE9006631F8 /* Supporting Files */,
 			);
 			path = whitewashTests;
@@ -158,28 +140,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9D94B7FD1A5DE873004EB0F0 /* Views */ = {
+		9D1E9D251A6EEC2900B8927F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9D8949881A4397770039B425 /* MRPrototypeSettingsTableViewContainer.h */,
-				9D8949891A4397770039B425 /* MRPrototypeSettingsTableViewContainer.m */,
-				9D8949851A43818A0039B425 /* MRPrototypeTableViewController.h */,
-				9D8949861A43818A0039B425 /* MRPrototypeTableViewController.m */,
-				9D89497F1A43754D0039B425 /* MRPrototypeViewController.h */,
-				9D8949801A43754D0039B425 /* MRPrototypeViewController.m */,
-				9D147F4D1A39FAE9006631F8 /* Main.storyboard */,
-				9D147F521A39FAE9006631F8 /* LaunchScreen.xib */,
+				9D1E9D2A1A6EEF6A00B8927F /* MRGameView.h */,
+				9D1E9D2B1A6EEF6A00B8927F /* MRGameView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		9D94B7FE1A5DE891004EB0F0 /* Models */ = {
+		9D1E9D261A6EEC3000B8927F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9D8949821A4376630039B425 /* MRPrototype.h */,
-				9D8949831A4376630039B425 /* MRPrototype.m */,
+				9D1E9D271A6EEF3600B8927F /* MRGameViewController.h */,
+				9D1E9D281A6EEF3600B8927F /* MRGameViewController.m */,
 			);
-			name = Models;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D147F4F1A39FAE9006631F8 /* Main.storyboard in Resources */,
-				9D147F541A39FAE9006631F8 /* LaunchScreen.xib in Resources */,
 				9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,12 +294,9 @@
 			files = (
 				9D147F461A39FAE9006631F8 /* AppDelegate.m in Sources */,
 				9D147F431A39FAE9006631F8 /* main.m in Sources */,
-				9D8949871A43818A0039B425 /* MRPrototypeTableViewController.m in Sources */,
-				9D8949811A43754D0039B425 /* MRPrototypeViewController.m in Sources */,
-				9D147F4C1A39FAE9006631F8 /* ViewController.m in Sources */,
+				9D1E9D291A6EEF3600B8927F /* MRGameViewController.m in Sources */,
 				9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */,
-				9D89498A1A4397770039B425 /* MRPrototypeSettingsTableViewContainer.m in Sources */,
-				9D8949841A4376630039B425 /* MRPrototype.m in Sources */,
+				9D1E9D2C1A6EEF6A00B8927F /* MRGameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D147F601A39FAE9006631F8 /* whitewashTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,25 +316,6 @@
 			targetProxy = 9D147F5A1A39FAE9006631F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		9D147F4D1A39FAE9006631F8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D147F4E1A39FAE9006631F8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9D147F521A39FAE9006631F8 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D147F531A39FAE9006631F8 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9D147F611A39FAE9006631F8 /* Debug */ = {
