@@ -7,17 +7,9 @@
 //
 
 #import "MRGameView.h"
+#import "MRShapeView.h"
 
-#define RECT_HEIGHT 84.0
-#define RECT_WIDTH  300.0
-
-@interface MRGameView ()
-
-@property (nonatomic, strong) UIColor *rectangleColor;
-@property (nonatomic, strong) UIView *shape;
-@property (nonatomic) CGPoint snapPoint;
-
-@end
+#define NUM_SNAP_POINTS 4.0
 
 @implementation MRGameView
 
@@ -25,45 +17,33 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        CGRect appFrame = [UIScreen mainScreen].applicationFrame;
-        _snapPoint = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
-        _shape = [[UIView alloc] initWithFrame:CGRectMake(10, 50, 300, 100)];
-        _shape.backgroundColor = [UIColor redColor];
-        _shape.center = _snapPoint;
-        [self addSubview:_shape];
-        
-        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveShape:)];
-        [self addGestureRecognizer:panRecognizer];
+        // Create snap points
+        [self generateSnapPoints];
+        // Create shape to manipulate
+        MRShapeView *shape = [[MRShapeView alloc] initWithFrame:CGRectMake(10, 50, 300, 100)];
+        shape.center = [[_snapPoints objectAtIndex:0] CGPointValue];
+        [self addSubview:shape];
+        // Create a second shape
+        shape = [[MRShapeView alloc] initWithFrame:CGRectMake(10, 50, 300, 100)];
+        shape.center = [[_snapPoints objectAtIndex:1] CGPointValue];
+        [self addSubview:shape];
         
     }
     return self;
 }
 
-- (void)moveShape:(UIPanGestureRecognizer *)gr {
-    // When the pan recognizer changes its position:
-    if (gr.state == UIGestureRecognizerStateChanged) {
-        // How far has the pan moved?
-        CGPoint translation = [gr translationInView:self];
-        CGPoint center = _shape.center;
-        // Translate the shape by this point
-        center.y += translation.y;
-        _shape.center = center;
-        // Tare the translation distance
-        [gr setTranslation:CGPointZero inView:self];
-    } else if (gr.state == UIGestureRecognizerStateEnded) {
-        // Get closest snap point
-        CGPoint closestSnapPoint = _snapPoint;
-        // Set center to snap point
-        [UIView animateWithDuration:0.5
-                              delay:0.0
-             usingSpringWithDamping:0.5
-              initialSpringVelocity:2.0
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{ _shape.center = closestSnapPoint; }
-                         completion:nil];
+- (void)generateSnapPoints {
+    // Create array of snap points
+    _snapPoints = [[NSMutableArray alloc] init];
+    CGRect appFrame = [UIScreen mainScreen].applicationFrame;
+    CGFloat appFrameHeight = appFrame.size.height;
+    CGFloat appFrameHorizontalCenter = appFrame.size.width/2;
+    for (int i = 1; i < (NUM_SNAP_POINTS + 1.0); i++) {
+        CGPoint snapPoint;
+        snapPoint.x = appFrameHorizontalCenter;
+        snapPoint.y = appFrameHeight * (i/(NUM_SNAP_POINTS + 1.0));
+        [_snapPoints addObject:[NSValue valueWithCGPoint:snapPoint]];
     }
-    // Redraw
-    [self setNeedsDisplay];
 }
 
 @end
