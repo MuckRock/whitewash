@@ -50,9 +50,14 @@
 
 - (void)moveShape:(UIPanGestureRecognizer *)gr {
     MRGameView *superview = (MRGameView *)[self superview];
-    NSMutableArray *snapPoints = [superview snapPoints];
+    NSMutableArray *snapPoints = [superview openSnapPoints];
     // When the pan recognizer changes its position:
-    if (gr.state == UIGestureRecognizerStateChanged) {
+    if (gr.state == UIGestureRecognizerStateBegan)
+    {
+        [superview bringSubviewToFront:self];
+    }
+    else if (gr.state == UIGestureRecognizerStateChanged)
+    {
         // How far has the pan moved?
         CGPoint translation = [gr translationInView:self];
         CGPoint center = self.center;
@@ -61,18 +66,16 @@
         self.center = center;
         // Tare the translation distance
         [gr setTranslation:CGPointZero inView:self];
-    } else if (gr.state == UIGestureRecognizerStateEnded) {
+    }
+    else if (gr.state == UIGestureRecognizerStateEnded)
+    {
         // Get closest snap point
         CGPoint closestSnapPoint = [self findClosestSnapPoint:self.center fromArray:snapPoints];
-        // Set center to snap point
-        [UIView animateWithDuration:0.35
-                              delay:0.0
-             usingSpringWithDamping:0.5
-              initialSpringVelocity:1.0
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{ self.center = closestSnapPoint; }
-                         completion:nil];
+        // Make closest snap point new current snap point
+        [self setSnapPoint:closestSnapPoint];
     }
+    // Regenerate array of open snap points
+    [superview generateOpenSnapPoints];
     // Redraw
     [self setNeedsDisplay];
 }
@@ -90,7 +93,7 @@
 }
 
 - (CGPoint)findClosestSnapPoint:(CGPoint)point fromArray:(NSArray *)snapPoints {
-    CGPoint closestSnapPoint = [[snapPoints firstObject] CGPointValue];
+    CGPoint closestSnapPoint = _currentSnapPoint;
     for (NSValue *snapPointValue in snapPoints) {
         CGPoint snapPoint = [snapPointValue CGPointValue];
         CGFloat thisDistance = sqrt((snapPoint.x - point.x)*(snapPoint.x - point.x) + (snapPoint.y - point.y)*(snapPoint.y - point.y));
@@ -100,6 +103,17 @@
         }
     }
     return closestSnapPoint;
+}
+
+- (void)setSnapPoint:(CGPoint)newPoint {
+    _currentSnapPoint = newPoint;
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:1.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{ self.center = newPoint; }
+                     completion:nil];
 }
 
 @end

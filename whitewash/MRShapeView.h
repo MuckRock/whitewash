@@ -10,4 +10,8 @@
 
 @interface MRShapeView : UIView
 
+@property (nonatomic) CGPoint currentSnapPoint;
+
+- (void)setSnapPoint:(CGPoint)newPoint;
+
 @end

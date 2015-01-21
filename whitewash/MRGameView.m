@@ -11,6 +11,12 @@
 
 #define NUM_SNAP_POINTS 4.0
 
+@interface MRGameView ()
+
+@property (nonatomic, strong) NSMutableArray *snapPoints;
+
+@end
+
 @implementation MRGameView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -19,15 +25,17 @@
         self.backgroundColor = [UIColor whiteColor];
         // Create snap points
         [self generateSnapPoints];
+
+        
         // Create shape to manipulate
         MRShapeView *shape = [[MRShapeView alloc] initWithFrame:CGRectMake(10, 50, 300, 100)];
-        shape.center = [[_snapPoints objectAtIndex:0] CGPointValue];
-        [self addSubview:shape];
-        // Create a second shape
-        shape = [[MRShapeView alloc] initWithFrame:CGRectMake(10, 50, 300, 100)];
-        shape.center = [[_snapPoints objectAtIndex:1] CGPointValue];
+        [shape setSnapPoint:[[_snapPoints objectAtIndex:0] CGPointValue]];
         [self addSubview:shape];
         
+        // Create a second shape
+        shape = [[MRShapeView alloc] initWithFrame:CGRectMake(10, 50, 300, 100)];
+        [shape setSnapPoint:[[_snapPoints objectAtIndex:1] CGPointValue]];
+        [self addSubview:shape];
     }
     return self;
 }
@@ -43,6 +51,13 @@
         snapPoint.x = appFrameHorizontalCenter;
         snapPoint.y = appFrameHeight * (i/(NUM_SNAP_POINTS + 1.0));
         [_snapPoints addObject:[NSValue valueWithCGPoint:snapPoint]];
+    }
+}
+
+- (void)generateOpenSnapPoints {
+    _openSnapPoints = [[NSMutableArray alloc] initWithArray:_snapPoints copyItems:YES];
+    for (MRShapeView *subview in self.subviews) {
+        [_openSnapPoints removeObject:[NSValue valueWithCGPoint:subview.currentSnapPoint]];
     }
 }
 

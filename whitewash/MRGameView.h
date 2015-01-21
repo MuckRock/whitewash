@@ -10,6 +10,8 @@
 
 @interface MRGameView : UIView
 
-@property (nonatomic, strong) NSMutableArray *snapPoints;
+@property (nonatomic, strong) NSMutableArray *openSnapPoints;
+
+- (void)generateOpenSnapPoints;
 
 @end
