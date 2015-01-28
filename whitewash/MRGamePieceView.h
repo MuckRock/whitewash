@@ -1,5 +1,5 @@
 //
-//  MRShapeView.h
+//  MRGamePieceView.h
 //  Whitewash
 //
 //  Created by Allan Lasser on 1/21/15.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MRShapeView : UIView
+@interface MRGamePieceView : UIView
 
 @property (nonatomic) CGPoint currentSnapPoint;
 
-- (void)setSnapPoint:(CGPoint)newPoint;
+- (void)newSnapPoint:(CGPoint)newPoint;
 
 @end

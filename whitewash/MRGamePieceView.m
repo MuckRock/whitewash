@@ -1,18 +1,18 @@
 //
-//  MRShapeView.m
+//  MRGamePieceView.m
 //  Whitewash
 //
 //  Created by Allan Lasser on 1/21/15.
 //  Copyright (c) 2015 MuckRock. All rights reserved.
 //
 
-#import "MRGameView.h"
-#import "MRShapeView.h"
+#import "MRGameBoardView.h"
+#import "MRGamePieceView.h"
 
 #define SHAPE_HEIGHT 84.0
 #define SHAPE_WIDTH  300.0
 
-@implementation MRShapeView
+@implementation MRGamePieceView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     float red = (arc4random() % 100) / 100.0;
@@ -37,20 +37,20 @@
         
         
         // Register a swipe gesture on the view
-        UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteShape:)];
-        [self addGestureRecognizer:swipeRecognizer];
+        UISwipeGestureRecognizer *deleteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteShape:)];
+        [self addGestureRecognizer:deleteRecognizer];
         
         // Register a pan gesture on the view
-        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveShape:)];
-        [panRecognizer requireGestureRecognizerToFail:swipeRecognizer];
-        [self addGestureRecognizer:panRecognizer];
+        UIPanGestureRecognizer *moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveShape:)];
+        [moveRecognizer requireGestureRecognizerToFail:deleteRecognizer];
+        [self addGestureRecognizer:moveRecognizer];
     }
     return self;
 }
 
 - (void)moveShape:(UIPanGestureRecognizer *)gr {
-    MRGameView *superview = (MRGameView *)[self superview];
-    NSMutableArray *snapPoints = [superview openSnapPoints];
+    MRGameBoardView *superview = (MRGameBoardView *)[self superview];
+    NSMutableArray *snapPoints = [superview snapPoints];
     // When the pan recognizer changes its position:
     if (gr.state == UIGestureRecognizerStateBegan)
     {
@@ -72,7 +72,7 @@
         // Get closest snap point
         CGPoint closestSnapPoint = [self findClosestSnapPoint:self.center fromArray:snapPoints];
         // Make closest snap point new current snap point
-        [self setSnapPoint:closestSnapPoint];
+        [superview movePiece:self toPoint:closestSnapPoint];
     }
     // Regenerate array of open snap points
     [superview generateOpenSnapPoints];
@@ -105,7 +105,7 @@
     return closestSnapPoint;
 }
 
-- (void)setSnapPoint:(CGPoint)newPoint {
+- (void)newSnapPoint:(CGPoint)newPoint {
     _currentSnapPoint = newPoint;
     [UIView animateWithDuration:0.35
                           delay:0.0

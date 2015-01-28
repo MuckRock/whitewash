@@ -1,22 +1,18 @@
 //
-//  MRGameViewController.m
+//  MRGameBoardViewController.m
 //  Whitewash
 //
 //  Created by Allan Lasser on 1/20/15.
 //  Copyright (c) 2015 MuckRock. All rights reserved.
 //
 
-#import "MRGameView.h"
-#import "MRGameViewController.h"
+#import "MRGameBoardView.h"
+#import "MRGameBoardViewController.h"
 
-@interface MRGameViewController ()
-
-@end
-
-@implementation MRGameViewController
+@implementation MRGameBoardViewController
 
 - (void)loadView {
-    self.view = [[MRGameView alloc] initWithFrame:CGRectZero];
+    self.view = [[MRGameBoardView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidLoad {

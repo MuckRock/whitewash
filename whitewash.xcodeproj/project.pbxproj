@@ -11,10 +11,10 @@
 		9D147F461A39FAE9006631F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F451A39FAE9006631F8 /* AppDelegate.m */; };
 		9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */; };
 		9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D147F501A39FAE9006631F8 /* Images.xcassets */; };
-		9D1E9D291A6EEF3600B8927F /* MRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D281A6EEF3600B8927F /* MRGameViewController.m */; };
-		9D1E9D2C1A6EEF6A00B8927F /* MRGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2B1A6EEF6A00B8927F /* MRGameView.m */; };
+		9D1E9D291A6EEF3600B8927F /* MRGameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */; };
+		9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */; };
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
-		9D9BB8561A700B1F00EF427D /* MRShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRShapeView.m */; };
+		9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */; };
 		D14E1686C143C8E7576C6878 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84891F4238620B0F6794F681 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,13 +40,13 @@
 		9D147F501A39FAE9006631F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D147F591A39FAE9006631F8 /* whitewashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = whitewashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D147F5E1A39FAE9006631F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D1E9D271A6EEF3600B8927F /* MRGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameViewController.h; sourceTree = "<group>"; };
-		9D1E9D281A6EEF3600B8927F /* MRGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameViewController.m; sourceTree = "<group>"; };
-		9D1E9D2A1A6EEF6A00B8927F /* MRGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameView.h; sourceTree = "<group>"; };
-		9D1E9D2B1A6EEF6A00B8927F /* MRGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameView.m; sourceTree = "<group>"; };
+		9D1E9D271A6EEF3600B8927F /* MRGameBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameBoardViewController.h; sourceTree = "<group>"; };
+		9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameBoardViewController.m; sourceTree = "<group>"; };
+		9D1E9D2A1A6EEF6A00B8927F /* MRGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameBoardView.h; sourceTree = "<group>"; };
+		9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameBoardView.m; sourceTree = "<group>"; };
 		9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		9D9BB8541A700B1F00EF427D /* MRShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRShapeView.h; sourceTree = "<group>"; };
-		9D9BB8551A700B1F00EF427D /* MRShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRShapeView.m; sourceTree = "<group>"; };
+		9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGamePieceView.h; sourceTree = "<group>"; };
+		9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGamePieceView.m; sourceTree = "<group>"; };
 		C4593659F62CF388C7EC9252 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,10 +149,10 @@
 		9D1E9D251A6EEC2900B8927F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9D1E9D2A1A6EEF6A00B8927F /* MRGameView.h */,
-				9D1E9D2B1A6EEF6A00B8927F /* MRGameView.m */,
-				9D9BB8541A700B1F00EF427D /* MRShapeView.h */,
-				9D9BB8551A700B1F00EF427D /* MRShapeView.m */,
+				9D1E9D2A1A6EEF6A00B8927F /* MRGameBoardView.h */,
+				9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */,
+				9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */,
+				9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -160,8 +160,8 @@
 		9D1E9D261A6EEC3000B8927F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9D1E9D271A6EEF3600B8927F /* MRGameViewController.h */,
-				9D1E9D281A6EEF3600B8927F /* MRGameViewController.m */,
+				9D1E9D271A6EEF3600B8927F /* MRGameBoardViewController.h */,
+				9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -218,6 +218,7 @@
 				TargetAttributes = {
 					9D147F3C1A39FAE9006631F8 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 8ZXBB2MZ3J;
 					};
 					9D147F581A39FAE9006631F8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -303,10 +304,10 @@
 			files = (
 				9D147F461A39FAE9006631F8 /* AppDelegate.m in Sources */,
 				9D147F431A39FAE9006631F8 /* main.m in Sources */,
-				9D1E9D291A6EEF3600B8927F /* MRGameViewController.m in Sources */,
+				9D1E9D291A6EEF3600B8927F /* MRGameBoardViewController.m in Sources */,
 				9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */,
-				9D1E9D2C1A6EEF6A00B8927F /* MRGameView.m in Sources */,
-				9D9BB8561A700B1F00EF427D /* MRShapeView.m in Sources */,
+				9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */,
+				9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,10 +412,14 @@
 			baseConfigurationReference = C4593659F62CF388C7EC9252 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = whitewash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -423,10 +428,14 @@
 			baseConfigurationReference = 55CD1DBBC66F6DD4D9E6CC95 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = whitewash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

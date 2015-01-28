@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MRGameViewController.h"
+#import "MRGameBoardViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MRGameViewController *vc = [[MRGameViewController alloc] init];
+    MRGameBoardViewController *vc = [[MRGameBoardViewController alloc] init];
     self.window.rootViewController = vc;
     
     self.window.backgroundColor = [UIColor whiteColor];

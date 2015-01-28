@@ -1,5 +1,5 @@
 //
-//  MRGameView.h
+//  MRGameBoardViewController.h
 //  Whitewash
 //
 //  Created by Allan Lasser on 1/20/15.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MRGameView : UIView
-
-@property (nonatomic, strong) NSMutableArray *openSnapPoints;
-
-- (void)generateOpenSnapPoints;
+@interface MRGameBoardViewController : UIViewController
 
 @end
