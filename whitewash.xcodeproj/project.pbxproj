@@ -16,6 +16,8 @@
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
 		9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */; };
 		9DFE26261A8D4FF900483A86 /* MRSwipeableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */; };
+		9DFE262C1A8D56FE00483A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE262B1A8D56FE00483A86 /* Main.storyboard */; };
+		9DFE26601A8D578E00483A86 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE265F1A8D578E00483A86 /* LaunchScreen.xib */; };
 		D14E1686C143C8E7576C6878 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84891F4238620B0F6794F681 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGamePieceView.m; sourceTree = "<group>"; };
 		9DFE26241A8D4FF900483A86 /* MRSwipeableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSwipeableViewController.h; sourceTree = "<group>"; };
 		9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSwipeableViewController.m; sourceTree = "<group>"; };
+		9DFE262B1A8D56FE00483A86 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9DFE265F1A8D578E00483A86 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C4593659F62CF388C7EC9252 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,8 @@
 				9D147F451A39FAE9006631F8 /* AppDelegate.m */,
 				9D147F501A39FAE9006631F8 /* Images.xcassets */,
 				9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */,
+				9DFE262B1A8D56FE00483A86 /* Main.storyboard */,
+				9DFE265F1A8D578E00483A86 /* LaunchScreen.xib */,
 				9D147F401A39FAE9006631F8 /* Supporting Files */,
 			);
 			path = whitewash;
@@ -271,8 +277,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFE26601A8D578E00483A86 /* LaunchScreen.xib in Resources */,
 				9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */,
 				9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */,
+				9DFE262C1A8D56FE00483A86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

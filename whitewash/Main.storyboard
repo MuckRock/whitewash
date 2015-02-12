@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zSg-do-vNs">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Swipeable View Controller-->
+        <scene sceneID="4aK-Qf-dJm">
+            <objects>
+                <viewController id="zSg-do-vNs" customClass="MRSwipeableViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vEX-YK-Ho0"/>
+                        <viewControllerLayoutGuide type="bottom" id="RWq-gA-DYb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5UB-eq-Gtj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oJ-wI-WcM" customClass="ZLSwipeableView">
+                                <rect key="frame" x="16" y="57" width="568" height="458"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-dJ-7Ci">
+                                <rect key="frame" x="16" y="550" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="pp6-vB-1Vj"/>
+                                    <constraint firstAttribute="height" constant="30" id="yLb-GY-UZI"/>
+                                </constraints>
+                                <state key="normal" title="No">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="swipeLeft:" destination="zSg-do-vNs" eventType="touchUpInside" id="XSR-xI-vqN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-Cu-ILG">
+                                <rect key="frame" x="554" y="550" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GAs-mP-d5Y"/>
+                                    <constraint firstAttribute="width" constant="30" id="dy6-Vj-xkQ"/>
+                                </constraints>
+                                <state key="normal" title="Yes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="swipeRight:" destination="zSg-do-vNs" eventType="touchUpInside" id="rOi-oa-mH7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4oJ-wI-WcM" firstAttribute="leading" secondItem="5UB-eq-Gtj" secondAttribute="leadingMargin" id="0jH-VR-xiI"/>
+                            <constraint firstItem="RWq-gA-DYb" firstAttribute="top" secondItem="hsO-dJ-7Ci" secondAttribute="bottom" constant="20" id="Jbr-ln-cZh"/>
+                            <constraint firstItem="RWq-gA-DYb" firstAttribute="top" secondItem="4oJ-wI-WcM" secondAttribute="bottom" constant="85" id="NJz-qh-VcV"/>
+                            <constraint firstItem="4oJ-wI-WcM" firstAttribute="top" secondItem="vEX-YK-Ho0" secondAttribute="bottom" constant="37" id="OQ2-yV-4kJ"/>
+                            <constraint firstItem="hsO-dJ-7Ci" firstAttribute="leading" secondItem="4oJ-wI-WcM" secondAttribute="leading" id="TVC-jj-FUe"/>
+                            <constraint firstItem="hsO-dJ-7Ci" firstAttribute="baseline" secondItem="kRh-Cu-ILG" secondAttribute="baseline" id="XPy-Uv-ZtQ"/>
+                            <constraint firstItem="4oJ-wI-WcM" firstAttribute="trailing" secondItem="5UB-eq-Gtj" secondAttribute="trailingMargin" id="qfP-hR-Pul"/>
+                            <constraint firstItem="4oJ-wI-WcM" firstAttribute="trailing" secondItem="kRh-Cu-ILG" secondAttribute="trailing" id="yzc-MG-VBF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="swipeableView" destination="4oJ-wI-WcM" id="0Gz-G5-FHw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G7n-O2-zIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="283" y="144"/>
+        </scene>
+    </scenes>
+</document>
