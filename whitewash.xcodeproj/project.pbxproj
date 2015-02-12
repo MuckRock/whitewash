@@ -15,6 +15,7 @@
 		9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */; };
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
 		9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */; };
+		9DFE26261A8D4FF900483A86 /* MRSwipeableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */; };
 		D14E1686C143C8E7576C6878 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84891F4238620B0F6794F681 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,8 @@
 		9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGamePieceView.h; sourceTree = "<group>"; };
 		9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGamePieceView.m; sourceTree = "<group>"; };
+		9DFE26241A8D4FF900483A86 /* MRSwipeableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSwipeableViewController.h; sourceTree = "<group>"; };
+		9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSwipeableViewController.m; sourceTree = "<group>"; };
 		C4593659F62CF388C7EC9252 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,8 +113,8 @@
 		9D147F3F1A39FAE9006631F8 /* whitewash */ = {
 			isa = PBXGroup;
 			children = (
-				9D1E9D261A6EEC3000B8927F /* View Controllers */,
-				9D1E9D251A6EEC2900B8927F /* Views */,
+				9DFE26281A8D500C00483A86 /* Prototype 2 */,
+				9DFE26271A8D4FFF00483A86 /* Prototype 1 */,
 				9D147F441A39FAE9006631F8 /* AppDelegate.h */,
 				9D147F451A39FAE9006631F8 /* AppDelegate.m */,
 				9D147F501A39FAE9006631F8 /* Images.xcassets */,
@@ -164,6 +167,24 @@
 				9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9DFE26271A8D4FFF00483A86 /* Prototype 1 */ = {
+			isa = PBXGroup;
+			children = (
+				9D1E9D251A6EEC2900B8927F /* Views */,
+				9D1E9D261A6EEC3000B8927F /* View Controllers */,
+			);
+			name = "Prototype 1";
+			sourceTree = "<group>";
+		};
+		9DFE26281A8D500C00483A86 /* Prototype 2 */ = {
+			isa = PBXGroup;
+			children = (
+				9DFE26241A8D4FF900483A86 /* MRSwipeableViewController.h */,
+				9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */,
+			);
+			name = "Prototype 2";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +329,7 @@
 				9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */,
 				9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */,
 				9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */,
+				9DFE26261A8D4FF900483A86 /* MRSwipeableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
