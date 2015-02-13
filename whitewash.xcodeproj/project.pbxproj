@@ -14,6 +14,7 @@
 		9D1E9D291A6EEF3600B8927F /* MRGameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */; };
 		9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */; };
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
+		9D9A48331A8E671500B9B202 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9A48321A8E671500B9B202 /* CardContentView.xib */; };
 		9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */; };
 		9DFE26261A8D4FF900483A86 /* MRSwipeableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */; };
 		9DFE262C1A8D56FE00483A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE262B1A8D56FE00483A86 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		9D1E9D2A1A6EEF6A00B8927F /* MRGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameBoardView.h; sourceTree = "<group>"; };
 		9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameBoardView.m; sourceTree = "<group>"; };
 		9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9D9A48321A8E671500B9B202 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGamePieceView.h; sourceTree = "<group>"; };
 		9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGamePieceView.m; sourceTree = "<group>"; };
 		9DFE26241A8D4FF900483A86 /* MRSwipeableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSwipeableViewController.h; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				9DFE26241A8D4FF900483A86 /* MRSwipeableViewController.h */,
 				9DFE26251A8D4FF900483A86 /* MRSwipeableViewController.m */,
+				9D9A48321A8E671500B9B202 /* CardContentView.xib */,
 			);
 			name = "Prototype 2";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DFE26601A8D578E00483A86 /* LaunchScreen.xib in Resources */,
+				9D9A48331A8E671500B9B202 /* CardContentView.xib in Resources */,
 				9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */,
 				9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */,
 				9DFE262C1A8D56FE00483A86 /* Main.storyboard in Resources */,
@@ -449,7 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -465,7 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

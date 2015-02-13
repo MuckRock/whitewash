@@ -27,9 +27,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Swipeableview will now appear!");
-    _swipeableView.isRotationEnabled = FBTweakValue(@"Swipable",
-                                                    @"Rotation",
-                                                    @"Enabled",
+    _swipeableView.isRotationEnabled = FBTweakValue(@"Swipeable",
+                                                    @"Tweaks",
+                                                    @"Rotations",
                                                     YES);
 }
 
@@ -53,13 +53,46 @@
 
 #pragma mark - ZLSwipeableViewDataSource
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
-    UIView *nextView = [[UIView alloc] initWithFrame:swipeableView.bounds];
-    float red = (arc4random() % 100) / 100.0;
-    float green = (arc4random() % 100) / 100.0;
-    float blue = (arc4random() % 100) / 100.0;
-    UIColor *randomColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-    nextView.backgroundColor = randomColor;
-    return nextView;
+    UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
+    if (FBTweakValue(@"Swipeable", @"Tweaks", @"Random Colors", YES)) {
+        float red = (arc4random() % 100) / 100.0;
+        float green = (arc4random() % 100) / 100.0;
+        float blue = (arc4random() % 100) / 100.0;
+        UIColor *randomColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+        view.backgroundColor = randomColor;
+    } else {
+        view.backgroundColor = [UIColor whiteColor];
+    }
+    
+    /* Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167 */
+    
+    UIView *contentView =
+    [[[NSBundle mainBundle] loadNibNamed:@"CardContentView"
+                                   owner:self
+                                 options:nil] objectAtIndex:0];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:contentView];
+
+    NSDictionary *metrics = @{
+                              @"height" : @(view.bounds.size.height),
+                              @"width" : @(view.bounds.size.width)
+                              };
+    NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
+    [view addConstraints:
+     [NSLayoutConstraint
+      constraintsWithVisualFormat:@"H:|[contentView(width)]"
+      options:0
+      metrics:metrics
+      views:views]];
+    [view addConstraints:[NSLayoutConstraint
+                          constraintsWithVisualFormat:
+                          @"V:|[contentView(height)]"
+                          options:0
+                          metrics:metrics
+                          views:views]];
+
+    
+    return view;
 }
 
 #pragma mark - ZLSwipeableViewDelegate
