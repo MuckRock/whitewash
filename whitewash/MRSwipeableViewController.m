@@ -14,6 +14,9 @@
 @interface MRSwipeableViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
+@property (weak, nonatomic) IBOutlet UILabel *communicationFrom;
+@property (weak, nonatomic) IBOutlet UILabel *communicationSubject;
+@property (weak, nonatomic) IBOutlet UITextView *communicationBody;
 
 @end
 
@@ -54,15 +57,19 @@
 #pragma mark - ZLSwipeableViewDataSource
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
-    if (FBTweakValue(@"Swipeable", @"Tweaks", @"Random Colors", YES)) {
-        float red = (arc4random() % 100) / 100.0;
-        float green = (arc4random() % 100) / 100.0;
-        float blue = (arc4random() % 100) / 100.0;
-        UIColor *randomColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-        view.backgroundColor = randomColor;
-    } else {
-        view.backgroundColor = [UIColor whiteColor];
-    }
+    view.backgroundColor = [UIColor whiteColor];
+    
+    view.layer.shadowColor = [UIColor blackColor].CGColor;
+    view.layer.shadowOpacity = 0.22;
+    view.layer.shadowOffset = CGSizeMake(0, 1.5);
+    view.layer.shadowRadius = 4.0;
+    view.layer.shouldRasterize = YES;
+    view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    _communicationFrom.text = @"dogLuvur@dogs.dog";
+    _communicationSubject.text = @"Dogs Rule!!!!";
+    _communicationBody.text = @"Lorem ipsum dolor su ament.";
+    
     
     /* Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167 */
     

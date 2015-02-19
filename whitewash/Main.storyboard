@@ -21,36 +21,38 @@
                                 <rect key="frame" x="16" y="57" width="568" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-dJ-7Ci">
-                                <rect key="frame" x="16" y="550" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.68825596761679486" green="0.76680279929977779" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-Cu-ILG">
+                                <rect key="frame" x="473" y="540" width="111" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="pp6-vB-1Vj"/>
-                                    <constraint firstAttribute="height" constant="30" id="yLb-GY-UZI"/>
+                                    <constraint firstAttribute="height" constant="40" id="GAs-mP-d5Y"/>
+                                    <constraint firstAttribute="width" constant="111" id="dy6-Vj-xkQ"/>
                                 </constraints>
-                                <state key="normal" title="Spam">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="swipeLeft:" destination="zSg-do-vNs" eventType="touchUpInside" id="XSR-xI-vqN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-Cu-ILG">
-                                <rect key="frame" x="484" y="550" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.68825596761679486" green="0.76680279929977779" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="GAs-mP-d5Y"/>
-                                    <constraint firstAttribute="width" constant="100" id="dy6-Vj-xkQ"/>
-                                </constraints>
-                                <state key="normal" title="Orphan">
+                                <state key="normal" title="  Orphan" image="Good">
+                                    <color key="titleColor" red="0.43529411764705883" green="0.96470588235294119" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="swipeRight:" destination="zSg-do-vNs" eventType="touchUpInside" id="rOi-oa-mH7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-dJ-7Ci">
+                                <rect key="frame" x="16" y="540" width="99" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="99" id="pp6-vB-1Vj"/>
+                                    <constraint firstAttribute="height" constant="40" id="yLb-GY-UZI"/>
+                                </constraints>
+                                <state key="normal" title="  Spam" image="Bad">
+                                    <color key="titleColor" red="0.8901960784313725" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="swipeLeft:" destination="zSg-do-vNs" eventType="touchUpInside" id="XSR-xI-vqN"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4oJ-wI-WcM" firstAttribute="leading" secondItem="5UB-eq-Gtj" secondAttribute="leadingMargin" id="0jH-VR-xiI"/>
                             <constraint firstItem="RWq-gA-DYb" firstAttribute="top" secondItem="hsO-dJ-7Ci" secondAttribute="bottom" constant="20" id="Jbr-ln-cZh"/>
@@ -71,4 +73,8 @@
             <point key="canvasLocation" x="283" y="144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Bad" width="41" height="40"/>
+        <image name="Good" width="40" height="40"/>
+    </resources>
 </document>
