@@ -1,12 +1,15 @@
 PODS:
+  - pop (1.0.7)
   - Tweaks (1.1.0)
   - ZLSwipeableView (0.0.6)
 
 DEPENDENCIES:
+  - pop (~> 1.0.7)
   - Tweaks (~> 1.1.0)
   - ZLSwipeableView (~> 0.0.6)
 
 SPEC CHECKSUMS:
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
   Tweaks: 05b197d4a1247288f576587546bc1932189d8c98
   ZLSwipeableView: 9e956c587f9aecd16596544a7d079fb86b9c8c3d
 
