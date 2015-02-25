@@ -9,14 +9,29 @@
 #import "MRSwipeableViewController.h"
 
 #import "FBTweakInline.h"
+#import "MRCommunication.h"
+#import "MRCommunicationStore.h"
 #import "ZLSwipeableView.h"
 
-@interface MRSwipeableViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+#define TOKEN ba90eded37a56d5dfc1e8d191fe4e1728ca6ba10
 
+@interface MRSwipeableViewController () <NSURLSessionDataDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *communications;
+@property (strong, nonatomic) NSMutableArray *spam;
+@property (strong, nonatomic) NSMutableArray *legit;
+@property (strong, nonatomic) NSMutableDictionary *commViewMapping;
+@property (nonatomic) NSUInteger remainingCount; // need remaining count because ZLSwipeableView will pop multiple communications from the array at once
+/* NSURLSession */
+@property (strong, nonatomic) NSURLSession *session;
+/* ZLSwipeableView */
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
+/* CardContentView */
 @property (weak, nonatomic) IBOutlet UILabel *communicationFrom;
-@property (weak, nonatomic) IBOutlet UILabel *communicationSubject;
 @property (weak, nonatomic) IBOutlet UITextView *communicationBody;
+@property (weak, nonatomic) IBOutlet UILabel *spamCounter;
+@property (weak, nonatomic) IBOutlet UILabel *legitCounter;
+@property (weak, nonatomic) IBOutlet UILabel *remainingCounter;
 
 @end
 
@@ -26,6 +41,43 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _swipeableView.delegate = self;
+    _communications = [[NSMutableArray alloc] init];
+    _spam = [[NSMutableArray alloc] init];
+    _legit = [[NSMutableArray alloc] init];
+    _commViewMapping = [[NSMutableDictionary alloc] init];
+    [self fetchCommunications];
+    [_communications addObjectsFromArray:[[MRCommunicationStore sharedStore] communications]];
+    _remainingCount = [_communications count];
+    [self updateCounters];
+}
+
+- (void)fetchCommunications {
+    // Build MRCommunicationStore from API Reqeusts
+    // 1. Request a page of communications
+    // 2. For each communication:
+    //   a. create a MRCommunication object
+    //   b. add object to MRCommunicationStore
+    NSString *JSONPath = [[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"];
+    NSURL *localJSON = [NSURL fileURLWithPath:JSONPath];
+    NSData *data = [NSData dataWithContentsOfURL:localJSON];
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *jsonComms = jsonObject[@"results"];
+    // Add comms on page to MRCommunicationStore
+    for (NSDictionary *jsonComm in jsonComms) {
+        MRCommunication *comm = [[MRCommunication alloc] initFromJSON:jsonComm];
+        [[MRCommunicationStore sharedStore] addCommunication:comm];
+    }
+}
+
+- (void)updateCounters {
+    _remainingCounter.text = [NSString stringWithFormat:@"%lu", _remainingCount];
+    _spamCounter.text = [NSString stringWithFormat:@"%lu", [_spam count]];
+    _legitCounter.text = [NSString stringWithFormat:@"%lu", [_legit count]];
+}
+
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
+    NSURLCredential *cred = [NSURLCredential credentialWithUser:@"Token" password:@"ba90eded37a56d5dfc1e8d191fe4e1728ca6ba10" persistence:NSURLCredentialPersistenceForSession];
+    completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,50 +108,62 @@
 
 #pragma mark - ZLSwipeableViewDataSource
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
-    UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
-    view.backgroundColor = [UIColor whiteColor];
-    
-    view.layer.shadowColor = [UIColor blackColor].CGColor;
-    view.layer.shadowOpacity = 0.22;
-    view.layer.shadowOffset = CGSizeMake(0, 1.5);
-    view.layer.shadowRadius = 4.0;
-    view.layer.shouldRasterize = YES;
-    view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    
-    _communicationFrom.text = @"dogLuvur@dogs.dog";
-    _communicationSubject.text = @"Dogs Rule!!!!";
-    _communicationBody.text = @"Lorem ipsum dolor su ament.";
-    
-    
-    /* Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167 */
-    
-    UIView *contentView =
-    [[[NSBundle mainBundle] loadNibNamed:@"CardContentView"
-                                   owner:self
-                                 options:nil] objectAtIndex:0];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    [view addSubview:contentView];
+    if ([_communications count] > 0) {
+        // Pop communication from queue
+        MRCommunication *comm = _communications[0];
+        [_communications removeObjectAtIndex:0];
+        
+        UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
+        view.backgroundColor = ([UIColor colorWithRed:0.945
+                                                green:0.945
+                                                 blue:0.945
+                                                alpha:1]);
+        view.layer.shadowColor = [UIColor blackColor].CGColor;
+        view.layer.shadowOpacity = 0.22;
+        view.layer.shadowOffset = CGSizeMake(0, 1.5);
+        view.layer.shadowRadius = 4.0;
+        view.layer.shouldRasterize = YES;
+        view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+        view.autoresizesSubviews = NO;
 
-    NSDictionary *metrics = @{
-                              @"height" : @(view.bounds.size.height),
-                              @"width" : @(view.bounds.size.width)
-                              };
-    NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
-    [view addConstraints:
-     [NSLayoutConstraint
-      constraintsWithVisualFormat:@"H:|[contentView(width)]"
-      options:0
-      metrics:metrics
-      views:views]];
-    [view addConstraints:[NSLayoutConstraint
-                          constraintsWithVisualFormat:
-                          @"V:|[contentView(height)]"
-                          options:0
-                          metrics:metrics
-                          views:views]];
+        view.tag = [comm.ID integerValue];
+        _communicationFrom.text = comm.from;
+        _communicationBody.text = comm.message;
+        _communicationBody.font = [UIFont fontWithName:@"Courier New" size:14.0];
+        [_commViewMapping setObject:comm forKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+        
+        /* Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167 */
+        
+        UIView *contentView =
+        [[[NSBundle mainBundle] loadNibNamed:@"CardContentView"
+                                       owner:self
+                                     options:nil] objectAtIndex:0];
+        contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        [view addSubview:contentView];
 
-    
-    return view;
+        NSDictionary *metrics = @{
+                                  @"height" : @(view.bounds.size.height),
+                                  @"width" : @(view.bounds.size.width)
+                                  };
+        NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
+        [view addConstraints:
+         [NSLayoutConstraint
+          constraintsWithVisualFormat:@"H:|[contentView(width)]"
+          options:0
+          metrics:metrics
+          views:views]];
+        [view addConstraints:[NSLayoutConstraint
+                              constraintsWithVisualFormat:
+                              @"V:|[contentView(height)]"
+                              options:0
+                              metrics:metrics
+                              views:views]];
+
+        
+        return view;
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - ZLSwipeableViewDelegate
@@ -113,9 +177,19 @@
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
     NSLog(@"did swipe left");
+    _remainingCount -= 1;
+    MRCommunication *comm = [_commViewMapping objectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+    [_spam addObject:comm];
+    [_commViewMapping removeObjectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+    [self updateCounters];
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
     NSLog(@"did swipe right");
+    _remainingCount -= 1;
+    MRCommunication *comm = [_commViewMapping objectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+    [_legit addObject:comm];
+    [_commViewMapping removeObjectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+    [self updateCounters];
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
     NSLog(@"did cancel swipe");

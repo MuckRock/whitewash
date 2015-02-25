@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MRCommunication.h"
+
 @interface MRCommunicationStore : NSObject
 
-+ (instancetype)sharedStore;
+@property (nonatomic, readonly, copy) NSArray *communications;
 
-- (void)addCommunicationToStore:(id)communication;
-- (id)
+- (void)addCommunication:(MRCommunication *)communication;
+- (void)removeCommunication:(MRCommunication *)communication;
+- (void)moveCommunicationAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
++ (instancetype)sharedStore;
 
 @end

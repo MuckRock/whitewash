@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MRCommunication : NSObject
+@interface MRCommunication : NSObject <NSCopying>
 
+@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *from;
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSArray *attachments;
 
+- (instancetype)initFromJSON:(NSDictionary *)json; // Designated initializer:
+                                                   // MRCommunication should be
+                                                   // initialized from a JSON
+                                                   // item from the MuckRock API
 
 @end
