@@ -7,11 +7,13 @@
 //
 
 #import "MRSwipeableViewController.h"
+#import <pop/POP.h>
 
 #import "FBTweakInline.h"
 #import "MRCommunication.h"
 #import "MRCommunicationStore.h"
 #import "ZLSwipeableView.h"
+
 
 #define TOKEN ba90eded37a56d5dfc1e8d191fe4e1728ca6ba10
 
@@ -166,6 +168,17 @@
     }
 }
 
+#pragma mark - Animations
+
+- (void)addBounce:(UIView *)view {
+    CALayer *layer = view.layer;
+    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(30.f, 30.f)];
+    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+    scaleAnimation.springBounciness = 15.0f;
+    [layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
+}
+
 #pragma mark - ZLSwipeableViewDelegate
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
            didSwipeUp:(UIView *)view {
@@ -181,6 +194,9 @@
     MRCommunication *comm = [_commViewMapping objectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
     [_spam addObject:comm];
     [_commViewMapping removeObjectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+    
+    [self addBounce:_spamCounter];
+    
     [self updateCounters];
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
@@ -189,6 +205,7 @@
     MRCommunication *comm = [_commViewMapping objectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
     [_legit addObject:comm];
     [_commViewMapping removeObjectForKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
+    [self addBounce:_legitCounter];
     [self updateCounters];
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
