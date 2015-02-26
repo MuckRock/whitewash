@@ -51,6 +51,7 @@
     [self fetchCommunications];
     [_communications addObjectsFromArray:[[MRCommunicationStore sharedStore] communications]];
     _remainingCount = [_communications count];
+    [self shuffleCommunications:_communications];
     [self updateCounters];
 }
 
@@ -69,6 +70,16 @@
     for (NSDictionary *jsonComm in jsonComms) {
         MRCommunication *comm = [[MRCommunication alloc] initFromJSON:jsonComm];
         [[MRCommunicationStore sharedStore] addCommunication:comm];
+    }
+}
+
+- (void)shuffleCommunications:(NSMutableArray *)communications {
+    // for i from n − 1 downto 1 do
+    //     j ← random integer with 0 ≤ j ≤ i
+    //    exchange a[j] and a[i]
+    for (unsigned int i = (unsigned int)[communications count]-1; i > 0; i--) {
+        int j = arc4random_uniform((unsigned int)i);
+        [communications exchangeObjectAtIndex:i withObjectAtIndex:j];
     }
 }
 

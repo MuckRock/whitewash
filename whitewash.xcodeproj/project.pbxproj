@@ -165,31 +165,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9D1E9D251A6EEC2900B8927F /* Views */ = {
+		9DFE26271A8D4FFF00483A86 /* Prototype 1 */ = {
 			isa = PBXGroup;
 			children = (
 				9D1E9D2A1A6EEF6A00B8927F /* MRGameBoardView.h */,
 				9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */,
 				9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */,
 				9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		9D1E9D261A6EEC3000B8927F /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
 				9D1E9D271A6EEF3600B8927F /* MRGameBoardViewController.h */,
 				9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		9DFE26271A8D4FFF00483A86 /* Prototype 1 */ = {
-			isa = PBXGroup;
-			children = (
-				9D1E9D251A6EEC2900B8927F /* Views */,
-				9D1E9D261A6EEC3000B8927F /* View Controllers */,
 			);
 			name = "Prototype 1";
 			sourceTree = "<group>";
