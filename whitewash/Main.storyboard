@@ -17,21 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-dJ-7Ci">
-                                <rect key="frame" x="16" y="540" width="99" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="99" id="pp6-vB-1Vj"/>
-                                    <constraint firstAttribute="height" constant="40" id="yLb-GY-UZI"/>
-                                </constraints>
-                                <state key="normal" title="  Spam" image="Bad">
-                                    <color key="titleColor" red="0.8901960784313725" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="swipeLeft:" destination="zSg-do-vNs" eventType="touchUpInside" id="XSR-xI-vqN"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZs-vu-CyN">
                                 <rect key="frame" x="16" y="28" width="82" height="51"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -80,7 +65,7 @@
                                 <rect key="frame" x="16" y="124" width="568" height="391"/>
                                 <color key="backgroundColor" red="0.9450981021" green="0.9450981021" blue="0.9450981021" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-Cu-ILG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRh-Cu-ILG">
                                 <rect key="frame" x="473" y="540" width="111" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -90,6 +75,19 @@
                                 <state key="normal" title="  Legit" image="Good"/>
                                 <connections>
                                     <action selector="swipeRight:" destination="zSg-do-vNs" eventType="touchUpInside" id="rOi-oa-mH7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-dJ-7Ci">
+                                <rect key="frame" x="16" y="540" width="99" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="99" id="pp6-vB-1Vj"/>
+                                    <constraint firstAttribute="height" constant="40" id="yLb-GY-UZI"/>
+                                </constraints>
+                                <color key="tintColor" red="0.89019607840000003" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="  Spam" image="Bad"/>
+                                <connections>
+                                    <action selector="swipeLeft:" destination="zSg-do-vNs" eventType="touchUpInside" id="XSR-xI-vqN"/>
                                 </connections>
                             </button>
                         </subviews>

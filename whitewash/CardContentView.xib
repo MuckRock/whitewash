@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MRSwipeableViewController">
             <connections>
+                <outlet property="communicationAttachmentCount" destination="g6C-gp-7Uc" id="tgC-wH-dUU"/>
                 <outlet property="communicationBody" destination="Ye5-8z-4Ub" id="vAe-X7-iwS"/>
                 <outlet property="communicationFrom" destination="2qu-pN-XbM" id="C6b-wB-W3D"/>
             </connections>

@@ -13,7 +13,8 @@
 - (instancetype)init {
     NSDictionary *json = @{@"id": @"Unknown",
                            @"from_who": @"Unknown",
-                           @"communication": @"Lorem ipsum dolor sit amet."};
+                           @"communication": @"Lorem ipsum dolor sit amet.",
+                           @"files": @[]};
     return [self initFromJSON:json];
 }
 
@@ -23,6 +24,7 @@
         self.ID = json[@"id"];
         self.from = json[@"from_who"];
         self.message = json[@"communication"];
+        self.attachments = [json[@"files"] count];
     }
     return self;
 }

@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *ID;
 @property (nonatomic, strong) NSString *from;
 @property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSArray *attachments;
+@property (nonatomic) NSUInteger attachments;
 
 - (instancetype)initFromJSON:(NSDictionary *)json; // Designated initializer:
                                                    // MRCommunication should be

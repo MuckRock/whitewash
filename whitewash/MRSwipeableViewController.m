@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 /* CardContentView */
 @property (weak, nonatomic) IBOutlet UILabel *communicationFrom;
+@property (weak, nonatomic) IBOutlet UILabel *communicationAttachmentCount;
 @property (weak, nonatomic) IBOutlet UITextView *communicationBody;
 @property (weak, nonatomic) IBOutlet UILabel *spamCounter;
 @property (weak, nonatomic) IBOutlet UILabel *legitCounter;
@@ -131,6 +132,11 @@
         view.tag = [comm.ID integerValue];
         _communicationFrom.text = comm.from;
         _communicationBody.text = comm.message;
+        if (comm.attachments > 1 || comm.attachments == 0) {
+            _communicationAttachmentCount.text = [NSString stringWithFormat:@"%lu Attachments", comm.attachments];
+        } else {
+            _communicationAttachmentCount.text = [NSString stringWithFormat:@"%lu Attachment", comm.attachments];
+        }
         _communicationBody.font = [UIFont fontWithName:@"Courier New" size:14.0];
         [_commViewMapping setObject:comm forKey:[NSString stringWithFormat:@"%ld", (long)view.tag]];
         
