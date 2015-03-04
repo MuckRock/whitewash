@@ -84,9 +84,9 @@
 }
 
 - (void)updateCounters {
-    _remainingCounter.text = [NSString stringWithFormat:@"%lu", _remainingCount];
-    _spamCounter.text = [NSString stringWithFormat:@"%lu", [_spam count]];
-    _legitCounter.text = [NSString stringWithFormat:@"%lu", [_legit count]];
+    _remainingCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_remainingCount];
+    _spamCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_spam count]];
+    _legitCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_legit count]];
 }
 
 - (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
