@@ -7,6 +7,7 @@
 //
 
 #import "MRPlayer.h"
+#import "MRRecord.h"
 
 @interface MRPlayer ()
 
@@ -31,12 +32,22 @@
     return self;
 }
 
++ (MRPlayer *)newPlayerWithName:(NSString *)playerName {
+    return [[MRPlayer alloc] initWithName:playerName];
+}
+
+# pragma mark - History
+
 - (NSArray *)history {
     return [self.mutableHistory copy];
 }
 
-+ (MRPlayer *)newPlayerWithName:(NSString *)playerName {
-    return [[MRPlayer alloc] initWithName:playerName];
+- (void)addRecordToHistory:(MRRecord *)record {
+    [self.mutableHistory addObject:record];
+}
+
+- (void)removeRecordFromHistory:(MRRecord *)record {
+    [self.mutableHistory removeObject:record];
 }
 
 @end

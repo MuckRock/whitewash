@@ -18,6 +18,7 @@
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
 		9D53163B1AAA261E00B79B44 /* MRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53163A1AAA261E00B79B44 /* MRPlayer.m */; };
 		9D53163E1AAA277400B79B44 /* MRPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53163D1AAA277400B79B44 /* MRPlayerTests.m */; };
+		9D5316411AAA2D1000B79B44 /* MRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5316401AAA2D1000B79B44 /* MRRecord.m */; };
 		9D9A48331A8E671500B9B202 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9A48321A8E671500B9B202 /* CardContentView.xib */; };
 		9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */; };
 		9DF089A51A9E42120080F0DE /* communications.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DF089A41A9E42120080F0DE /* communications.json */; };
@@ -61,6 +62,8 @@
 		9D5316391AAA261E00B79B44 /* MRPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPlayer.h; sourceTree = "<group>"; };
 		9D53163A1AAA261E00B79B44 /* MRPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPlayer.m; sourceTree = "<group>"; };
 		9D53163D1AAA277400B79B44 /* MRPlayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRPlayerTests.m; path = whitewashTests/MRPlayerTests.m; sourceTree = SOURCE_ROOT; };
+		9D53163F1AAA2D1000B79B44 /* MRRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRRecord.h; sourceTree = "<group>"; };
+		9D5316401AAA2D1000B79B44 /* MRRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRRecord.m; sourceTree = "<group>"; };
 		9D9A48321A8E671500B9B202 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGamePieceView.h; sourceTree = "<group>"; };
 		9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGamePieceView.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 			children = (
 				9D5316391AAA261E00B79B44 /* MRPlayer.h */,
 				9D53163A1AAA261E00B79B44 /* MRPlayer.m */,
+				9D53163F1AAA2D1000B79B44 /* MRRecord.h */,
+				9D5316401AAA2D1000B79B44 /* MRRecord.m */,
 			);
 			name = "Prototype 3";
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 			files = (
 				9D147F461A39FAE9006631F8 /* AppDelegate.m in Sources */,
 				9D147F431A39FAE9006631F8 /* main.m in Sources */,
+				9D5316411AAA2D1000B79B44 /* MRRecord.m in Sources */,
 				9D1E9D291A6EEF3600B8927F /* MRGameBoardViewController.m in Sources */,
 				9D18DE551A968FB50074F31B /* MRCommunicationStore.m in Sources */,
 				9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */,

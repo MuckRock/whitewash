@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MRRecord.h"
 
 @interface MRPlayer : NSObject
 
@@ -15,5 +16,8 @@
 
 - (instancetype)initWithName:(NSString *)playerName;
 + (MRPlayer *)newPlayerWithName:(NSString *)playerName;
+
+- (void)addRecordToHistory:(MRRecord *)record;
+- (void)removeRecordFromHistory:(MRRecord *)record;
 
 @end

@@ -50,4 +50,21 @@
     XCTAssertEqual([player.history count], 0, @"New player does not return an empty history array after creation");
 }
 
+- (void)testAddRecordToHistory {
+    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
+    MRRecord *record = [[MRRecord alloc] init];
+    [player addRecordToHistory:record];
+    XCTAssertEqual([player.history count], 1);
+}
+
+- (void)testRemoveRecordFromHistory {
+    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
+    MRRecord *record = [[MRRecord alloc] init];
+    XCTAssertNoThrow([player removeRecordFromHistory:record]);
+    [player addRecordToHistory:record];
+    XCTAssertEqual([player.history count], 1);
+    [player removeRecordFromHistory:record];
+    XCTAssertEqual([player.history count], 0);
+}
+
 @end
