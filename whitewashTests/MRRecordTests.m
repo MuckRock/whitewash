@@ -54,4 +54,12 @@
     XCTAssertEqualObjects(record.turns[0], turn, @"recordTurn fails to add the correct turn to the record");
 }
 
+- (void)testModifyScore {
+    MRRecord *record = [MRRecord newRecord];
+    [record modifyScoreBy:10];
+    XCTAssertEqual(record.score, 10, @"modifyScore fails to modify the score by a positive integer");
+    [record modifyScoreBy:-20];
+    XCTAssertEqual(record.score, -10, @"modifyScore fails to modify the score by a negative integer");
+}
+
 @end
