@@ -11,7 +11,7 @@
 @interface MRRecord ()
 
 @property (nonatomic) NSInteger privateScore;
-@property (nonatomic) NSInteger privateTurns;
+@property (nonatomic, strong) NSMutableArray *mutableTurns;
 
 @end
 
@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         self.privateScore = 0;
-        self.privateTurns = 0;
+        self.mutableTurns = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -34,8 +34,16 @@
     return self.privateScore;
 }
 
-- (NSInteger)turns {
-    return self.privateTurns;
+- (NSMutableArray *)turns {
+    return [self.mutableTurns copy];
+}
+
+- (void)recordTurn:(id)turn {
+    [self.mutableTurns addObject:turn];
+}
+
+- (void)modifyScoreBy:(NSInteger)amount {
+    self.privateScore = self.privateScore + amount;
 }
 
 @end

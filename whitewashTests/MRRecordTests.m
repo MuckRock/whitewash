@@ -36,4 +36,22 @@
     XCTAssertNotNil(record, @"newRecord fails to return a new record");
 }
 
+- (void)testScore {
+    MRRecord *record = [MRRecord newRecord];
+    XCTAssertEqual(record.score, 0, @"MRRecord score does not start at 0");
+}
+
+- (void)testTurns {
+    MRRecord *record = [MRRecord newRecord];
+    XCTAssertEqual([record.turns count], 0, @"MRRecord turns does not start at 0");
+}
+
+- (void)testRecordTurn {
+    MRRecord *record = [MRRecord newRecord];
+    NSObject *turn = [[NSObject alloc] init];
+    [record recordTurn:turn];
+    XCTAssertEqual([record.turns count], 1, @"recordTurn fails to add turn to record");
+    XCTAssertEqualObjects(record.turns[0], turn, @"recordTurn fails to add the correct turn to the record");
+}
+
 @end
