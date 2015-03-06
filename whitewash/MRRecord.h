@@ -10,4 +10,9 @@
 
 @interface MRRecord : NSObject
 
+@property (nonatomic, readonly) NSInteger score;
+@property (nonatomic, readonly) NSInteger turns;
+
++ (MRRecord *)newRecord;
+
 @end

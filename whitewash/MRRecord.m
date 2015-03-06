@@ -8,6 +8,34 @@
 
 #import "MRRecord.h"
 
+@interface MRRecord ()
+
+@property (nonatomic) NSInteger privateScore;
+@property (nonatomic) NSInteger privateTurns;
+
+@end
+
 @implementation MRRecord
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.privateScore = 0;
+        self.privateTurns = 0;
+    }
+    return self;
+}
+
++ (MRRecord *)newRecord {
+    return [[MRRecord alloc] init];
+}
+
+- (NSInteger)score {
+    return self.privateScore;
+}
+
+- (NSInteger)turns {
+    return self.privateTurns;
+}
 
 @end
