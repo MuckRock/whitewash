@@ -44,4 +44,10 @@
     XCTAssertEqual(player.name, @"Bob", @"newPlayerWithName fails to return a new object with the right name");
 }
 
+- (void)testHistory {
+    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
+    XCTAssertNotNil(player.history, @"New player does not return a history array after creation");
+    XCTAssertEqual([player.history count], 0, @"New player does not return an empty history array after creation");
+}
+
 @end

@@ -31,6 +31,10 @@
     return self;
 }
 
+- (NSArray *)history {
+    return [self.mutableHistory copy];
+}
+
 + (MRPlayer *)newPlayerWithName:(NSString *)playerName {
     return [[MRPlayer alloc] initWithName:playerName];
 }
