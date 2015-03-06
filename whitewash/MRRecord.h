@@ -11,7 +11,7 @@
 @interface MRRecord : NSObject
 
 @property (nonatomic, readonly) NSInteger score;
-@property (nonatomic, readonly) NSArray *turns;
+@property (nonatomic, readonly, copy) NSArray *turns;
 
 + (MRRecord *)newRecord;
 
