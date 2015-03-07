@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MRRecord.h"
+#import "MRGameDataStore.h"
 
 @interface MRGame : NSObject
 
 @property (nonatomic, strong) MRRecord *record;
+@property (nonatomic, strong) MRGameDataStore *gameData;
 @property (nonatomic, strong) NSData *inputData;
 @property (nonatomic, strong) NSData *outputData;
 @property (nonatomic, strong) NSURL *inputURL;
