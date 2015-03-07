@@ -24,6 +24,8 @@
 		9D53164B1AAA645000B79B44 /* MRGameDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53164A1AAA645000B79B44 /* MRGameDataStore.m */; };
 		9D53164D1AAA6E0D00B79B44 /* MRGameDataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53164C1AAA6E0D00B79B44 /* MRGameDataStoreTests.m */; };
 		9D53164F1AAA6EB100B79B44 /* MRGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53164E1AAA6EB100B79B44 /* MRGameTests.m */; };
+		9D5316521AAA788900B79B44 /* MRRuleset.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5316511AAA788900B79B44 /* MRRuleset.m */; };
+		9D5316541AAA7DBE00B79B44 /* MRRulesetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5316531AAA7DBE00B79B44 /* MRRulesetTests.m */; };
 		9D9A48331A8E671500B9B202 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9A48321A8E671500B9B202 /* CardContentView.xib */; };
 		9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */; };
 		9DF089A51A9E42120080F0DE /* communications.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DF089A41A9E42120080F0DE /* communications.json */; };
@@ -76,6 +78,9 @@
 		9D53164A1AAA645000B79B44 /* MRGameDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameDataStore.m; sourceTree = "<group>"; };
 		9D53164C1AAA6E0D00B79B44 /* MRGameDataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameDataStoreTests.m; sourceTree = "<group>"; };
 		9D53164E1AAA6EB100B79B44 /* MRGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameTests.m; sourceTree = "<group>"; };
+		9D5316501AAA788900B79B44 /* MRRuleset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRRuleset.h; sourceTree = "<group>"; };
+		9D5316511AAA788900B79B44 /* MRRuleset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRRuleset.m; sourceTree = "<group>"; };
+		9D5316531AAA7DBE00B79B44 /* MRRulesetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRRulesetTests.m; sourceTree = "<group>"; };
 		9D9A48321A8E671500B9B202 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		9D9BB8541A700B1F00EF427D /* MRGamePieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGamePieceView.h; sourceTree = "<group>"; };
 		9D9BB8551A700B1F00EF427D /* MRGamePieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGamePieceView.m; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 		9D147F5C1A39FAE9006631F8 /* whitewashTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D5316531AAA7DBE00B79B44 /* MRRulesetTests.m */,
 				9D53164C1AAA6E0D00B79B44 /* MRGameDataStoreTests.m */,
 				9D53164E1AAA6EB100B79B44 /* MRGameTests.m */,
 				9D53163D1AAA277400B79B44 /* MRPlayerTests.m */,
@@ -193,16 +199,26 @@
 		9D53163C1AAA262200B79B44 /* Prototype 3 */ = {
 			isa = PBXGroup;
 			children = (
-				9D5316391AAA261E00B79B44 /* MRPlayer.h */,
-				9D53163A1AAA261E00B79B44 /* MRPlayer.m */,
-				9D53163F1AAA2D1000B79B44 /* MRRecord.h */,
-				9D5316401AAA2D1000B79B44 /* MRRecord.m */,
+				9D5316551AAA80BE00B79B44 /* Models */,
+			);
+			name = "Prototype 3";
+			sourceTree = "<group>";
+		};
+		9D5316551AAA80BE00B79B44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				9D5316441AAA5AAB00B79B44 /* MRGame.h */,
 				9D5316451AAA5AAB00B79B44 /* MRGame.m */,
 				9D5316491AAA645000B79B44 /* MRGameDataStore.h */,
 				9D53164A1AAA645000B79B44 /* MRGameDataStore.m */,
+				9D5316391AAA261E00B79B44 /* MRPlayer.h */,
+				9D53163A1AAA261E00B79B44 /* MRPlayer.m */,
+				9D53163F1AAA2D1000B79B44 /* MRRecord.h */,
+				9D5316401AAA2D1000B79B44 /* MRRecord.m */,
+				9D5316501AAA788900B79B44 /* MRRuleset.h */,
+				9D5316511AAA788900B79B44 /* MRRuleset.m */,
 			);
-			name = "Prototype 3";
+			name = Models;
 			sourceTree = "<group>";
 		};
 		9DFE26271A8D4FFF00483A86 /* Prototype 1 */ = {
@@ -386,6 +402,7 @@
 				9D53164B1AAA645000B79B44 /* MRGameDataStore.m in Sources */,
 				9DFE26261A8D4FF900483A86 /* MRSwipeableViewController.m in Sources */,
 				9D18DE581A96911E0074F31B /* MRCommunication.m in Sources */,
+				9D5316521AAA788900B79B44 /* MRRuleset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5316541AAA7DBE00B79B44 /* MRRulesetTests.m in Sources */,
 				9D53164D1AAA6E0D00B79B44 /* MRGameDataStoreTests.m in Sources */,
 				9D53163E1AAA277400B79B44 /* MRPlayerTests.m in Sources */,
 				9D5316431AAA382F00B79B44 /* MRRecordTests.m in Sources */,
