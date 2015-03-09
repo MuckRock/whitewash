@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zSg-do-vNs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8gL-JF-3XU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -132,7 +132,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7n-O2-zIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283" y="144"/>
+            <point key="canvasLocation" x="1809" y="828"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="ViB-a0-Y6n">
+            <objects>
+                <viewController id="8gL-JF-3XU" customClass="MRPlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BIL-KS-uZ4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jy0-yl-2Yo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PuM-da-XeL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAJ-c1-ZCE">
+                                <rect key="frame" x="16" y="354" width="568" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="mql-zO-edH"/>
+                                </constraints>
+                                <state key="normal" title="Get to work!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playGame:" destination="8gL-JF-3XU" eventType="touchUpInside" id="fZd-JC-s0T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello there," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jv-cm-GBJ">
+                                <rect key="frame" x="16" y="210" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8E-u6-Lvl">
+                                <rect key="frame" x="16" y="239" width="568" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="MAu-jl-qVO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Whitewash" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fQ-5W-njC">
+                                <rect key="frame" x="16" y="77" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Jv-cm-GBJ" firstAttribute="leading" secondItem="I8E-u6-Lvl" secondAttribute="leading" id="LZ5-Eg-eMN"/>
+                            <constraint firstItem="I8E-u6-Lvl" firstAttribute="trailing" secondItem="UAJ-c1-ZCE" secondAttribute="trailing" id="MGo-Y3-3c7"/>
+                            <constraint firstItem="UAJ-c1-ZCE" firstAttribute="top" secondItem="I8E-u6-Lvl" secondAttribute="bottom" constant="94" id="NeU-0E-6R2"/>
+                            <constraint firstItem="8fQ-5W-njC" firstAttribute="trailing" secondItem="6Jv-cm-GBJ" secondAttribute="trailing" id="RIe-uG-BNA"/>
+                            <constraint firstItem="8fQ-5W-njC" firstAttribute="leading" secondItem="6Jv-cm-GBJ" secondAttribute="leading" id="Wwr-zx-tRc"/>
+                            <constraint firstItem="I8E-u6-Lvl" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="ZXu-rH-euT"/>
+                            <constraint firstItem="I8E-u6-Lvl" firstAttribute="trailing" secondItem="PuM-da-XeL" secondAttribute="trailingMargin" id="aAR-vD-6CL"/>
+                            <constraint firstItem="I8E-u6-Lvl" firstAttribute="top" secondItem="6Jv-cm-GBJ" secondAttribute="bottom" constant="8" id="ceL-Rz-tz3"/>
+                            <constraint firstItem="6Jv-cm-GBJ" firstAttribute="trailing" secondItem="I8E-u6-Lvl" secondAttribute="trailing" id="dUW-9n-zwx"/>
+                            <constraint firstItem="8fQ-5W-njC" firstAttribute="top" secondItem="BIL-KS-uZ4" secondAttribute="bottom" constant="57" id="dsa-DV-idN"/>
+                            <constraint firstItem="I8E-u6-Lvl" firstAttribute="leading" secondItem="UAJ-c1-ZCE" secondAttribute="leading" id="fnV-f2-dPd"/>
+                            <constraint firstItem="I8E-u6-Lvl" firstAttribute="top" secondItem="BIL-KS-uZ4" secondAttribute="bottom" constant="219" id="lzX-NS-4Xg"/>
+                            <constraint firstItem="6Jv-cm-GBJ" firstAttribute="height" secondItem="I8E-u6-Lvl" secondAttribute="height" id="nVr-8t-10z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playerName" destination="I8E-u6-Lvl" id="VGL-Ed-evp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9hu-yu-cJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088" y="828"/>
         </scene>
     </scenes>
     <resources>
