@@ -9,6 +9,7 @@
 #import "MRPlayerViewController.h"
 
 #import "MRPlayer.h"
+#import "MRGameViewController.h"
 
 @interface MRPlayerViewController ()
 
@@ -28,6 +29,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)playGame:(id)sender {
+    MRGameViewController *gameViewController = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
+    gameViewController.playerHistory = _player.history;
+    gameViewController.delegate = self;
+    [self presentViewController:gameViewController animated:YES completion:nil];
+}
+
+- (void)gameViewController:(MRGameViewController *)controller didCompleteGame:(MRRecord *)record {
+    NSLog(@"Recieved record from gameViewController");
 }
 
 /*

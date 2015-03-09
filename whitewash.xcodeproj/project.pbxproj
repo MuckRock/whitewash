@@ -16,6 +16,8 @@
 		9D1E9D291A6EEF3600B8927F /* MRGameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D281A6EEF3600B8927F /* MRGameBoardViewController.m */; };
 		9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */; };
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
+		9D4E1B221AAE42F900BB8618 /* MRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */; };
+		9D4E1B231AAE42F900BB8618 /* MRGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */; };
 		9D53163B1AAA261E00B79B44 /* MRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53163A1AAA261E00B79B44 /* MRPlayer.m */; };
 		9D53163E1AAA277400B79B44 /* MRPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53163D1AAA277400B79B44 /* MRPlayerTests.m */; };
 		9D5316411AAA2D1000B79B44 /* MRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5316401AAA2D1000B79B44 /* MRRecord.m */; };
@@ -67,6 +69,9 @@
 		9D1E9D2A1A6EEF6A00B8927F /* MRGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameBoardView.h; sourceTree = "<group>"; };
 		9D1E9D2B1A6EEF6A00B8927F /* MRGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameBoardView.m; sourceTree = "<group>"; };
 		9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9D4E1B1F1AAE42F900BB8618 /* MRGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameViewController.h; sourceTree = "<group>"; };
+		9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameViewController.m; sourceTree = "<group>"; };
+		9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRGameViewController.xib; sourceTree = "<group>"; };
 		9D5316391AAA261E00B79B44 /* MRPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPlayer.h; sourceTree = "<group>"; };
 		9D53163A1AAA261E00B79B44 /* MRPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPlayer.m; sourceTree = "<group>"; };
 		9D53163D1AAA277400B79B44 /* MRPlayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRPlayerTests.m; path = whitewashTests/MRPlayerTests.m; sourceTree = SOURCE_ROOT; };
@@ -204,6 +209,9 @@
 			children = (
 				9D98CC4F1AADFB78006FDE2B /* MRPlayerViewController.h */,
 				9D98CC501AADFB78006FDE2B /* MRPlayerViewController.m */,
+				9D4E1B1F1AAE42F900BB8618 /* MRGameViewController.h */,
+				9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */,
+				9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */,
 				9D5316551AAA80BE00B79B44 /* Models */,
 			);
 			name = "Prototype 3";
@@ -344,6 +352,7 @@
 				9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */,
 				9DF089A51A9E42120080F0DE /* communications.json in Resources */,
 				9DFE262C1A8D56FE00483A86 /* Main.storyboard in Resources */,
+				9D4E1B231AAE42F900BB8618 /* MRGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +412,7 @@
 				9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */,
 				9D1E9D2C1A6EEF6A00B8927F /* MRGameBoardView.m in Sources */,
 				9D9BB8561A700B1F00EF427D /* MRGamePieceView.m in Sources */,
+				9D4E1B221AAE42F900BB8618 /* MRGameViewController.m in Sources */,
 				9D53163B1AAA261E00B79B44 /* MRPlayer.m in Sources */,
 				9D53164B1AAA645000B79B44 /* MRGameDataStore.m in Sources */,
 				9DFE26261A8D4FF900483A86 /* MRSwipeableViewController.m in Sources */,

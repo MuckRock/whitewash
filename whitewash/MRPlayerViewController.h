@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRGameViewController.h"
 
-@interface MRPlayerViewController : UIViewController
+@interface MRPlayerViewController : UIViewController <MRGameViewContollerDelegate>
 
 @end

@@ -155,7 +155,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zSg-do-vNs" kind="showDetail" id="KpI-sZ-KPV"/>
+                                    <action selector="playGame:" destination="8gL-JF-3XU" eventType="touchUpInside" id="fZd-JC-s0T"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello there," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jv-cm-GBJ">
@@ -173,12 +173,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zar-d1-fP5">
-                                <rect key="frame" x="16" y="469" width="568" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Whitewash" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fQ-5W-njC">
                                 <rect key="frame" x="16" y="77" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -199,15 +193,10 @@
                             <constraint firstItem="6Jv-cm-GBJ" firstAttribute="trailing" secondItem="I8E-u6-Lvl" secondAttribute="trailing" id="dUW-9n-zwx"/>
                             <constraint firstItem="8fQ-5W-njC" firstAttribute="top" secondItem="BIL-KS-uZ4" secondAttribute="bottom" constant="57" id="dsa-DV-idN"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="leading" secondItem="UAJ-c1-ZCE" secondAttribute="leading" id="fnV-f2-dPd"/>
-                            <constraint firstItem="UAJ-c1-ZCE" firstAttribute="trailing" secondItem="Zar-d1-fP5" secondAttribute="trailing" id="hYV-qW-hWY"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="top" secondItem="BIL-KS-uZ4" secondAttribute="bottom" constant="219" id="lzX-NS-4Xg"/>
                             <constraint firstItem="6Jv-cm-GBJ" firstAttribute="height" secondItem="I8E-u6-Lvl" secondAttribute="height" id="nVr-8t-10z"/>
-                            <constraint firstItem="Jy0-yl-2Yo" firstAttribute="top" secondItem="Zar-d1-fP5" secondAttribute="bottom" constant="101" id="naM-Ex-rMV"/>
-                            <constraint firstItem="Zar-d1-fP5" firstAttribute="top" secondItem="UAJ-c1-ZCE" secondAttribute="bottom" constant="77" id="wOv-Fp-Akf"/>
-                            <constraint firstItem="UAJ-c1-ZCE" firstAttribute="leading" secondItem="Zar-d1-fP5" secondAttribute="leading" id="wli-TY-Uab"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GvB-hg-ngg"/>
                     <connections>
                         <outlet property="playerName" destination="I8E-u6-Lvl" id="VGL-Ed-evp"/>
                     </connections>
