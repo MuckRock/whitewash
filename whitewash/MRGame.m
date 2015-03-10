@@ -30,4 +30,9 @@
     return self;
 }
 
+- (void)takeTurn:(id)turn {
+    [self.record recordTurn:turn];
+    [self.record modifyScoreBy:1];
+}
+
 @end

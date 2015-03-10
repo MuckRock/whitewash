@@ -23,4 +23,6 @@
                     andOutputURL:(NSURL *)anOutputURL;
 - (instancetype)initWithEndpointURL:(NSURL *)endpoint;
 
+- (void)takeTurn:(id)turn;
+
 @end
