@@ -557,6 +557,7 @@
 		};
 		9D147F671A39FAE9006631F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4593659F62CF388C7EC9252 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -576,6 +577,7 @@
 		};
 		9D147F681A39FAE9006631F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55CD1DBBC66F6DD4D9E6CC95 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

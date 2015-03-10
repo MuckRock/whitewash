@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 MuckRock. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "MRPlayer.h"
+#import <OCMock/OCMock.h>
 
 @interface MRPlayerTests : XCTestCase
 
