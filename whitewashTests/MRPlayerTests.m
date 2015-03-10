@@ -9,10 +9,14 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "MRPlayer.h"
 #import <OCMock/OCMock.h>
 
+#import "MRPlayer.h"
+
 @interface MRPlayerTests : XCTestCase
+
+@property (nonatomic) MRPlayer *player;
+@property (nonatomic) MRRecord *record;
 
 @end
 
@@ -21,52 +25,43 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    _player = [MRPlayer newPlayerWithName:@"Bob"];
+    _record = OCMClassMock([MRRecord class]);
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testInit {
-    MRPlayer *player = [[MRPlayer alloc] init];
-    XCTAssertNotNil(player, @"init fails to return anything");
-    XCTAssertNotNil(player.name, @"MRPlayer fails to initialize without a name");
-}
-
-- (void)testInitWithName {
-    MRPlayer *player = [[MRPlayer alloc] initWithName:@"Bob"];
-    XCTAssertNotNil(player, @"initWithName fails to return anything");
-    XCTAssertEqual(player.name, @"Bob", @"MRPlayer fails to initialize with the right name.");
+    _player = nil;
+    _record = nil;
 }
 
 - (void)testNewPlayerWithName {
-    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
-    XCTAssertNotNil(player, @"newPlayerWithName fails to return anything");
-    XCTAssertEqual(player.name, @"Bob", @"newPlayerWithName fails to return a new object with the right name");
+    XCTAssertNotNil(_player, @"Calling new player should return a new player");
+    XCTAssertEqual(_player.name, @"Bob",
+                   @"New players should be given the name passed to them");
 }
 
 - (void)testHistory {
-    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
-    XCTAssertNotNil(player.history, @"New player does not return a history array after creation");
-    XCTAssertEqual([player.history count], 0, @"New player does not return an empty history array after creation");
+    XCTAssertNotNil(_player.history,
+                    @"New players should have a history");
+    XCTAssertEqual([_player.history count], 0,
+                   @"Player history should start empty");
 }
 
 - (void)testAddRecordToHistory {
-    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
-    MRRecord *record = [[MRRecord alloc] init];
-    [player addRecordToHistory:record];
-    XCTAssertEqual([player.history count], 1);
+    [_player addRecordToHistory:_record];
+    XCTAssertEqual([_player.history count], 1,
+                   @"Records should be added to the player history array");
+    XCTAssertEqualObjects(_player.history[0], _record,
+                          @"The same record should exist inside the array");
 }
 
 - (void)testRemoveRecordFromHistory {
-    MRPlayer *player = [MRPlayer newPlayerWithName:@"Bob"];
-    MRRecord *record = [[MRRecord alloc] init];
-    XCTAssertNoThrow([player removeRecordFromHistory:record]);
-    [player addRecordToHistory:record];
-    XCTAssertEqual([player.history count], 1);
-    [player removeRecordFromHistory:record];
-    XCTAssertEqual([player.history count], 0);
+    XCTAssertNoThrow([_player removeRecordFromHistory:_record]);
+    [_player addRecordToHistory:_record];
+    [_player removeRecordFromHistory:_record];
+    XCTAssertEqual([_player.history count], 0);
 }
 
 @end
