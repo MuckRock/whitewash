@@ -39,7 +39,7 @@
 }
 
 - (void)gameViewController:(MRGameViewController *)controller didCompleteGame:(MRRecord *)record {
-    NSLog(@"Recieved record from gameViewController");
+    NSLog(@"Recieved record from gameViewController: %@", record);
 }
 
 /*
