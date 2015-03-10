@@ -42,4 +42,14 @@
     XCTAssertNotNil(_game.record);
 }
 
+- (void)testTakeTurn {
+    id turn = OCMClassMock([NSDictionary class]);
+    NSInteger preTurnScore = _game.record.score;
+    [_game takeTurn:turn];
+    XCTAssertEqual([_game.record.turns count], 1,
+                   @"Game should update the record with the turn when it is taken");
+    XCTAssertNotEqual(preTurnScore, _game.record.score,
+                      @"Game should update the record with a new score");
+}
+
 @end

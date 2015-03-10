@@ -19,17 +19,14 @@
 
 @property (nonatomic, strong) MRGame *game;
 
-#pragma mark - View Properties
+#pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
-#pragma mark Input View Properties
 @property (weak, nonatomic) IBOutlet UILabel *inputCounter;
 @property (weak, nonatomic) IBOutlet UILabel *inputLabel;
 @property (weak, nonatomic) IBOutlet UIButton *inputAction;
-# pragma mark Output A Properties
 @property (weak, nonatomic) IBOutlet UILabel *outputACounter;
 @property (weak, nonatomic) IBOutlet UILabel *outputALabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputAAction;
-#pragma mark Output B Properties
 @property (weak, nonatomic) IBOutlet UILabel *outputBCounter;
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
@@ -39,7 +36,6 @@
 @implementation MRGameViewController
 
 @synthesize delegate;
-@synthesize playerHistory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -145,22 +141,12 @@
 
 #pragma mark - ZLSwipeableViewDelegate
 
-- (void)swipeableView:(ZLSwipeableView *)swipeableView
-           didSwipeUp:(UIView *)view {
-    NSLog(@"did swipe up");
-}
-
-- (void)swipeableView:(ZLSwipeableView *)swipeableView
-         didSwipeDown:(UIView *)view {
-    NSLog(@"did swipe down");
-}
-
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
-    NSLog(@"did swipe left");
+    [_game takeTurn:@"Left"];
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
-    NSLog(@"did swipe right");
+    [_game takeTurn:@"Right"];
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
@@ -171,7 +157,7 @@
     NSLog(@"did start swiping at location: x %f, y%f", location.x, location.y);
 }
 
-- (void)swipeableView:(ZLSwipeableView *)swipeableView swipingView:(UIView *)view atLocation:(CGPoint)location  translation:(CGPoint)translation {
+- (void)swipeableView:(ZLSwipeableView *)swipeableView swipingView:(UIView *)view atLocation:(CGPoint)location translation:(CGPoint)translation {
     NSLog(@"swiping at location: x %f, y %f, translation: x %f, y %f", location.x, location.y, translation.x, translation.y);
 }
 

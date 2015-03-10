@@ -21,6 +21,5 @@
 @interface MRGameViewController : UIViewController
 
 @property (nonatomic, weak) id <MRGameViewContollerDelegate> delegate;
-@property (nonatomic, weak) NSArray *playerHistory;
 
 @end
