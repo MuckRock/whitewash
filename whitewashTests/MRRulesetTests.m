@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "MRRuleset.h"
 
 @interface MRRulesetTests : XCTestCase
 
 @property (nonatomic) MRRuleset *rules;
-@property (nonatomic) NSObject *specificRule;
+@property (nonatomic) id specificRule;
 
 @end
 
@@ -23,7 +24,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     _rules = [[MRRuleset alloc] init];
-    _specificRule = [[NSObject alloc] init];
+    _specificRule = OCMClassMock([NSObject class]);
 }
 
 - (void)tearDown {
@@ -71,7 +72,8 @@
 }
 
 - (void)testAddingRules {
-    NSArray *specificRules = @[@"Stop", @"Go", @"Turn Left", @"Turn Right"];
+    NSArray *array = @[@"Stop", @"Go", @"Turn Left", @"Turn Right"];
+    id specificRules = OCMPartialMock(array);
     [_rules addStartStateRules:specificRules];
     XCTAssertEqual([_rules.startState count], 4);
     [_rules addEndStateRules:specificRules];
