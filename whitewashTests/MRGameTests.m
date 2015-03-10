@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "MRGame.h"
 
 @interface MRGameTests : XCTestCase
+
+@property (nonatomic) id url1;
+@property (nonatomic) id url2;
+@property (nonatomic) MRGame *game;
 
 @end
 
@@ -18,37 +23,33 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    _url1 = OCMClassMock([NSURL class]);
+    _url2 = OCMClassMock([NSURL class]);
+    _game = [[MRGame alloc] initWithInputURL:_url1 andOutputURL:_url2];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testInit {
-    MRGame *game = [[MRGame alloc] init];
-    XCTAssertNotNil(game, @"MRGame fails to initialize");
-    XCTAssertNil(game.inputURL);
-    XCTAssertNil(game.outputURL);
-    XCTAssertNotNil(game.record);
-}
-
-- (void)testInitWithEndpointURL {
-    NSURL *url = [NSURL URLWithString:@"https://www.muckrock.com/"];
-    MRGame *game = [[MRGame alloc] initWithEndpointURL:url];
-    XCTAssertNotNil(game);
-    XCTAssertEqual(game.inputURL, url);
-    XCTAssertEqual(game.outputURL, url);
+    _url1 = nil;
+    _url2 = nil;
+    _game = nil;
 }
 
 - (void)testInitWithInputURLandOutputURL {
-    NSURL *url1 = [NSURL URLWithString:@"http://www.upworthy.com/"];
-    NSURL *url2 = [NSURL URLWithString:@"http://www.buzzfeed.com/"];
-    MRGame *game = [[MRGame alloc] initWithInputURL:url1 andOutputURL:url2];
-    XCTAssertNotNil(game);
-    XCTAssertEqual(game.inputURL, url1);
-    XCTAssertEqual(game.outputURL, url2);
+    XCTAssertNotNil(_game);
+    XCTAssertEqual(_game.inputURL, _url1);
+    XCTAssertEqual(_game.outputURL, _url2);
+    XCTAssertNotNil(_game.record);
+}
+
+- (void)testTakeTurn {
+    id turn = OCMClassMock([NSDictionary class]);
+    NSInteger preTurnScore = _game.record.score;
+    [_game takeTurn:turn];
+    XCTAssertEqual([_game.record.turns count], 1,
+                   @"Game should update the record with the turn when it is taken");
+    XCTAssertNotEqual(preTurnScore, _game.record.score,
+                      @"Game should update the record with a new score");
 }
 
 @end
