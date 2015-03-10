@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.player = [MRPlayer newPlayerWithName:@"Allan Lasser"];
-    self.playerName.text = self.player.name;
+    _player = [MRPlayer newPlayerWithName:@"Allan Lasser"];
+    _playerName.text = _player.name;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,14 +32,14 @@
 }
 
 - (IBAction)playGame:(id)sender {
+    // TODO: Have GVC returned from a GameViewDispatcher object
     MRGameViewController *gameViewController = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
-    gameViewController.playerHistory = _player.history;
     gameViewController.delegate = self;
     [self presentViewController:gameViewController animated:YES completion:nil];
 }
 
 - (void)gameViewController:(MRGameViewController *)controller didCompleteGame:(MRRecord *)record {
-    NSLog(@"Recieved record from gameViewController: %@", record);
+    [_player addRecordToHistory:record];
 }
 
 /*
