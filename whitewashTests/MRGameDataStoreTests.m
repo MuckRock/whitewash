@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "MRGameDataStore.h"
 
 @interface MRGameDataStoreTests : XCTestCase
 
 @property (nonatomic) MRGameDataStore *store;
-@property (nonatomic) NSObject *data;
-@property (nonatomic) NSObject *moreData;
+@property (nonatomic) id data;
+@property (nonatomic) id moreData;
 
 @end
 
@@ -24,8 +25,8 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     _store = [[MRGameDataStore alloc] init];
-    _data = [[NSObject alloc] init];
-    _moreData = [[NSObject alloc] init];
+    _data = OCMClassMock([NSObject class]);
+    _moreData = OCMClassMock([NSObject class]);
 }
 
 - (void)tearDown {
