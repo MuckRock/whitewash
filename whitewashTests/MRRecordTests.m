@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "MRRecord.h"
 
 @interface MRRecordTests : XCTestCase
+
+@property (nonatomic) MRRecord *record;
+@property (nonatomic) id turn;
 
 @end
 
@@ -19,47 +23,38 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    _record = [MRRecord newRecord];
+    _turn = OCMClassMock([NSObject class]);
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testInit {
-    MRRecord *record = [[MRRecord alloc] init];
-    XCTAssertNotNil(record, @"MRRecord fails to initialize");
+    _record = nil;
+    _turn = nil;
 }
 
 - (void)testNewRecord {
-    MRRecord *record = [MRRecord newRecord];
-    XCTAssertNotNil(record, @"newRecord fails to return a new record");
-}
-
-- (void)testScore {
-    MRRecord *record = [MRRecord newRecord];
-    XCTAssertEqual(record.score, 0, @"MRRecord score does not start at 0");
-}
-
-- (void)testTurns {
-    MRRecord *record = [MRRecord newRecord];
-    XCTAssertEqual([record.turns count], 0, @"MRRecord turns does not start at 0");
+    XCTAssertNotNil(_record, @"newRecord should return a new record");
+    XCTAssertEqual(_record.score, 0, @"MRRecord score should start at 0");
+    XCTAssertEqual([_record.turns count], 0, @"MRRecord turns should start at 0");
 }
 
 - (void)testRecordTurn {
-    MRRecord *record = [MRRecord newRecord];
-    NSObject *turn = [[NSObject alloc] init];
-    [record recordTurn:turn];
-    XCTAssertEqual([record.turns count], 1, @"recordTurn fails to add turn to record");
-    XCTAssertEqualObjects(record.turns[0], turn, @"recordTurn fails to add the correct turn to the record");
+    [_record recordTurn:_turn];
+    XCTAssertEqual([_record.turns count], 1,
+                   @"recordTurn should add turn to record");
+    XCTAssertEqualObjects(_record.turns[0], _turn,
+                          @"recordTurn should add the same turn to the record");
 }
 
 - (void)testModifyScore {
-    MRRecord *record = [MRRecord newRecord];
-    [record modifyScoreBy:10];
-    XCTAssertEqual(record.score, 10, @"modifyScore fails to modify the score by a positive integer");
-    [record modifyScoreBy:-20];
-    XCTAssertEqual(record.score, -10, @"modifyScore fails to modify the score by a negative integer");
+    [_record modifyScoreBy:10];
+    XCTAssertEqual(_record.score, 10,
+                   @"Should modify the score by a positive integer");
+    [_record modifyScoreBy:-20];
+    XCTAssertEqual(_record.score, -10,
+                   @"Should modify the score by a negative integer");
 }
 
 @end
