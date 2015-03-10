@@ -54,17 +54,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Swipeableview will now appear!");
-    _swipeableView.isRotationEnabled = FBTweakValue(@"Swipeable",
-                                                    @"Tweaks",
+    _swipeableView.isRotationEnabled = FBTweakValue(@"Game",
+                                                    @"Cards",
                                                     @"Rotations",
                                                     YES);
+    _swipeableView.pushVelocityMagnitude = FBTweakValue(@"Game",
+                                                        @"Cards",
+                                                        @"Velocity",
+                                                        100.0);
 }
 
 - (void)viewDidLayoutSubviews {
-    // Required Data Source
     _swipeableView.dataSource = self;
-    // REPLACE WITH GAME.DATASOURCE
-    // MAKE GAMEDATASOURCE A DELEGATE FOR ZLSWIPEABLEVIEW
 }
 
 #pragma mark - Navigation
@@ -94,8 +95,6 @@
     scaleAnimation.springBounciness = 15.0f;
     [layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
 }
-
-/* MOVE THIS TO GAMEDATASOURCE */
  
 #pragma mark - ZLSwipeableViewDataSource
 
