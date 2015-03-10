@@ -23,14 +23,12 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
     _url1 = OCMClassMock([NSURL class]);
     _url2 = OCMClassMock([NSURL class]);
     _game = [[MRGame alloc] initWithInputURL:_url1 andOutputURL:_url2];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     _url1 = nil;
     _url2 = nil;

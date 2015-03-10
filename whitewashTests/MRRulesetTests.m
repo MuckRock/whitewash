@@ -22,13 +22,11 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
     _rules = [[MRRuleset alloc] init];
     _specificRule = OCMClassMock([NSObject class]);
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     _rules = nil;
     _specificRule = nil;

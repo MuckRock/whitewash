@@ -24,13 +24,11 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
     _player = [MRPlayer newPlayerWithName:@"Bob"];
     _record = OCMClassMock([MRRecord class]);
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     _player = nil;
     _record = nil;
