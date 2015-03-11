@@ -12,6 +12,7 @@
 		9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */; };
 		9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D147F501A39FAE9006631F8 /* Images.xcassets */; };
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
+		9D3D9E2F1AB0CC5C001BA0A4 /* MRGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D9E2E1AB0CC5C001BA0A4 /* MRGameData.m */; };
 		9D4E1B221AAE42F900BB8618 /* MRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */; };
 		9D4E1B231AAE42F900BB8618 /* MRGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */; };
 		9D53163B1AAA261E00B79B44 /* MRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D53163A1AAA261E00B79B44 /* MRPlayer.m */; };
@@ -55,6 +56,8 @@
 		9D147F591A39FAE9006631F8 /* whitewashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = whitewashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D147F5E1A39FAE9006631F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9D3D9E2D1AB0CC5C001BA0A4 /* MRGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameData.h; sourceTree = "<group>"; };
+		9D3D9E2E1AB0CC5C001BA0A4 /* MRGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameData.m; sourceTree = "<group>"; };
 		9D4E1B1F1AAE42F900BB8618 /* MRGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameViewController.h; sourceTree = "<group>"; };
 		9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameViewController.m; sourceTree = "<group>"; };
 		9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRGameViewController.xib; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 		9D5316551AAA80BE00B79B44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9D3D9E2D1AB0CC5C001BA0A4 /* MRGameData.h */,
+				9D3D9E2E1AB0CC5C001BA0A4 /* MRGameData.m */,
 				9D5316441AAA5AAB00B79B44 /* MRGame.h */,
 				9D5316451AAA5AAB00B79B44 /* MRGame.m */,
 				9D5316491AAA645000B79B44 /* MRGameDataStore.h */,
@@ -367,6 +372,7 @@
 				9D53164B1AAA645000B79B44 /* MRGameDataStore.m in Sources */,
 				9D98CC511AADFB78006FDE2B /* MRPlayerViewController.m in Sources */,
 				9D5316521AAA788900B79B44 /* MRRuleset.m in Sources */,
+				9D3D9E2F1AB0CC5C001BA0A4 /* MRGameData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
