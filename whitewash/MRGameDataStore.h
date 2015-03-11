@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MRGameData.h"
 
 @interface MRGameDataStore : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *gameData;
+@property (nonatomic, readonly, copy) NSArray *data;
 
-- (void)addData:(id)data;
-- (void)removeData:(id)data;
+- (void)addData:(MRGameData *)data;
+- (void)removeData:(MRGameData *)data;
+- (MRGameData *)popData;
 - (void)moveDataAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 
 @end

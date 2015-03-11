@@ -10,46 +10,56 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "MRGame.h"
+#import "MRGameDataStore.h"
 
 @interface MRGameTests : XCTestCase
 
-@property (nonatomic) id url1;
-@property (nonatomic) id url2;
-@property (nonatomic) MRGame *game;
-
 @end
 
-@implementation MRGameTests
+@implementation MRGameTests {
+    id url1;
+    id url2;
+    MRGame *game;
+}
 
 - (void)setUp {
     [super setUp];
-    _url1 = OCMClassMock([NSURL class]);
-    _url2 = OCMClassMock([NSURL class]);
-    _game = [[MRGame alloc] initWithInputURL:_url1 andOutputURL:_url2];
+    url1 = OCMClassMock([NSURL class]);
+    url2 = OCMClassMock([NSURL class]);
+    game = [[MRGame alloc] initWithInputURL:url1 andOutputURL:url2];
+    [game populateInputDataStore];
+
 }
 
 - (void)tearDown {
     [super tearDown];
-    _url1 = nil;
-    _url2 = nil;
-    _game = nil;
+    url1 = nil;
+    url2 = nil;
+    game = nil;
 }
 
 - (void)testInitWithInputURLandOutputURL {
-    XCTAssertNotNil(_game);
-    XCTAssertEqual(_game.inputURL, _url1);
-    XCTAssertEqual(_game.outputURL, _url2);
-    XCTAssertNotNil(_game.record);
+    XCTAssertNotNil(game);
+    XCTAssertEqual(game.inputURL, url1);
+    XCTAssertEqual(game.outputURL, url2);
+    XCTAssertNotNil(game.inputData);
+    XCTAssertNotNil(game.outputData);
+    XCTAssertNotNil(game.record);
 }
 
 - (void)testTakeTurn {
     id turn = OCMClassMock([NSDictionary class]);
-    NSInteger preTurnScore = _game.record.score;
-    [_game takeTurn:turn];
-    XCTAssertEqual([_game.record.turns count], 1,
+    NSInteger preTurnScore = game.record.score;
+    [game takeTurn:turn];
+    XCTAssertEqual([game.record.turns count], 1,
                    @"Game should update the record with the turn when it is taken");
-    XCTAssertNotEqual(preTurnScore, _game.record.score,
+    XCTAssertNotEqual(preTurnScore, game.record.score,
                       @"Game should update the record with a new score");
+}
+
+- (void)testPopulateInputDataStore {
+    XCTAssertGreaterThan([game.inputData.data count], 0,
+                     @"GameDataStore should populate with data from endpoint");
 }
 
 @end

@@ -12,12 +12,17 @@
 
 #import "FBTweakInline.h"
 #import "MRGame.h"
+#import "MRGameData.h"
 #import "MRGameViewController.h"
 #import "MRRecord.h"
 
 @interface MRGameViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
+# pragma -
+
 @property (nonatomic, strong) MRGame *game;
+@property (nonatomic) NSUInteger turns;
+@property (nonatomic) NSUInteger turnsTaken;
 
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
@@ -30,6 +35,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputBCounter;
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
+# pragma mark Card Properties
+@property (weak, nonatomic) IBOutlet UILabel *cardName;
+@property (weak, nonatomic) IBOutlet UITextView *cardBody;
+@property (weak, nonatomic) IBOutlet UILabel *cardFiles;
+
+- (void)endTurn;
 
 @end
 
@@ -41,6 +52,25 @@
     [super viewDidLoad];
     _game = [[MRGame alloc] init];
     _swipeableView.delegate = self;
+    [_game populateInputDataStore];
+    _turns = [_game.inputData.data count];
+    _turnsTaken = 0;
+
+    NSString *input = @"Remaining";
+    _inputLabel.text = input;
+    [_inputAction setTitle:@"Info" forState:UIControlStateNormal];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
+    
+    NSString *outputA = @"Spam";
+    NSString *outputB = @"Legit";
+
+    _outputALabel.text = outputA;
+    _outputACounter.text = @"0";
+    [_outputAAction setTitle:outputA forState:UIControlStateNormal];
+    _outputBLabel.text = outputB;
+    _outputBCounter.text = @"0";
+    [_outputBAction setTitle:outputB forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,10 +94,17 @@
     _swipeableView.dataSource = self;
 }
 
-#pragma mark - Navigation
+// TODO: Pass turn into endTurn function
+- (void)endTurn {
+    _turnsTaken += 1;
+    // TODO: update game data store based on turn
+    if (_turnsTaken == _turns) {
+        [self.delegate gameViewController:self didCompleteGame:_game.record];
+        [self dismiss];
+    }
+}
 
-- (IBAction)dismiss:(id)sender {
-    [self.delegate gameViewController:self didCompleteGame:_game.record];
+- (void)dismiss {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -75,10 +112,12 @@
 
 - (IBAction)swipeRight:(id)sender {
     [_swipeableView swipeTopViewToRight];
+    [self endTurn];
 }
 
 - (IBAction)swipeLeft:(id)sender {
     [_swipeableView swipeTopViewToLeft];
+    [self endTurn];
 }
 
 #pragma mark - Animations
@@ -95,6 +134,12 @@
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
+    
+    // test the base case where the input data store is empty
+    if ([_game.inputData.data count] < 1) {
+        return nil;
+    }
+    
     UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
     view.backgroundColor = ([UIColor colorWithRed:0.945
                                             green:0.945
@@ -115,6 +160,12 @@
                                    owner:self
                                  options:nil] objectAtIndex:0];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    /* Pop data from input store and apply to card */
+    MRGameData *data = [_game.inputData popData];
+    _cardName.text = data.name;
+    _cardBody.text = data.body;
+    _cardFiles.text = [NSString stringWithFormat:@"%li Files", [data.files count]];
     [view addSubview:contentView];
     
     NSDictionary *metrics = @{
@@ -135,6 +186,7 @@
                           metrics:metrics
                           views:views]];
     
+
     
     return view;
 }
@@ -163,6 +215,7 @@
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didEndSwipingView:(UIView *)view atLocation:(CGPoint)location {
     NSLog(@"did start swiping at location: x %f, y%f", location.x, location.y);
+    [self endTurn];
 }
 
 @end
