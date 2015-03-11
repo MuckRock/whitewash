@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8gL-JF-3XU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8gL-JF-3XU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAJ-c1-ZCE">
-                                <rect key="frame" x="16" y="354" width="568" height="38"/>
+                                <rect key="frame" x="16" y="542" width="568" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="mql-zO-edH"/>
                                 </constraints>
@@ -50,26 +50,73 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games Played" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cw-l5-OTM">
+                                <rect key="frame" x="452" y="409" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turns Played" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whD-Nr-h2q">
+                                <rect key="frame" x="16" y="409" width="132" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="QfY-xn-PKK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KC-y9-kjq">
+                                <rect key="frame" x="16" y="374" width="132" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="IAH-6Y-zEb"/>
+                                    <constraint firstAttribute="height" constant="21" id="LRJ-5W-6VS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pK-Ie-aMu">
+                                <rect key="frame" x="452" y="374" width="132" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="sBz-D1-wqO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9KC-y9-kjq" firstAttribute="baseline" secondItem="8pK-Ie-aMu" secondAttribute="baseline" id="05g-hr-aPs"/>
+                            <constraint firstItem="whD-Nr-h2q" firstAttribute="top" secondItem="9KC-y9-kjq" secondAttribute="bottom" constant="14" id="7kr-Rq-fgU"/>
+                            <constraint firstItem="8pK-Ie-aMu" firstAttribute="trailing" secondItem="PuM-da-XeL" secondAttribute="trailingMargin" id="BxT-4E-V8q"/>
                             <constraint firstItem="6Jv-cm-GBJ" firstAttribute="leading" secondItem="I8E-u6-Lvl" secondAttribute="leading" id="LZ5-Eg-eMN"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="trailing" secondItem="UAJ-c1-ZCE" secondAttribute="trailing" id="MGo-Y3-3c7"/>
-                            <constraint firstItem="UAJ-c1-ZCE" firstAttribute="top" secondItem="I8E-u6-Lvl" secondAttribute="bottom" constant="94" id="NeU-0E-6R2"/>
+                            <constraint firstItem="9KC-y9-kjq" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="OKB-OQ-vgd"/>
+                            <constraint firstItem="whD-Nr-h2q" firstAttribute="width" secondItem="9KC-y9-kjq" secondAttribute="width" id="PMa-Qz-sgW"/>
                             <constraint firstItem="8fQ-5W-njC" firstAttribute="trailing" secondItem="6Jv-cm-GBJ" secondAttribute="trailing" id="RIe-uG-BNA"/>
+                            <constraint firstItem="8pK-Ie-aMu" firstAttribute="width" secondItem="0Cw-l5-OTM" secondAttribute="width" id="SVJ-kl-dun"/>
                             <constraint firstItem="8fQ-5W-njC" firstAttribute="leading" secondItem="6Jv-cm-GBJ" secondAttribute="leading" id="Wwr-zx-tRc"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="ZXu-rH-euT"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="trailing" secondItem="PuM-da-XeL" secondAttribute="trailingMargin" id="aAR-vD-6CL"/>
+                            <constraint firstItem="8pK-Ie-aMu" firstAttribute="trailing" secondItem="0Cw-l5-OTM" secondAttribute="trailing" id="agv-id-yj4"/>
+                            <constraint firstItem="whD-Nr-h2q" firstAttribute="leading" secondItem="9KC-y9-kjq" secondAttribute="leading" id="cXt-EV-dKz"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="top" secondItem="6Jv-cm-GBJ" secondAttribute="bottom" constant="8" id="ceL-Rz-tz3"/>
                             <constraint firstItem="6Jv-cm-GBJ" firstAttribute="trailing" secondItem="I8E-u6-Lvl" secondAttribute="trailing" id="dUW-9n-zwx"/>
                             <constraint firstItem="8fQ-5W-njC" firstAttribute="top" secondItem="BIL-KS-uZ4" secondAttribute="bottom" constant="57" id="dsa-DV-idN"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="leading" secondItem="UAJ-c1-ZCE" secondAttribute="leading" id="fnV-f2-dPd"/>
+                            <constraint firstItem="0Cw-l5-OTM" firstAttribute="top" secondItem="8pK-Ie-aMu" secondAttribute="bottom" constant="14" id="gqA-tj-SLI"/>
                             <constraint firstItem="I8E-u6-Lvl" firstAttribute="top" secondItem="BIL-KS-uZ4" secondAttribute="bottom" constant="219" id="lzX-NS-4Xg"/>
+                            <constraint firstItem="9KC-y9-kjq" firstAttribute="top" secondItem="I8E-u6-Lvl" secondAttribute="bottom" constant="114" id="mqX-Wh-MBT"/>
                             <constraint firstItem="6Jv-cm-GBJ" firstAttribute="height" secondItem="I8E-u6-Lvl" secondAttribute="height" id="nVr-8t-10z"/>
+                            <constraint firstItem="Jy0-yl-2Yo" firstAttribute="top" secondItem="UAJ-c1-ZCE" secondAttribute="bottom" constant="20" id="v3g-Ps-xP5"/>
+                            <constraint firstItem="whD-Nr-h2q" firstAttribute="baseline" secondItem="0Cw-l5-OTM" secondAttribute="baseline" id="yNt-Hm-f1R"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gamesPlayedCounter" destination="8pK-Ie-aMu" id="UPX-lO-WdK"/>
                         <outlet property="playerName" destination="I8E-u6-Lvl" id="VGL-Ed-evp"/>
+                        <outlet property="turnsPlayedCounter" destination="9KC-y9-kjq" id="QUG-8X-D4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hu-yu-cJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
