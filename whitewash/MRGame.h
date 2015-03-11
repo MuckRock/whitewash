@@ -13,9 +13,8 @@
 @interface MRGame : NSObject
 
 @property (nonatomic, strong) MRRecord *record;
-@property (nonatomic, strong) MRGameDataStore *gameData;
-@property (nonatomic, strong) NSData *inputData;
-@property (nonatomic, strong) NSData *outputData;
+@property (nonatomic, strong) MRGameDataStore *inputData;
+@property (nonatomic, strong) MRGameDataStore *outputData;
 @property (nonatomic, strong) NSURL *inputURL;
 @property (nonatomic, strong) NSURL *outputURL;
 
@@ -24,5 +23,6 @@
 - (instancetype)initWithEndpointURL:(NSURL *)endpoint;
 
 - (void)takeTurn:(id)turn;
+- (void)populateInputDataStore;
 
 @end

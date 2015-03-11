@@ -9,12 +9,15 @@
 #import "MRPlayerViewController.h"
 
 #import "MRPlayer.h"
+#import "mRRecord.h"
 #import "MRGameViewController.h"
 
 @interface MRPlayerViewController ()
 
 @property (nonatomic, strong) MRPlayer *player;
 @property (weak, nonatomic) IBOutlet UILabel *playerName;
+@property (weak, nonatomic) IBOutlet UILabel *turnsPlayedCounter;
+@property (weak, nonatomic) IBOutlet UILabel *gamesPlayedCounter;
 
 @end
 
@@ -24,6 +27,18 @@
     [super viewDidLoad];
     _player = [MRPlayer newPlayerWithName:@"Allan Lasser"];
     _playerName.text = _player.name;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSInteger gamesPlayed = 0;
+    NSInteger turnsPlayed = 0;
+    for (MRRecord *record in _player.history) {
+        gamesPlayed += 1;
+        turnsPlayed += [record.turns count];
+    }
+    _gamesPlayedCounter.text = [NSString stringWithFormat:@"%li", gamesPlayed];
+    _turnsPlayedCounter.text = [NSString stringWithFormat:@"%li", turnsPlayed];
 }
 
 - (void)didReceiveMemoryWarning {
