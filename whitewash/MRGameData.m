@@ -10,4 +10,22 @@
 
 @implementation MRGameData
 
+@synthesize name;
+@synthesize body;
+@synthesize files;
+
+- (instancetype)init {
+    return [self initWithName:@"Empty Data" body:@"" andFiles:@[]];
+}
+
+- (instancetype)initWithName:(NSString *)theName body:(NSString *)theBody andFiles:(NSArray *)theFiles {
+    self = [super init];
+    if (self) {
+        self.name = theName;
+        self.body = theBody;
+        self.files = theFiles;
+    }
+    return self;
+}
+
 @end
