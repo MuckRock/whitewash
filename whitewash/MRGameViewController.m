@@ -41,6 +41,7 @@
     [super viewDidLoad];
     _game = [[MRGame alloc] init];
     _swipeableView.delegate = self;
+    [_game populateInputDataStore];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +96,12 @@
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
+    
+    // test the base case where the input data store is empty
+    if ([_game.inputData.data count] < 1) {
+        return nil;
+    }
+    
     UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
     view.backgroundColor = ([UIColor colorWithRed:0.945
                                             green:0.945
@@ -115,6 +122,10 @@
                                    owner:self
                                  options:nil] objectAtIndex:0];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    /* Pop data from input store and apply to card */
+    id data = [_game.inputData popData];
+    
     [view addSubview:contentView];
     
     NSDictionary *metrics = @{
@@ -135,6 +146,7 @@
                           metrics:metrics
                           views:views]];
     
+
     
     return view;
 }

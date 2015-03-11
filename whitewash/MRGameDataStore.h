@@ -10,10 +10,11 @@
 
 @interface MRGameDataStore : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *gameData;
+@property (nonatomic, readonly, copy) NSArray *data;
 
 - (void)addData:(id)data;
 - (void)removeData:(id)data;
+- (id)popData;
 - (void)moveDataAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 
 @end

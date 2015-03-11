@@ -24,7 +24,7 @@
     return self;
 }
 
-- (NSArray *)gameData {
+- (NSArray *)data {
     return [self.privateGameData copy];
 }
 
@@ -36,6 +36,16 @@
 
 - (void)removeData:(id)data {
     [self.privateGameData removeObjectIdenticalTo:data];
+}
+
+- (id)popData {
+    NSInteger lastItemIndex = [_privateGameData count] - 1;
+    if (lastItemIndex == -1) {
+        @throw [[NSException alloc] initWithName:@"No Data to Pop" reason:@"You are trying to pop data from an empty store."userInfo:nil];
+    }
+    id data = _privateGameData[lastItemIndex];
+    [self removeData:data];
+    return data;
 }
 
 - (void)moveDataAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
