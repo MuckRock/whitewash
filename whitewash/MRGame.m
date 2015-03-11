@@ -7,6 +7,7 @@
 //
 
 #import "MRGame.h"
+#import "MRGameData.h"
 
 @implementation MRGame
 
@@ -45,7 +46,29 @@
     NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:JSONPath]];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     for (NSDictionary *jsonData in jsonObject[@"results"]) {
-        [self.inputData addData:jsonData];
+        NSString *name;
+        NSString *body;
+        NSArray *files;
+        @try {
+            name = jsonData[@"name"];
+        }
+        @catch (NSException *exception) {
+            name = @"Unnamed";
+        }
+        @try {
+            body = jsonData[@"communication"];
+        }
+        @catch (NSException *exception) {
+            body = @"Empty";
+        }
+        @try {
+            files = jsonData[@"files"];
+        }
+        @catch (NSException *exception) {
+            files = @[];
+        }
+        MRGameData *dataToAdd = [[MRGameData alloc] initWithName:name body:body andFiles:files];
+        [self.inputData addData:dataToAdd];
     }
 }
 
