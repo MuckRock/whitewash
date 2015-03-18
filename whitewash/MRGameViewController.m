@@ -52,7 +52,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _game = [[MRGame alloc] init];
+    NSURL *endpoint = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
+    _game = [[MRGame alloc] initWithEndpointURL:endpoint];
     _swipeableView.delegate = self;
     [_game populateInputDataStore];
     _turns = [_game.inputData.data count];

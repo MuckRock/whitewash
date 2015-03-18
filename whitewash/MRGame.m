@@ -39,11 +39,7 @@
 }
 
 - (void)populateInputDataStore {
-    // TODO: actually get real data. you know, from the server.
-    // When that happens, use self.inputURL as the URL path.
-    NSString *JSONPath = [[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"];
-    // The rest of this works fine tho
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:JSONPath]];
+    NSData *data = [NSData dataWithContentsOfURL:self.inputURL];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     for (NSDictionary *jsonData in jsonObject[@"results"]) {
         NSString *name;
