@@ -42,8 +42,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *cardBody;
 @property (weak, nonatomic) IBOutlet UILabel *cardFiles;
 
-- (void)endTurn;
-
 @end
 
 @implementation MRGameViewController {
@@ -96,32 +94,52 @@
     _swipeableView.dataSource = self;
 }
 
+#pragma mark - Animations
+
+- (void)addBounce:(UIView *)view {
+    CALayer *layer = view.layer;
+    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(30.f, 30.f)];
+    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+    scaleAnimation.springBounciness = 15.0f;
+    [layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
+}
+
+# pragma mark - Gameplay Handlers
+
+- (void)takeTurn:(enum direction)swipe {
+    // TODO: update game data store based on turn
+    switch (swipe) {
+        case left:
+            [_game takeTurn:@"Left"];
+            _turnsLeft += 1;
+            [self addBounce:_outputACounter];
+            [self addBounce:_outputAAction];
+            break;
+        case right:
+            [_game takeTurn:@"Right"];
+            _turnsRight += 1;
+            [self addBounce:_outputBCounter];
+            [self addBounce:_outputBAction];
+            break;
+    }
+    _turnsTaken += 1;
+    [self updateCounters];
+    if (_turnsTaken == _turns) {
+        [self endGame];
+    }
+}
+
 - (void)updateCounters {
     _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", _turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", _turnsRight];
 }
 
-- (void)takeTurn:(enum direction)swipe {
-    switch (swipe) {
-        case left:
-            [_game takeTurn:@"Left"];
-            _turnsLeft += 1;
-            [self addBounce:_outputACounter];
-            break;
-        case right:
-            [_game takeTurn:@"Right"];
-            _turnsRight += 1;
-            [self addBounce:_outputBCounter];
-            break;
-    }
-    _turnsTaken += 1;
-    [self updateCounters];
-    // TODO: update game data store based on turn
-    if (_turnsTaken == _turns) {
-        [self.delegate gameViewController:self didCompleteGame:_game.record];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+- (void)endGame {
+    // TODO: output game data to endpoint
+    [self.delegate gameViewController:self didCompleteGame:_game.record];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - View Actions
@@ -132,17 +150,6 @@
 
 - (IBAction)swipeLeft:(id)sender {
     [_swipeableView swipeTopViewToLeft];
-}
-
-#pragma mark - Animations
-
-- (void)addBounce:(UIView *)view {
-    CALayer *layer = view.layer;
-    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(30.f, 30.f)];
-    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-    scaleAnimation.springBounciness = 15.0f;
-    [layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
 }
  
 #pragma mark - ZLSwipeableViewDataSource
@@ -205,7 +212,7 @@
     return view;
 }
 
-#pragma mark - ZLSwipeableViewDelegate
+#pragma mark ZLSwipeableViewDelegate
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
     [self takeTurn:left];
