@@ -25,6 +25,7 @@
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
 @property (nonatomic) NSUInteger turnsRight;
+@property (nonatomic, strong) NSMutableArray *viewDataMapping;
 
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
@@ -60,6 +61,7 @@
     _turnsTaken = 0;
     _turnsLeft = 0;
     _turnsRight = 0;
+    _viewDataMapping = [[NSMutableArray alloc] init];
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
@@ -108,14 +110,16 @@
 
 # pragma mark - Gameplay Handlers
 
-- (void)takeTurn:(enum direction)swipe {
+- (void)takeTurn:(enum direction)swipe forView:(UIView *)view {
     // TODO: update game data store based on turn
+    BOOL isSpam = NO;
     switch (swipe) {
         case left:
             [_game takeTurn:@"Left"];
             _turnsLeft += 1;
             [self addBounce:_outputACounter];
             [self addBounce:_outputAAction];
+            isSpam = YES;
             break;
         case right:
             [_game takeTurn:@"Right"];
@@ -126,6 +130,8 @@
     }
     _turnsTaken += 1;
     [self updateCounters];
+    MRGameData *data = [_viewDataMapping objectAtIndex:view.tag];
+    [_game.outputData addData:data];
     if (_turnsTaken == _turns) {
         [self endGame];
     }
@@ -185,6 +191,9 @@
     
     /* Pop data from input store and apply to card */
     MRGameData *data = [_game.inputData popData];
+    [_viewDataMapping addObject:data];
+    NSUInteger index = [_viewDataMapping indexOfObject:data];
+    view.tag = index;
     _cardName.text = data.name;
     _cardBody.text = data.body;
     _cardFiles.text = [NSString stringWithFormat:@"%li Files", [data.files count]];
@@ -216,11 +225,11 @@
 #pragma mark ZLSwipeableViewDelegate
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
-    [self takeTurn:left];
+    [self takeTurn:left forView:view];
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
-    [self takeTurn:right];
+    [self takeTurn:right forView:view];
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
