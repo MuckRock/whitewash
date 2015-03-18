@@ -23,6 +23,8 @@
 @property (nonatomic, strong) MRGame *game;
 @property (nonatomic) NSUInteger turns;
 @property (nonatomic) NSUInteger turnsTaken;
+@property (nonatomic) NSUInteger turnsLeft;
+@property (nonatomic) NSUInteger turnsRight;
 
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
@@ -44,7 +46,9 @@
 
 @end
 
-@implementation MRGameViewController
+@implementation MRGameViewController {
+    enum direction { left, right };
+}
 
 @synthesize delegate;
 
@@ -55,22 +59,20 @@
     [_game populateInputDataStore];
     _turns = [_game.inputData.data count];
     _turnsTaken = 0;
+    _turnsLeft = 0;
+    _turnsRight = 0;
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
     [_inputAction setTitle:@"Info" forState:UIControlStateNormal];
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
-    
     NSString *outputA = @"Spam";
-    NSString *outputB = @"Legit";
-
     _outputALabel.text = outputA;
-    _outputACounter.text = @"0";
     [_outputAAction setTitle:outputA forState:UIControlStateNormal];
+    NSString *outputB = @"Legit";
     _outputBLabel.text = outputB;
-    _outputBCounter.text = @"0";
     [_outputBAction setTitle:outputB forState:UIControlStateNormal];
     
+    [self updateCounters];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,30 +96,42 @@
     _swipeableView.dataSource = self;
 }
 
-// TODO: Pass turn into endTurn function
-- (void)endTurn {
+- (void)updateCounters {
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
+    _outputACounter.text = [NSString stringWithFormat:@"%lu", _turnsLeft];
+    _outputBCounter.text = [NSString stringWithFormat:@"%lu", _turnsRight];
+}
+
+- (void)takeTurn:(enum direction)swipe {
+    switch (swipe) {
+        case left:
+            [_game takeTurn:@"Left"];
+            _turnsLeft += 1;
+            [self addBounce:_outputACounter];
+            break;
+        case right:
+            [_game takeTurn:@"Right"];
+            _turnsRight += 1;
+            [self addBounce:_outputBCounter];
+            break;
+    }
     _turnsTaken += 1;
+    [self updateCounters];
     // TODO: update game data store based on turn
     if (_turnsTaken == _turns) {
         [self.delegate gameViewController:self didCompleteGame:_game.record];
-        [self dismiss];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
-}
-
-- (void)dismiss {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - View Actions
 
 - (IBAction)swipeRight:(id)sender {
     [_swipeableView swipeTopViewToRight];
-    [self endTurn];
 }
 
 - (IBAction)swipeLeft:(id)sender {
     [_swipeableView swipeTopViewToLeft];
-    [self endTurn];
 }
 
 #pragma mark - Animations
@@ -194,11 +208,11 @@
 #pragma mark - ZLSwipeableViewDelegate
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
-    [_game takeTurn:@"Left"];
+    [self takeTurn:left];
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
-    [_game takeTurn:@"Right"];
+    [self takeTurn:right];
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
@@ -215,7 +229,6 @@
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didEndSwipingView:(UIView *)view atLocation:(CGPoint)location {
     NSLog(@"did start swiping at location: x %f, y%f", location.x, location.y);
-    [self endTurn];
 }
 
 @end
