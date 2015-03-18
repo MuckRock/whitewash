@@ -139,8 +139,8 @@
 
 - (void)updateCounters {
     _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
-    _outputACounter.text = [NSString stringWithFormat:@"%lu", _turnsLeft];
-    _outputBCounter.text = [NSString stringWithFormat:@"%lu", _turnsRight];
+    _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsLeft];
+    _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsRight];
 }
 
 - (void)endGame {
@@ -196,7 +196,7 @@
     view.tag = index;
     _cardName.text = data.name;
     _cardBody.text = data.body;
-    _cardFiles.text = [NSString stringWithFormat:@"%li Files", [data.files count]];
+    _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
     [view addSubview:contentView];
     
     NSDictionary *metrics = @{

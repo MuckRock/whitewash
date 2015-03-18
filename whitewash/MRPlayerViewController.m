@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _player = [MRPlayer newPlayerWithName:@"Allan Lasser"];
+    _player = [MRPlayer newPlayerWithName:@"Samuel Clemens"];
     _playerName.text = _player.name;
 }
 
@@ -37,8 +37,8 @@
         gamesPlayed += 1;
         turnsPlayed += [record.turns count];
     }
-    _gamesPlayedCounter.text = [NSString stringWithFormat:@"%li", gamesPlayed];
-    _turnsPlayedCounter.text = [NSString stringWithFormat:@"%li", turnsPlayed];
+    _gamesPlayedCounter.text = [NSString stringWithFormat:@"%li", (long)gamesPlayed];
+    _turnsPlayedCounter.text = [NSString stringWithFormat:@"%li", (long)turnsPlayed];
 }
 
 - (void)didReceiveMemoryWarning {
