@@ -148,7 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				9DF089A41A9E42120080F0DE /* communications.json */,
-				9D53163C1AAA262200B79B44 /* Prototype 3 */,
+				9DADDBC61AB9CD7700A139D8 /* View Controllers */,
+				9D5316551AAA80BE00B79B44 /* Models */,
 				9D147F441A39FAE9006631F8 /* AppDelegate.h */,
 				9D147F451A39FAE9006631F8 /* AppDelegate.m */,
 				9D147F501A39FAE9006631F8 /* Images.xcassets */,
@@ -191,20 +192,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9D53163C1AAA262200B79B44 /* Prototype 3 */ = {
-			isa = PBXGroup;
-			children = (
-				9D98CC4F1AADFB78006FDE2B /* MRPlayerViewController.h */,
-				9D98CC501AADFB78006FDE2B /* MRPlayerViewController.m */,
-				9D4E1B1F1AAE42F900BB8618 /* MRGameViewController.h */,
-				9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */,
-				9D83914B1AAF85F30048288F /* CardContentView.xib */,
-				9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */,
-				9D5316551AAA80BE00B79B44 /* Models */,
-			);
-			name = "Prototype 3";
-			sourceTree = "<group>";
-		};
 		9D5316551AAA80BE00B79B44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +209,19 @@
 				9D5316511AAA788900B79B44 /* MRRuleset.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		9DADDBC61AB9CD7700A139D8 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D98CC4F1AADFB78006FDE2B /* MRPlayerViewController.h */,
+				9D98CC501AADFB78006FDE2B /* MRPlayerViewController.m */,
+				9D4E1B1F1AAE42F900BB8618 /* MRGameViewController.h */,
+				9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */,
+				9D83914B1AAF85F30048288F /* CardContentView.xib */,
+				9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
