@@ -62,4 +62,8 @@
                      @"GameDataStore should populate with data from endpoint");
 }
 
+- (void)testUploadOutputDataStore {
+    XCTAssert(NO, @"Method not yet implemented");
+}
+
 @end

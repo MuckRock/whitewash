@@ -137,7 +137,7 @@
 }
 
 - (void)endGame {
-    // TODO: output game data to endpoint
+    [_game uploadOutputDataStore];
     [self.delegate gameViewController:self didCompleteGame:_game.record];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

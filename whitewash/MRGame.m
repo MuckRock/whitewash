@@ -72,4 +72,9 @@
     }
 }
 
+- (void)uploadOutputDataStore {
+    // 1. Turn outputData into JSON
+    // 2. POST it somewhere
+}
+
 @end

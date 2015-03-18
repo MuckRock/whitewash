@@ -24,5 +24,6 @@
 
 - (void)takeTurn:(id)turn;
 - (void)populateInputDataStore;
+- (void)uploadOutputDataStore;
 
 @end
