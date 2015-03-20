@@ -11,18 +11,25 @@
 @interface MRRecord ()
 
 @property (nonatomic) NSInteger privateScore;
-@property (nonatomic) NSInteger privateMultiplier;
+@property (nonatomic) NSDate *privateDate;
 @property (nonatomic, strong) NSMutableArray *mutableTurns;
 
 @end
 
 @implementation MRRecord
 
+@synthesize multiplier;
+
 - (instancetype)init {
+    return [self initWithMultiplier:1];
+}
+
+- (instancetype)initWithMultiplier:(NSInteger)theMultiplier {
     self = [super init];
     if (self) {
         self.privateScore = 0;
-        self.privateMultiplier = 1;
+        self.multiplier = theMultiplier;
+        self.privateDate = [NSDate date];
         self.mutableTurns = [[NSMutableArray alloc] init];
     }
     return self;
@@ -36,8 +43,8 @@
     return self.privateScore;
 }
 
-- (NSInteger)multiplier {
-    return self.privateMultiplier;
+- (NSDate *)date {
+    return self.privateDate;
 }
 
 - (NSMutableArray *)turns {
@@ -49,7 +56,7 @@
 }
 
 - (void)modifyScoreBy:(NSInteger)amount {
-    self.privateScore = self.privateScore + (amount * self.privateMultiplier);
+    self.privateScore = self.privateScore + (amount * self.multiplier);
 }
 
 - (NSUInteger)countTurns {

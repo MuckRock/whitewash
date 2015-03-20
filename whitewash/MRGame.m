@@ -38,6 +38,10 @@
     [self.record modifyScoreBy:1];
 }
 
+- (void)setMultiplier:(NSInteger)multiplier {
+    self.record.multiplier = multiplier;
+}
+
 - (void)populateInputDataStore {
     NSData *data = [NSData dataWithContentsOfURL:self.inputURL];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];

@@ -11,8 +11,9 @@
 @interface MRRecord : NSObject
 
 @property (nonatomic, readonly) NSInteger score;
-@property (nonatomic, readonly) NSInteger multiplier;
+@property (nonatomic) NSInteger multiplier;
 @property (nonatomic, readonly, copy) NSArray *turns;
+@property (nonatomic, readonly) NSDate *date;
 
 + (MRRecord *)newRecord;
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MRGameViewController;
+@class MRGame;
 @class MRRecord;
 
 @protocol MRGameViewContollerDelegate <NSObject>
@@ -20,6 +21,9 @@
 
 @interface MRGameViewController : UIViewController
 
+@property (nonatomic, strong) MRGame *game;
+@property (nonatomic) NSInteger multiplier;
 @property (nonatomic, weak) id <MRGameViewContollerDelegate> delegate;
+
 
 @end

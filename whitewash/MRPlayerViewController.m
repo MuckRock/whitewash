@@ -10,6 +10,7 @@
 
 #import "MRPlayer.h"
 #import "MRRecord.h"
+#import "MRGame.h"
 #import "MRGameViewController.h"
 
 @interface MRPlayerViewController ()
@@ -51,6 +52,8 @@
     [super viewWillAppear:animated];
     _totalTurns.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_player countTotalTurns]];
     _totalGames.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_player countTotalGames]];
+    _sessionScore.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_player todayScore]];
+    _sessionMultiplier.text = [NSString stringWithFormat:@"x%lu", (unsigned long)[_player todayMultiplier]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +65,7 @@
     // TODO: Have GVC returned from a GameViewDispatcher object
     MRGameViewController *gameViewController = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
     gameViewController.delegate = self;
+    gameViewController.multiplier = [_player todayMultiplier];
     [self presentViewController:gameViewController animated:YES completion:nil];
 }
 

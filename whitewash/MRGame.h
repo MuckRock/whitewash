@@ -22,6 +22,7 @@
                     andOutputURL:(NSURL *)anOutputURL;
 - (instancetype)initWithEndpointURL:(NSURL *)endpoint;
 
+- (void)setMultiplier:(NSInteger)multiplier;
 - (void)takeTurn:(id)turn;
 - (void)populateInputDataStore;
 - (void)uploadOutputDataStore;

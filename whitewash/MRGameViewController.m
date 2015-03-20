@@ -20,7 +20,6 @@
 
 # pragma -
 
-@property (nonatomic, strong) MRGame *game;
 @property (nonatomic) NSUInteger turns;
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
@@ -49,15 +48,18 @@
     enum direction { left, right };
 }
 
+@synthesize game;
+@synthesize multiplier;
 @synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSURL *endpoint = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
-    _game = [[MRGame alloc] initWithEndpointURL:endpoint];
+    game = [[MRGame alloc] initWithEndpointURL:endpoint];
+    [game setMultiplier:multiplier];
     _swipeableView.delegate = self;
-    [_game populateInputDataStore];
-    _turns = [_game.inputData.data count];
+    [game populateInputDataStore];
+    _turns = [game.inputData.data count];
     _turnsTaken = 0;
     _turnsLeft = 0;
     _turnsRight = 0;
@@ -115,14 +117,14 @@
     BOOL isSpam = NO;
     switch (swipe) {
         case left:
-            [_game takeTurn:@"Left"];
+            [game takeTurn:@"Left"];
             _turnsLeft += 1;
             [self addBounce:_outputACounter];
             [self addBounce:_outputAAction];
             isSpam = YES;
             break;
         case right:
-            [_game takeTurn:@"Right"];
+            [game takeTurn:@"Right"];
             _turnsRight += 1;
             [self addBounce:_outputBCounter];
             [self addBounce:_outputBAction];
@@ -131,7 +133,7 @@
     _turnsTaken += 1;
     [self updateCounters];
     MRGameData *data = [_viewDataMapping objectAtIndex:view.tag];
-    [_game.outputData addData:data];
+    [game.outputData addData:data];
     if (_turnsTaken == _turns) {
         [self endGame];
     }
@@ -144,8 +146,8 @@
 }
 
 - (void)endGame {
-    [_game uploadOutputDataStore];
-    [self.delegate gameViewController:self didCompleteGame:_game.record];
+    [game uploadOutputDataStore];
+    [self.delegate gameViewController:self didCompleteGame:game.record];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -164,7 +166,7 @@
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     
     // test the base case where the input data store is empty
-    if ([_game.inputData.data count] < 1) {
+    if ([game.inputData.data count] < 1) {
         return nil;
     }
     
@@ -190,7 +192,7 @@
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     /* Pop data from input store and apply to card */
-    MRGameData *data = [_game.inputData popData];
+    MRGameData *data = [game.inputData popData];
     [_viewDataMapping addObject:data];
     NSUInteger index = [_viewDataMapping indexOfObject:data];
     view.tag = index;

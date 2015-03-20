@@ -24,5 +24,7 @@
 - (NSUInteger)countTotalGames;
 - (NSInteger)bestScore;
 - (NSInteger)bestMultiplier;
+- (NSInteger)todayScore;
+- (NSInteger)todayMultiplier;
 
 @end
