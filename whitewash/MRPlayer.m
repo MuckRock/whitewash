@@ -50,4 +50,36 @@
     [self.mutableHistory removeObject:record];
 }
 
+- (NSUInteger)countTotalTurns {
+    NSUInteger count = 0;
+    for (MRRecord *record in _mutableHistory) {
+        count += [record countTurns];
+    }
+    return count;
+}
+
+- (NSUInteger)countTotalGames {
+    return [_mutableHistory count];
+}
+
+- (NSInteger)bestScore {
+    NSInteger best = [(MRRecord *)[_mutableHistory firstObject] score];
+    for (MRRecord *record in _mutableHistory) {
+        if ([record score] > best) {
+            best = [record score];
+        }
+    }
+    return best;
+}
+
+- (NSInteger)bestMultiplier {
+    NSInteger best = [(MRRecord *)[_mutableHistory firstObject] multiplier];
+    for (MRRecord *record in _mutableHistory ) {
+        if ([record multiplier] > best) {
+            best = [record multiplier];
+        }
+    }
+    return best;
+}
+
 @end

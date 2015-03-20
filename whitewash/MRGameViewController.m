@@ -138,7 +138,7 @@
 }
 
 - (void)updateCounters {
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turns - _turnsTaken];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsRight];
 }

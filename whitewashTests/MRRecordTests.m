@@ -55,4 +55,12 @@
                    @"Should modify the score by a negative integer");
 }
 
+- (void)testCountTurns {
+    [_record recordTurn:_turn];
+    [_record recordTurn:_turn];
+    [_record recordTurn:_turn];
+    XCTAssertEqual([_record countTurns], 3,
+                   @"Should return the number of turns saved to record");
+}
+
 @end
