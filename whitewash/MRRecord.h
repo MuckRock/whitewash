@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MRTurn.h"
 
 @interface MRRecord : NSObject
 
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly, copy) NSArray *turns;
 
 + (MRRecord *)newRecord;
-
-- (void)recordTurn:(id)turn;
-- (void)modifyScoreBy:(NSInteger)amount;
+- (void)addTurn:(MRTurn *)turn;
+- (void)removeTurn:(MRTurn *)turn;
 
 @end
