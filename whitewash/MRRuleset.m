@@ -20,6 +20,19 @@
 
 @synthesize rules;
 
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules {
+    return [[MRRuleset alloc] initWithRules:rules];
+}
+
+- (instancetype)initWithRules:(NSArray *)theRules {
+    self = [super init];
+    if (self) {
+        // should be an array of NSPredicates
+        self.rules = [NSCompoundPredicate andPredicateWithSubpredicates:theRules];
+    }
+    return self;
+}
+
 - (MRTurn *)validateMove:(id)move {
     BOOL validMove = [rules evaluateWithObject:move];
     // if a valid move, create and return a turn object

@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSCompoundPredicate *rules;
 
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules;
 - (MRTurn *)validateMove:(id)move;
 
 @end
