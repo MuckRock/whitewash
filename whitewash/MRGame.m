@@ -34,8 +34,7 @@
 }
 
 - (void)takeTurn:(id)turn {
-    [self.record recordTurn:turn];
-    [self.record modifyScoreBy:1];
+    [self.record addTurn:turn];
 }
 
 - (void)populateInputDataStore {

@@ -39,20 +39,11 @@
 }
 
 - (void)testRecordTurn {
-    [_record recordTurn:_turn];
+    [_record addTurn:_turn];
     XCTAssertEqual([_record.turns count], 1,
                    @"recordTurn should add turn to record");
     XCTAssertEqualObjects(_record.turns[0], _turn,
                           @"recordTurn should add the same turn to the record");
-}
-
-- (void)testModifyScore {
-    [_record modifyScoreBy:10];
-    XCTAssertEqual(_record.score, 10,
-                   @"Should modify the score by a positive integer");
-    [_record modifyScoreBy:-20];
-    XCTAssertEqual(_record.score, -10,
-                   @"Should modify the score by a negative integer");
 }
 
 @end
