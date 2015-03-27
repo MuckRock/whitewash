@@ -22,9 +22,9 @@
 
 - (void)setUp {
     [super setUp];
-    NSPredicate *swipeLeft = [NSPredicate predicateWithFormat:@"move == 'Left'"];
-    NSPredicate *swipeRight = [NSPredicate predicateWithFormat:@"move == 'Right'"];
-    self.ruleset = [MRRuleset rulesetWithRules:@[swipeLeft, swipeRight]];
+    NSArray *validMoves = @[@"Left", @"Right"];
+    NSPredicate *rule = [NSPredicate predicateWithFormat:@"SELF IN %@", validMoves];
+    self.ruleset = [MRRuleset rulesetWithRules:@[rule]];
 }
 
 - (void)testValidateMoveForValidMove {

@@ -34,20 +34,16 @@
 }
 
 - (MRTurn *)validateMove:(id)move {
-    BOOL validMove = [rules evaluateWithObject:move];
-    // if a valid move, create and return a turn object
+    MRTurn *turn = nil;
+    BOOL validMove = [self.rules evaluateWithObject:move];
     if (validMove) {
-        MRTurn *turn = [[MRTurn alloc] init];
+        turn = [[MRTurn alloc] init];
         turn.score = self.pointsPerTurn;
         turn.multiplier = self.pointMultiplier;
         turn.move = move;
         return turn;
     }
-    // otherwise, raise an invalid move played error
-    else {
-        [NSException raise:@"Invalid Move" format:@"This move cannot be made, it is against the rules."];
-        return nil;
-    }
+    return turn;
 }
 
 @end
