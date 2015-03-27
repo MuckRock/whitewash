@@ -1,5 +1,5 @@
 //
-//  MRGameDataStoreTests.m
+//  MRWebStoreTests.m
 //  Whitewash
 //
 //  Created by Allan Lasser on 3/6/15.
@@ -9,21 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "MRGameDataStore.h"
+#import "MRWebStore.h"
 
-@interface MRGameDataStoreTests : XCTestCase
+@interface MRWebStoreTests : XCTestCase
 
-@property (nonatomic) MRGameDataStore *store;
+@property (nonatomic) MRWebStore *store;
 @property (nonatomic) id data;
 @property (nonatomic) id moreData;
 
 @end
 
-@implementation MRGameDataStoreTests
+@implementation MRWebStoreTests
 
 - (void)setUp {
     [super setUp];
-    _store = [[MRGameDataStore alloc] init];
+    _store = [[MRWebStore alloc] init];
     _data = OCMClassMock([NSObject class]);
     _moreData = OCMClassMock([NSObject class]);
 }
