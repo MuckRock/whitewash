@@ -11,7 +11,7 @@
 
 @interface MRRuleset : NSObject
 
-@property (nonatomic, strong) NSMutableArray *rules;
+@property (nonatomic, strong) NSCompoundPredicate *rules;
 
 - (MRTurn *)validateMove:(id)move;
 
