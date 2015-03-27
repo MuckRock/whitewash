@@ -13,7 +13,7 @@
 
 @implementation MRGame
 
-@synthesize url, record, ruleset, store;
+@synthesize record, ruleset, store;
 
 - (instancetype)init {
     return [self initWithURL:nil andRuleset:nil];
@@ -22,9 +22,8 @@
 - (instancetype)initWithURL:(NSURL *)someURL andRuleset:(MRRuleset *)someRuleset {
     self = [super init];
     if (self) {
-        self.url = someURL;
         self.ruleset = someRuleset;
-        self.store = [[MRWebStore alloc] init];
+        self.store = [MRWebStore webStoreWithURL:someURL];
         self.record = [MRRecord newRecord];
     }
     return self;

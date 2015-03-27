@@ -7,15 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MRGameData.h"
 
 @interface MRWebStore : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *data;
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, readonly, copy) NSDictionary *data;
 
-- (void)addData:(MRGameData *)data;
-- (void)removeData:(MRGameData *)data;
-- (MRGameData *)popData;
-- (void)moveDataAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
++ (MRWebStore *)webStoreWithURL:(NSURL *)someURL;
+
+- (NSDictionary *)pullData;
+- (void)pushData:(NSDictionary *)data;
+
+- (void)addData:(NSDictionary *)data;
+- (void)removeDataForKey:(id)key;
+- (void)updateKey:(id)key withValue:(id)value;
 
 @end

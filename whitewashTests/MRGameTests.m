@@ -39,7 +39,6 @@
     XCTAssertNotNil(game.record);
     XCTAssertNotNil(game.ruleset);
     XCTAssertNotNil(game.store);
-    XCTAssertNotNil(game.url);
 }
 
 - (void)testTakeTurnWithValidMove {

@@ -7,55 +7,60 @@
 //
 
 #import "MRWebStore.h"
-#import "MRGameData.h"
 
 @interface MRWebStore ()
 
-@property (nonatomic, strong) NSMutableArray *privateGameData;
+@property (nonatomic, strong) NSMutableDictionary *mutableData;
 
 @end
 
 @implementation MRWebStore
 
-- (instancetype)init {
+@synthesize url;
+
+- (instancetype)initWithURL:(NSURL *)someURL {
     self = [super init];
     if (self) {
-        self.privateGameData = [[NSMutableArray alloc] init];
+        self.url = someURL;
+        self.mutableData = [[NSMutableDictionary alloc] initWithDictionary:[self pullData]];
     }
     return self;
 }
 
++ (MRWebStore *)webStoreWithURL:(NSURL *)someURL {
+    return [[MRWebStore alloc] initWithURL:someURL];
+}
+
+- (NSDictionary *)pullData {
+    NSData *data = [NSData dataWithContentsOfURL:self.url];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    return json;
+}
+
+- (void)pushData:(NSDictionary *)data {
+    // POST self.mutableData to self.url
+}
+
 - (NSArray *)data {
-    return [self.privateGameData copy];
+    return [self.mutableData copy];
 }
 
 # pragma mark Store
 
-- (void)addData:(MRGameData *)data {
-    [self.privateGameData addObject:data];
+- (void)addData:(NSDictionary *)data {
+    [self.mutableData addEntriesFromDictionary:data];
 }
 
-- (void)removeData:(MRGameData *)data {
-    [self.privateGameData removeObjectIdenticalTo:data];
+- (void)removeDataForKey:(id)key {
+    [self.mutableData removeObjectForKey:key];
 }
 
-- (MRGameData *)popData {
-    NSInteger lastItemIndex = [_privateGameData count] - 1;
-    if (lastItemIndex == -1) {
-        @throw [[NSException alloc] initWithName:@"No Data to Pop" reason:@"You are trying to pop data from an empty store."userInfo:nil];
+- (void)updateKey:(id)key withValue:(id)value {
+    if ([self.mutableData objectForKey:key]) {
+        [self.mutableData setValue:value forKey:key];
+    } else {
+        [self addData:@{key: value}];
     }
-    MRGameData *data = _privateGameData[lastItemIndex];
-    [self removeData:data];
-    return data;
-}
-
-- (void)moveDataAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
-    if (fromIndex == toIndex) {
-        return;
-    }
-    MRGameData *data = [self.privateGameData objectAtIndex:fromIndex];
-    [self.privateGameData removeObjectAtIndex:fromIndex];
-    [self.privateGameData insertObject:data atIndex:toIndex];
 }
 
 @end

@@ -13,7 +13,6 @@
 
 @interface MRGame : NSObject
 
-@property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) MRRecord *record;
 @property (nonatomic, strong) MRRuleset *ruleset;
 @property (nonatomic, strong) MRWebStore *store;
