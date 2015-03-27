@@ -1,21 +1,21 @@
 //
-//  MRGameDataStore.m
+//  MRWebStore.m
 //  Whitewash
 //
 //  Created by Allan Lasser on 3/6/15.
 //  Copyright (c) 2015 MuckRock. All rights reserved.
 //
 
-#import "MRGameDataStore.h"
+#import "MRWebStore.h"
 #import "MRGameData.h"
 
-@interface MRGameDataStore ()
+@interface MRWebStore ()
 
 @property (nonatomic, strong) NSMutableArray *privateGameData;
 
 @end
 
-@implementation MRGameDataStore
+@implementation MRWebStore
 
 - (instancetype)init {
     self = [super init];

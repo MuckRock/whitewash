@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "MRGame.h"
-#import "MRGameDataStore.h"
+#import "MRWebStore.h"
 
 @interface MRGameTests : XCTestCase
 
