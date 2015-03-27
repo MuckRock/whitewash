@@ -1,5 +1,5 @@
 //
-//  MRGameDataStore.h
+//  MRWebStore.h
 //  Whitewash
 //
 //  Created by Allan Lasser on 3/6/15.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MRGameData.h"
 
-@interface MRGameDataStore : NSObject
+@interface MRWebStore : NSObject
 
 @property (nonatomic, readonly, copy) NSArray *data;
 

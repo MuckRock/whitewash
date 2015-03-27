@@ -27,8 +27,8 @@
         self.inputURL = anInputURL;
         self.outputURL = anOutputURL;
         self.record = [MRRecord newRecord];
-        self.inputData = [[MRGameDataStore alloc] init];
-        self.outputData = [[MRGameDataStore alloc] init];
+        self.inputData = [[MRWebStore alloc] init];
+        self.outputData = [[MRWebStore alloc] init];
     }
     return self;
 }
