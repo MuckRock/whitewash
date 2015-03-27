@@ -12,4 +12,12 @@
 
 @synthesize move, date, score, multiplier;
 
+- (instancetype)init {
+    self = [super self];
+    if (self) {
+        self.date = [NSDate date];
+    }
+    return self;
+}
+
 @end
