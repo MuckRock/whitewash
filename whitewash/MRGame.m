@@ -7,69 +7,41 @@
 //
 
 #import "MRGame.h"
-#import "MRGameData.h"
+#import "MRRecord.h"
+#import "MRRuleset.h"
+#import "MRWebStore.h"
 
 @implementation MRGame
 
-@synthesize record, inputData, inputURL, outputData, outputURL;
+@synthesize url, record, ruleset, store;
 
 - (instancetype)init {
-    return [self initWithEndpointURL:nil];
+    return [self initWithURL:nil andRuleset:nil];
 }
 
-- (instancetype)initWithEndpointURL:(NSURL *)endpoint {
-    return [self initWithInputURL:endpoint andOutputURL:endpoint];
-}
-
-- (instancetype)initWithInputURL:(NSURL *)anInputURL andOutputURL:(NSURL *)anOutputURL {
+- (instancetype)initWithURL:(NSURL *)someURL andRuleset:(MRRuleset *)someRuleset {
     self = [super init];
     if (self) {
-        self.inputURL = anInputURL;
-        self.outputURL = anOutputURL;
+        self.url = someURL;
+        self.ruleset = someRuleset;
+        self.store = [[MRWebStore alloc] init];
         self.record = [MRRecord newRecord];
-        self.inputData = [[MRWebStore alloc] init];
-        self.outputData = [[MRWebStore alloc] init];
     }
     return self;
 }
 
-- (void)takeTurn:(id)turn {
-    [self.record addTurn:turn];
++ (MRGame *)gameWithURL:(NSURL *)someURL andRulset:(MRRuleset *)someRuleset {
+    return [[MRGame alloc] initWithURL:someURL andRuleset:someRuleset];
 }
 
-- (void)populateInputDataStore {
-    NSData *data = [NSData dataWithContentsOfURL:self.inputURL];
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    for (NSDictionary *jsonData in jsonObject[@"results"]) {
-        NSString *name;
-        NSString *body;
-        NSArray *files;
-        @try {
-            name = jsonData[@"name"];
-        }
-        @catch (NSException *exception) {
-            name = @"Unnamed";
-        }
-        @try {
-            body = jsonData[@"communication"];
-        }
-        @catch (NSException *exception) {
-            body = @"Empty";
-        }
-        @try {
-            files = jsonData[@"files"];
-        }
-        @catch (NSException *exception) {
-            files = @[];
-        }
-        MRGameData *dataToAdd = [[MRGameData alloc] initWithName:name body:body andFiles:files];
-        [self.inputData addData:dataToAdd];
+- (void)takeTurnWithMove:(id)move {
+    MRTurn *turn = [self.ruleset validateMove:move];
+    if (turn) {
+        [record addTurn:turn];
     }
-}
-
-- (void)uploadOutputDataStore {
-    // 1. Turn outputData into JSON
-    // 2. POST it somewhere
+    else {
+        [NSException raise:@"Illegal Move" format:@"The move %@ is against the rules", move];
+    }
 }
 
 @end
