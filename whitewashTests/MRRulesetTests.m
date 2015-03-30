@@ -10,11 +10,11 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "MRRuleset.h"
+#import "MRTurn.h"
 
 @interface MRRulesetTests : XCTestCase
 
-@property (nonatomic) MRRuleset *rules;
-@property (nonatomic) id specificRule;
+@property (nonatomic) MRRuleset *ruleset;
 
 @end
 
@@ -22,62 +22,25 @@
 
 - (void)setUp {
     [super setUp];
-    _rules = [[MRRuleset alloc] init];
-    _specificRule = OCMClassMock([NSObject class]);
+    NSArray *rules = @[@"Left", @"Right"];
+    self.ruleset = [MRRuleset rulesetWithRules:rules];
+}
+
+- (void)testValidateMoveForValidMove {
+    NSString *move = @"Left";
+    MRTurn *turn = [self.ruleset validateMove:move];
+    XCTAssertNotNil(turn);
+}
+
+- (void)testValidateMoveForInvalidMove {
+    NSString *move = @"Up";
+    MRTurn *turn = [self.ruleset validateMove:move];
+    XCTAssertNil(turn);
 }
 
 - (void)tearDown {
     [super tearDown];
-    _rules = nil;
-    _specificRule = nil;
-}
-
-- (void)testInit {
-    XCTAssertNotNil(_rules);
-}
-
-- (void)testRuleArrays {
-    XCTAssertNotNil(_rules.startState);
-    XCTAssertEqual([_rules.startState count], 0);
-    XCTAssertNotNil(_rules.moves);
-    XCTAssertEqual([_rules.moves count], 0);
-    XCTAssertNotNil(_rules.endState);
-    XCTAssertEqual([_rules.endState count], 0);
-}
-
-- (void)testAddingRule {
-    [_rules addStartStateRule:_specificRule];
-    XCTAssertEqualObjects(_rules.startState[0], _specificRule);
-    [_rules addEndStateRule:_specificRule];
-    XCTAssertEqualObjects(_rules.endState[0], _specificRule);
-    [_rules addMoveRule:_specificRule];
-    XCTAssertEqualObjects(_rules.moves[0], _specificRule);
-}
-
-- (void)testRemovingRule {
-    XCTAssertNoThrow([_rules removeStartStateRule:_specificRule]);
-    XCTAssertNoThrow([_rules removeEndStateRule:_specificRule]);
-    XCTAssertNoThrow([_rules removeMoveRule:_specificRule]);
-    [_rules addStartStateRule:_specificRule];
-    [_rules addEndStateRule:_specificRule];
-    [_rules addMoveRule:_specificRule];
-    [_rules removeStartStateRule:_specificRule];
-    XCTAssertEqual([_rules.startState count], 0);
-    [_rules removeEndStateRule:_specificRule];
-    XCTAssertEqual([_rules.endState count], 0);
-    [_rules removeMoveRule:_specificRule];
-    XCTAssertEqual([_rules.moves count], 0);
-}
-
-- (void)testAddingRules {
-    NSArray *array = @[@"Stop", @"Go", @"Turn Left", @"Turn Right"];
-    id specificRules = OCMPartialMock(array);
-    [_rules addStartStateRules:specificRules];
-    XCTAssertEqual([_rules.startState count], 4);
-    [_rules addEndStateRules:specificRules];
-    XCTAssertEqual([_rules.endState count], 4);
-    [_rules addMoveRules:specificRules];
-    XCTAssertEqual([_rules.moves count], 4);
+    self.ruleset = nil;
 }
 
 @end

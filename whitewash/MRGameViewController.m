@@ -9,12 +9,11 @@
 #import <pop/POP.h>
 #import <Tweaks/FBTweak.h>
 #import <ZLSwipeableView/ZLSwipeableView.h>
-
 #import "FBTweakInline.h"
+
 #import "MRGame.h"
-#import "MRGameData.h"
+#import "MRGameDispatcher.h"
 #import "MRGameViewController.h"
-#import "MRRecord.h"
 
 @interface MRGameViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
@@ -43,6 +42,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *cardBody;
 @property (weak, nonatomic) IBOutlet UILabel *cardFiles;
 
+- (void)updateCounters;
+- (void)endGame;
+
 @end
 
 @implementation MRGameViewController {
@@ -53,26 +55,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSURL *endpoint = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
-    _game = [[MRGame alloc] initWithEndpointURL:endpoint];
-    _swipeableView.delegate = self;
-    [_game populateInputDataStore];
-    _turns = [_game.inputData.data count];
-    _turnsTaken = 0;
-    _turnsLeft = 0;
-    _turnsRight = 0;
+    
+    // 1. Get new game
+    MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
+    self.game = [dispatcher newGame];
+    
+    // 2. Set delegate
+    self.swipeableView.delegate = self;
+    
+    // 3. Set counters
+    self.turns = [_game.store.data count];
+    self.turnsTaken = 0;
+    self.turnsLeft = 0;
+    self.turnsRight = 0;
+    
+    // 4. Create a mapping between card views and game data
     _viewDataMapping = [[NSMutableArray alloc] init];
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
     [_inputAction setTitle:@"Info" forState:UIControlStateNormal];
-    NSString *outputA = @"Spam";
+    
+    // 5. Set labels based on rules
+    NSString *outputA = self.game.ruleset.rules[0];
     _outputALabel.text = outputA;
     [_outputAAction setTitle:outputA forState:UIControlStateNormal];
-    NSString *outputB = @"Legit";
+    NSString *outputB = self.game.ruleset.rules[1];
     _outputBLabel.text = outputB;
     [_outputBAction setTitle:outputB forState:UIControlStateNormal];
     
+    // 6. Update counters
     [self updateCounters];
 }
 
@@ -115,14 +127,14 @@
     BOOL isSpam = NO;
     switch (swipe) {
         case left:
-            [_game takeTurn:@"Left"];
+            [_game takeTurnWithMove:@"Spam"];
             _turnsLeft += 1;
             [self addBounce:_outputACounter];
             [self addBounce:_outputAAction];
             isSpam = YES;
             break;
         case right:
-            [_game takeTurn:@"Right"];
+            [_game takeTurnWithMove:@"Legit"];
             _turnsRight += 1;
             [self addBounce:_outputBCounter];
             [self addBounce:_outputBAction];
@@ -130,21 +142,19 @@
     }
     _turnsTaken += 1;
     [self updateCounters];
-    MRGameData *data = [_viewDataMapping objectAtIndex:view.tag];
-    [_game.outputData addData:data];
     if (_turnsTaken == _turns) {
         [self endGame];
     }
 }
 
 - (void)updateCounters {
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
-    _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsLeft];
-    _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsRight];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", self.turns - self.turnsTaken];
+    _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
+    _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
 }
 
 - (void)endGame {
-    [_game uploadOutputDataStore];
+    [self.game.store pushData];
     [self.delegate gameViewController:self didCompleteGame:_game.record];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -164,7 +174,7 @@
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     
     // test the base case where the input data store is empty
-    if ([_game.inputData.data count] < 1) {
+    if ([_game.store.data count] < 1) {
         return nil;
     }
     
@@ -189,14 +199,15 @@
                                  options:nil] objectAtIndex:0];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    /* Pop data from input store and apply to card */
-    MRGameData *data = [_game.inputData popData];
+    /* Pop data from input store and apply to card
+    NSDictionary *data = [_game.store.data];
     [_viewDataMapping addObject:data];
     NSUInteger index = [_viewDataMapping indexOfObject:data];
     view.tag = index;
     _cardName.text = data.name;
     _cardBody.text = data.body;
     _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
+    */
     [view addSubview:contentView];
     
     NSDictionary *metrics = @{

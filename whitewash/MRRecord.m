@@ -7,10 +7,10 @@
 //
 
 #import "MRRecord.h"
+#import "MRTurn.h"
 
 @interface MRRecord ()
 
-@property (nonatomic) NSInteger privateScore;
 @property (nonatomic, strong) NSMutableArray *mutableTurns;
 
 @end
@@ -20,7 +20,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.privateScore = 0;
         self.mutableTurns = [[NSMutableArray alloc] init];
     }
     return self;
@@ -30,20 +29,29 @@
     return [[MRRecord alloc] init];
 }
 
-- (NSInteger)score {
-    return self.privateScore;
-}
-
 - (NSMutableArray *)turns {
     return [self.mutableTurns copy];
 }
 
-- (void)recordTurn:(id)turn {
+- (NSInteger)score {
+    NSInteger score = 0;
+    for (MRTurn *turn in self.mutableTurns) {
+        score += turn.score * turn.multiplier;
+    }
+    return score;
+}
+
+- (NSDate *)date {
+    MRTurn *lastTurn = [self.mutableTurns lastObject];
+    return lastTurn.date;
+}
+
+- (void)addTurn:(MRTurn *)turn {
     [self.mutableTurns addObject:turn];
 }
 
-- (void)modifyScoreBy:(NSInteger)amount {
-    self.privateScore = self.privateScore + amount;
+- (void)removeTurn:(MRTurn *)turn {
+    [self.mutableTurns removeObject:turn];
 }
 
 @end

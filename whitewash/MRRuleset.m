@@ -7,81 +7,42 @@
 //
 
 #import "MRRuleset.h"
+#import "MRTurn.h"
 
 @interface MRRuleset ()
 
-@property (nonatomic, strong) NSMutableArray *privateStartState;
-@property (nonatomic, strong) NSMutableArray *privateMoves;
-@property (nonatomic, strong) NSMutableArray *privateEndState;
+@property (nonatomic, strong) NSPredicate *predicate;
 
 @end
 
 @implementation MRRuleset
 
-- (instancetype)init {
+@synthesize rules;
+
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules {
+    return [[MRRuleset alloc] initWithRules:rules];
+}
+
+- (instancetype)initWithRules:(NSArray *)theRules {
     self = [super init];
     if (self) {
-        self.privateStartState = [[NSMutableArray alloc] init];
-        self.privateMoves = [[NSMutableArray alloc] init];
-        self.privateEndState = [[NSMutableArray alloc] init];
+        self.rules = theRules;
+        self.predicate = [NSPredicate predicateWithFormat:@"SELF IN %@", theRules];
     }
     return self;
 }
 
-- (NSArray *)startState {
-    return [self.privateStartState copy];
-}
-
-- (NSArray *)moves {
-    return [self.privateMoves copy];
-}
-
-- (NSArray *)endState {
-    return [self.privateEndState copy];
-}
-
-# pragma mark -
-
-# pragma mark Adding Individual Rules
-
-- (void)addStartStateRule:(id)rule {
-    [self.privateStartState addObject:rule];
-}
-
-- (void)addEndStateRule:(id)rule {
-    [self.privateEndState addObject:rule];
-}
-
-- (void)addMoveRule:(id)rule {
-    [self.privateMoves addObject:rule];
-}
-
-# pragma mark Removing Individual Rules
-
-- (void)removeStartStateRule:(id)rule {
-    [self.privateStartState removeObject:rule];
-}
-
-- (void)removeEndStateRule:(id)rule {
-    [self.privateEndState removeObject:rule];
-}
-
-- (void)removeMoveRule:(id)rule {
-    [self.privateMoves removeObject:rule];
-}
-
-# pragma mark Adding Arrays of Rules
-
-- (void)addStartStateRules:(NSArray *)rules {
-    [self.privateStartState addObjectsFromArray:rules];
-}
-
-- (void)addEndStateRules:(NSArray *)rules {
-    [self.privateEndState addObjectsFromArray:rules];
-}
-
-- (void)addMoveRules:(NSArray *)rules {
-    [self.privateMoves addObjectsFromArray:rules];
+- (MRTurn *)validateMove:(id)move {
+    MRTurn *turn = nil;
+    BOOL validMove = [self.predicate evaluateWithObject:move];
+    if (validMove) {
+        turn = [[MRTurn alloc] init];
+        turn.score = self.pointsPerTurn;
+        turn.multiplier = self.pointMultiplier;
+        turn.move = move;
+        return turn;
+    }
+    return turn;
 }
 
 @end

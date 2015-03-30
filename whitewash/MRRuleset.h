@@ -7,23 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MRTurn.h"
 
 @interface MRRuleset : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *startState;
-@property (nonatomic, readonly, copy) NSArray *moves;
-@property (nonatomic, readonly, copy) NSArray *endState;
+@property (nonatomic, strong) NSArray *rules;
+@property (nonatomic) NSInteger pointsPerTurn;
+@property (nonatomic) NSInteger pointMultiplier;
 
-- (void)addStartStateRules:(NSArray *)rules;
-- (void)addEndStateRules:(NSArray *)rules;
-- (void)addMoveRules:(NSArray *)rules;
+- (MRTurn *)validateMove:(id)move;
 
-- (void)addStartStateRule:(id)rule;
-- (void)addEndStateRule:(id)rule;
-- (void)addMoveRule:(id)rule;
-
-- (void)removeStartStateRule:(id)rule;
-- (void)removeEndStateRule:(id)rule;
-- (void)removeMoveRule:(id)rule;
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules;
 
 @end
