@@ -179,12 +179,7 @@
 		9D147F5C1A39FAE9006631F8 /* whitewashTests */ = {
 			isa = PBXGroup;
 			children = (
-				9D53164E1AAA6EB100B79B44 /* MRGameTests.m */,
-				9D3D9E301AB0CE11001BA0A4 /* MRGameDataTests.m */,
-				9D53164C1AAA6E0D00B79B44 /* MRWebStoreTests.m */,
-				9D53163D1AAA277400B79B44 /* MRPlayerTests.m */,
-				9D5316421AAA382F00B79B44 /* MRRecordTests.m */,
-				9D5316531AAA7DBE00B79B44 /* MRRulesetTests.m */,
+				9D2EF2F21AC9D14100D28567 /* Model Tests */,
 				9D147F5D1A39FAE9006631F8 /* Supporting Files */,
 			);
 			path = whitewashTests;
@@ -196,6 +191,19 @@
 				9D147F5E1A39FAE9006631F8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9D2EF2F21AC9D14100D28567 /* Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9D53164E1AAA6EB100B79B44 /* MRGameTests.m */,
+				9D3D9E301AB0CE11001BA0A4 /* MRGameDataTests.m */,
+				9D53164C1AAA6E0D00B79B44 /* MRWebStoreTests.m */,
+				9D53163D1AAA277400B79B44 /* MRPlayerTests.m */,
+				9D5316421AAA382F00B79B44 /* MRRecordTests.m */,
+				9D5316531AAA7DBE00B79B44 /* MRRulesetTests.m */,
+			);
+			name = "Model Tests";
 			sourceTree = "<group>";
 		};
 		9D5316551AAA80BE00B79B44 /* Models */ = {
