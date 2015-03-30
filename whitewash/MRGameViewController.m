@@ -9,12 +9,11 @@
 #import <pop/POP.h>
 #import <Tweaks/FBTweak.h>
 #import <ZLSwipeableView/ZLSwipeableView.h>
-
 #import "FBTweakInline.h"
+
 #import "MRGame.h"
-#import "MRGameData.h"
+#import "MRGameDispatcher.h"
 #import "MRGameViewController.h"
-#import "MRRecord.h"
 
 @interface MRGameViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
@@ -56,26 +55,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    MRRuleset *rules = [MRRuleset rulesetWithRules:@[]];
-    NSURL *endpoint = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
-    _game = [MRGame gameWithURL:endpoint andRuleset:rules];
-    _swipeableView.delegate = self;
-    _turns = [_game.store.data count];
-    _turnsTaken = 0;
-    _turnsLeft = 0;
-    _turnsRight = 0;
+    
+    // 1. Get new game
+    MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
+    self.game = [dispatcher newGame];
+    
+    // 2. Set delegate
+    self.swipeableView.delegate = self;
+    
+    // 3. Set counters
+    self.turns = [_game.store.data count];
+    self.turnsTaken = 0;
+    self.turnsLeft = 0;
+    self.turnsRight = 0;
+    
+    // 4. Create a mapping between card views and game data
     _viewDataMapping = [[NSMutableArray alloc] init];
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
     [_inputAction setTitle:@"Info" forState:UIControlStateNormal];
-    NSString *outputA = @"Spam";
+    
+    // 5. Set labels based on rules
+    NSString *outputA = self.game.ruleset.rules[0];
     _outputALabel.text = outputA;
     [_outputAAction setTitle:outputA forState:UIControlStateNormal];
-    NSString *outputB = @"Legit";
+    NSString *outputB = self.game.ruleset.rules[1];
     _outputBLabel.text = outputB;
     [_outputBAction setTitle:outputB forState:UIControlStateNormal];
     
+    // 6. Update counters
     [self updateCounters];
 }
 
@@ -118,14 +127,14 @@
     BOOL isSpam = NO;
     switch (swipe) {
         case left:
-            [_game takeTurnWithMove:@"Left"];
+            [_game takeTurnWithMove:@"Spam"];
             _turnsLeft += 1;
             [self addBounce:_outputACounter];
             [self addBounce:_outputAAction];
             isSpam = YES;
             break;
         case right:
-            [_game takeTurnWithMove:@"Right"];
+            [_game takeTurnWithMove:@"Legit"];
             _turnsRight += 1;
             [self addBounce:_outputBCounter];
             [self addBounce:_outputBAction];
@@ -139,13 +148,13 @@
 }
 
 - (void)updateCounters {
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", _turns - _turnsTaken];
-    _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsLeft];
-    _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)_turnsRight];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", self.turns - self.turnsTaken];
+    _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
+    _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
 }
 
 - (void)endGame {
-    [_game.store pushData];
+    [self.game.store pushData];
     [self.delegate gameViewController:self didCompleteGame:_game.record];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
