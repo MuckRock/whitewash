@@ -13,6 +13,10 @@
 
 @implementation MRGameDispatcher
 
++ (MRGameDispatcher *)newDispatcher {
+    return [[MRGameDispatcher alloc] init];
+}
+
 - (MRGame *)newGame {
     return [MRGame gameWithURL:[self gameURL] andRuleset:[self gameRuleset]];
 }

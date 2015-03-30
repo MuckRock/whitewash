@@ -12,6 +12,7 @@
 
 @interface MRGameDispatcher : NSObject
 
++ (MRGameDispatcher *)newDispatcher;
 - (MRGame *)newGame;
 
 @end
