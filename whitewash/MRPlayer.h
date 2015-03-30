@@ -20,4 +20,11 @@
 - (void)addRecordToHistory:(MRRecord *)record;
 - (void)removeRecordFromHistory:(MRRecord *)record;
 
+- (NSUInteger)countTotalTurns;
+- (NSUInteger)countTotalGames;
+- (NSInteger)bestScore;
+- (NSInteger)bestMultiplier;
+- (NSInteger)todayScore;
+- (NSInteger)todayMultiplier;
+
 @end

@@ -9,15 +9,29 @@
 #import "MRPlayerViewController.h"
 
 #import "MRPlayer.h"
-#import "mRRecord.h"
+#import "MRRecord.h"
+#import "MRGame.h"
 #import "MRGameViewController.h"
 
 @interface MRPlayerViewController ()
 
+# pragma mark Player
+
 @property (nonatomic, strong) MRPlayer *player;
 @property (weak, nonatomic) IBOutlet UILabel *playerName;
-@property (weak, nonatomic) IBOutlet UILabel *turnsPlayedCounter;
-@property (weak, nonatomic) IBOutlet UILabel *gamesPlayedCounter;
+@property (weak, nonatomic) IBOutlet UIImageView *playerImage;
+@property (weak, nonatomic) IBOutlet UILabel *playerRank;
+
+# pragma mark Scoreboard
+
+@property (weak, nonatomic) IBOutlet UILabel *totalTurns;
+@property (weak, nonatomic) IBOutlet UILabel *totalGames;
+
+@property (weak, nonatomic) IBOutlet UILabel *bestScore;
+@property (weak, nonatomic) IBOutlet UILabel *sessionScore;
+
+@property (weak, nonatomic) IBOutlet UILabel *bestMultiplier;
+@property (weak, nonatomic) IBOutlet UILabel *sessionMultiplier;
 
 @end
 
@@ -27,18 +41,19 @@
     [super viewDidLoad];
     _player = [MRPlayer newPlayerWithName:@"Samuel Clemens"];
     _playerName.text = _player.name;
+    _playerRank.text = @"Freelancer";
+
+    _playerImage.image = [UIImage imageNamed:@"Tom Sawyer"];
+    _playerImage.layer.cornerRadius = _playerImage.frame.size.width / 2;
+    _playerImage.clipsToBounds = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSInteger gamesPlayed = 0;
-    NSInteger turnsPlayed = 0;
-    for (MRRecord *record in _player.history) {
-        gamesPlayed += 1;
-        turnsPlayed += [record.turns count];
-    }
-    _gamesPlayedCounter.text = [NSString stringWithFormat:@"%li", (long)gamesPlayed];
-    _turnsPlayedCounter.text = [NSString stringWithFormat:@"%li", (long)turnsPlayed];
+    _totalTurns.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_player countTotalTurns]];
+    _totalGames.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_player countTotalGames]];
+    _sessionScore.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_player todayScore]];
+    _sessionMultiplier.text = [NSString stringWithFormat:@"x%lu", (unsigned long)[_player todayMultiplier]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +65,7 @@
     // TODO: Have GVC returned from a GameViewDispatcher object
     MRGameViewController *gameViewController = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
     gameViewController.delegate = self;
+    gameViewController.multiplier = [_player todayMultiplier];
     [self presentViewController:gameViewController animated:YES completion:nil];
 }
 

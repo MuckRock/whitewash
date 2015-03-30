@@ -17,7 +17,13 @@
 
 @implementation MRRecord
 
+@synthesize multiplier;
+
 - (instancetype)init {
+    return [self initWithMultiplier:1];
+}
+
+- (instancetype)initWithMultiplier:(NSInteger)theMultiplier {
     self = [super init];
     if (self) {
         self.mutableTurns = [[NSMutableArray alloc] init];

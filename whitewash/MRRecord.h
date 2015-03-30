@@ -14,9 +14,12 @@
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly, copy) NSArray *turns;
+@property (nonatomic, readonly) NSDate *date;
 
 + (MRRecord *)newRecord;
 - (void)addTurn:(MRTurn *)turn;
 - (void)removeTurn:(MRTurn *)turn;
+
+- (NSUInteger)countTurns;
 
 @end

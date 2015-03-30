@@ -19,7 +19,6 @@
 
 # pragma -
 
-@property (nonatomic, strong) MRGame *game;
 @property (nonatomic) NSUInteger turns;
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
@@ -51,31 +50,33 @@
     enum direction { left, right };
 }
 
+@synthesize game;
+@synthesize multiplier;
 @synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // 1. Get new game
     MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
     self.game = [dispatcher newGame];
-    
+
     // 2. Set delegate
     self.swipeableView.delegate = self;
-    
+
     // 3. Set counters
     self.turns = [_game.store.data count];
     self.turnsTaken = 0;
     self.turnsLeft = 0;
     self.turnsRight = 0;
-    
+
     // 4. Create a mapping between card views and game data
     _viewDataMapping = [[NSMutableArray alloc] init];
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
     [_inputAction setTitle:@"Info" forState:UIControlStateNormal];
-    
+
     // 5. Set labels based on rules
     NSString *outputA = self.game.ruleset.rules[0];
     _outputALabel.text = outputA;
@@ -83,7 +84,7 @@
     NSString *outputB = self.game.ruleset.rules[1];
     _outputBLabel.text = outputB;
     [_outputBAction setTitle:outputB forState:UIControlStateNormal];
-    
+
     // 6. Update counters
     [self updateCounters];
 }
@@ -148,6 +149,7 @@
 }
 
 - (void)updateCounters {
+<<<<<<< HEAD
     _inputCounter.text = [NSString stringWithFormat:@"%lu", self.turns - self.turnsTaken];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
@@ -168,16 +170,16 @@
 - (IBAction)swipeLeft:(id)sender {
     [_swipeableView swipeTopViewToLeft];
 }
- 
+
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
-    
+
     // test the base case where the input data store is empty
     if ([_game.store.data count] < 1) {
         return nil;
     }
-    
+
     UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
     view.backgroundColor = ([UIColor colorWithRed:0.945
                                             green:0.945
@@ -192,13 +194,13 @@
     view.autoresizesSubviews = NO;
 
     // Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167
-    
+
     UIView *contentView =
     [[[NSBundle mainBundle] loadNibNamed:@"CardContentView"
                                    owner:self
                                  options:nil] objectAtIndex:0];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+
     /* Pop data from input store and apply to card
     NSDictionary *data = [_game.store.data];
     [_viewDataMapping addObject:data];
@@ -209,7 +211,7 @@
     _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
     */
     [view addSubview:contentView];
-    
+
     NSDictionary *metrics = @{
                               @"height" : @(view.bounds.size.height),
                               @"width" : @(view.bounds.size.width)
@@ -227,9 +229,9 @@
                           options:0
                           metrics:metrics
                           views:views]];
-    
 
-    
+
+
     return view;
 }
 

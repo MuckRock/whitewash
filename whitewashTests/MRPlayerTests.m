@@ -26,6 +26,9 @@
     [super setUp];
     _player = [MRPlayer newPlayerWithName:@"Bob"];
     _record = OCMClassMock([MRRecord class]);
+    OCMStub([_record countTurns]).andReturn(5);
+    OCMStub([_record score]).andReturn(rand());
+    OCMStub([_record multiplier]).andReturn(rand());
 }
 
 - (void)tearDown {
@@ -60,6 +63,40 @@
     [_player addRecordToHistory:_record];
     [_player removeRecordFromHistory:_record];
     XCTAssertEqual([_player.history count], 0);
+}
+
+- (void)testCountTotalTurns {
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    XCTAssertEqual([_player countTotalTurns], 25,
+                   @"Player should know how many turns they've taken");
+}
+
+- (void)testCountTotalGames {
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    XCTAssertEqual([_player countTotalGames], 5,
+                   @"Player should know how many games they've played");
+}
+
+- (void)testBestScore {
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    XCTAssertGreaterThan([_player bestScore], 0);
+}
+
+- (void)testBestMultiplier {
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    [_player addRecordToHistory:_record];
+    XCTAssertGreaterThan([_player bestMultiplier], 1);
 }
 
 @end

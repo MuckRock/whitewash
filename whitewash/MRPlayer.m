@@ -50,4 +50,69 @@
     [self.mutableHistory removeObject:record];
 }
 
+- (NSUInteger)countTotalTurns {
+    NSUInteger count = 0;
+    for (MRRecord *record in _mutableHistory) {
+        count += [record countTurns];
+    }
+    return count;
+}
+
+- (NSUInteger)countTotalGames {
+    return [_mutableHistory count];
+}
+
+- (NSInteger)bestScore {
+    NSInteger best = [(MRRecord *)[_mutableHistory firstObject] score];
+    for (MRRecord *record in _mutableHistory) {
+        if ([record score] > best) {
+            best = [record score];
+        }
+    }
+    return best;
+}
+
+- (NSInteger)bestMultiplier {
+    NSInteger best = [(MRRecord *)[_mutableHistory firstObject] multiplier];
+    for (MRRecord *record in _mutableHistory ) {
+        if ([record multiplier] > best) {
+            best = [record multiplier];
+        }
+    }
+    return best;
+}
+
+- (NSInteger)todayScore {
+    NSInteger score = 0;
+    NSDate *today = [self getDateToday];
+    for (MRRecord *record in _mutableHistory) {
+        // if record's datetime comes after today at 00:00
+        if ([record.date compare:today] == NSOrderedDescending) {
+            score += record.score;
+        }
+    }
+    return score;
+}
+
+- (NSInteger)todayMultiplier {
+    NSInteger count = 1;
+    NSDate *today = [self getDateToday];
+    for (MRRecord *record in _mutableHistory) {
+        // if record's datetime comes after today at 00:00
+        if ([record.date compare:today] == NSOrderedDescending) {
+            count += 1;
+        }
+    }
+    return count;
+}
+
+- (NSDate *)getDateToday {
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDate *now = [NSDate date];
+    NSDateComponents *comps = [cal components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
+                                     fromDate:now];
+    NSDate *today = [cal dateFromComponents:comps];
+    return today;
+}
+
 @end
