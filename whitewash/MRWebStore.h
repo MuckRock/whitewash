@@ -15,11 +15,15 @@
 
 + (MRWebStore *)webStoreWithURL:(NSURL *)someURL;
 
-- (NSDictionary *)pullData;
+# pragma mark Lifecycle Methods
+
+- (void)pullData;
 - (void)pushData;
 
+# pragma mark Mutator Methods
+
 - (void)addData:(NSDictionary *)data;
-- (void)removeDataForKey:(id)key;
+- (void)removeDataForKey:(NSString *)key;
 - (void)updateKey:(id)key withValue:(id)value;
 
 @end

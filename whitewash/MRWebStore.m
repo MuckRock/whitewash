@@ -16,13 +16,22 @@
 
 @implementation MRWebStore
 
+# pragma mark Getters & Setters
+
 @synthesize url;
+
+- (NSArray *)data {
+    return [self.mutableData copy];
+}
+
+# pragma mark Lifecycle Methods
 
 - (instancetype)initWithURL:(NSURL *)someURL {
     self = [super init];
     if (self) {
         self.url = someURL;
-        self.mutableData = [[NSMutableDictionary alloc] initWithDictionary:[self pullData]];
+        self.mutableData = [[NSMutableDictionary alloc] init];
+        [self pullData];
     }
     return self;
 }
@@ -31,21 +40,17 @@
     return [[MRWebStore alloc] initWithURL:someURL];
 }
 
-- (NSDictionary *)pullData {
+- (void)pullData {
     NSData *data = [NSData dataWithContentsOfURL:self.url];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    return json;
+    [self.mutableData addEntriesFromDictionary:json];
 }
 
 - (void)pushData {
     // POST self.mutableData to self.url
 }
 
-- (NSArray *)data {
-    return [self.mutableData copy];
-}
-
-# pragma mark Store
+# pragma mark Mutator Methods
 
 - (void)addData:(NSDictionary *)data {
     [self.mutableData addEntriesFromDictionary:data];
