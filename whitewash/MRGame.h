@@ -17,7 +17,7 @@
 @property (nonatomic, strong) MRRuleset *ruleset;
 @property (nonatomic, strong) MRWebStore *store;
 
-+ (MRGame *)gameWithURL:(NSURL *)someURL andRulset:(MRRuleset *)someRuleset;
++ (MRGame *)gameWithURL:(NSURL *)someURL andRuleset:(MRRuleset *)someRuleset;
 - (void)takeTurnWithMove:(id)move;
 
 @end

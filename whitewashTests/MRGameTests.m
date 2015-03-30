@@ -10,7 +10,6 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "MRGame.h"
-#import "MRRuleset.h"
 
 @interface MRGameTests : XCTestCase
 
@@ -18,15 +17,17 @@
 
 @implementation MRGameTests {
     id url;
-    id ruleset;
+    MRRuleset *ruleset;
     MRGame *game;
 }
 
 - (void)setUp {
     [super setUp];
-    url = OCMClassMock([NSURL class]);
-    ruleset = OCMClassMock([MRRuleset class]);
-    game = [MRGame gameWithURL:url andRulset:ruleset];
+    url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
+    NSArray *validMoves = @[@"Left", @"Right"];
+    NSPredicate *rule = [NSPredicate predicateWithFormat:@"SELF IN %@", validMoves];
+    ruleset = [MRRuleset rulesetWithRules:@[rule]];
+    game = [MRGame gameWithURL:url andRuleset:ruleset];
 }
 
 - (void)tearDown {
@@ -49,15 +50,14 @@
     OCMStub([game.ruleset validateMove:move]).andReturn(turn);
     
     [game takeTurnWithMove:move];
-    XCTAssertEqual([game.record.turns firstObject], turn);
+    XCTAssertNotNil([game.record.turns firstObject]);
 }
 
 - (void)testTakeTurnWithInvalidMove {
     // mock an invalid call to [game.ruleset validateMove:move]
     // since we want to test that an invalid move throws an exception
-    id move = @"Left";
-    OCMStub([game.ruleset validateMove:move]).andReturn(nil);
-    XCTAssertThrows([game takeTurnWithMove:move]);
+    OCMStub([game.ruleset validateMove:@"Up"]).andReturn(nil);
+    XCTAssertThrows([game takeTurnWithMove:@"Up"]);
 }
 
 @end

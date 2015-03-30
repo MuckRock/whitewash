@@ -37,7 +37,7 @@
     return json;
 }
 
-- (void)pushData:(NSDictionary *)data {
+- (void)pushData {
     // POST self.mutableData to self.url
 }
 

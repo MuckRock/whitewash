@@ -23,13 +23,13 @@
     self = [super init];
     if (self) {
         self.ruleset = someRuleset;
-        self.store = [MRWebStore webStoreWithURL:someURL];
         self.record = [MRRecord newRecord];
+        self.store = [MRWebStore webStoreWithURL:someURL];
     }
     return self;
 }
 
-+ (MRGame *)gameWithURL:(NSURL *)someURL andRulset:(MRRuleset *)someRuleset {
++ (MRGame *)gameWithURL:(NSURL *)someURL andRuleset:(MRRuleset *)someRuleset {
     return [[MRGame alloc] initWithURL:someURL andRuleset:someRuleset];
 }
 

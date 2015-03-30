@@ -16,7 +16,7 @@
 + (MRWebStore *)webStoreWithURL:(NSURL *)someURL;
 
 - (NSDictionary *)pullData;
-- (void)pushData:(NSDictionary *)data;
+- (void)pushData;
 
 - (void)addData:(NSDictionary *)data;
 - (void)removeDataForKey:(id)key;
