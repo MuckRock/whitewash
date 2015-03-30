@@ -39,7 +39,7 @@
         [record addTurn:turn];
     }
     else {
-        [NSException raise:@"Illegal Move" format:@"The move %@ is against the rules", move];
+        [NSException raise:@"Illegal Move" format:@"Moving %@ is against the rules", move];
     }
 }
 

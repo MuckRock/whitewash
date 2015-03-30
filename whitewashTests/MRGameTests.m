@@ -24,9 +24,8 @@
 - (void)setUp {
     [super setUp];
     url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
-    NSArray *validMoves = @[@"Left", @"Right"];
-    NSPredicate *rule = [NSPredicate predicateWithFormat:@"SELF IN %@", validMoves];
-    ruleset = [MRRuleset rulesetWithRules:@[rule]];
+    NSArray *rules = @[@"Left", @"Right"];
+    ruleset = [MRRuleset rulesetWithRules:rules];
     game = [MRGame gameWithURL:url andRuleset:ruleset];
 }
 
@@ -46,9 +45,6 @@
     // mock a valid call to [game.ruleset validateMove:move]
     // since we want to test the effects of a positive return value
     id move = @"Left";
-    MRTurn *turn = OCMClassMock([MRTurn class]);
-    OCMStub([game.ruleset validateMove:move]).andReturn(turn);
-    
     [game takeTurnWithMove:move];
     XCTAssertNotNil([game.record.turns firstObject]);
 }
