@@ -60,12 +60,13 @@
     // 1. Get new game
     MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
     self.game = [dispatcher newGame];
+    self.game.ruleset.pointMultiplier = self.multiplier;
 
     // 2. Set delegate
     self.swipeableView.delegate = self;
 
     // 3. Set counters
-    self.turns = [_game.store.data count];
+    self.turns = [self.game.store.data count];
     self.turnsTaken = 0;
     self.turnsLeft = 0;
     self.turnsRight = 0;
@@ -128,14 +129,14 @@
     BOOL isSpam = NO;
     switch (swipe) {
         case left:
-            [_game takeTurnWithMove:@"Spam"];
+            [self.game takeTurnWithMove:@"Spam"];
             _turnsLeft += 1;
             [self addBounce:_outputACounter];
             [self addBounce:_outputAAction];
             isSpam = YES;
             break;
         case right:
-            [_game takeTurnWithMove:@"Legit"];
+            [self.game takeTurnWithMove:@"Legit"];
             _turnsRight += 1;
             [self addBounce:_outputBCounter];
             [self addBounce:_outputBAction];
@@ -149,7 +150,6 @@
 }
 
 - (void)updateCounters {
-<<<<<<< HEAD
     _inputCounter.text = [NSString stringWithFormat:@"%lu", self.turns - self.turnsTaken];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
@@ -157,7 +157,7 @@
 
 - (void)endGame {
     [self.game.store pushData];
-    [self.delegate gameViewController:self didCompleteGame:_game.record];
+    [self.delegate gameViewController:self didCompleteGame:self.game.record];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -176,7 +176,7 @@
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
 
     // test the base case where the input data store is empty
-    if ([_game.store.data count] < 1) {
+    if ([self.game.store.data count] < 1) {
         return nil;
     }
 

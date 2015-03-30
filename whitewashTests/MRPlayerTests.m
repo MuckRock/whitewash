@@ -26,7 +26,7 @@
     [super setUp];
     _player = [MRPlayer newPlayerWithName:@"Bob"];
     _record = OCMClassMock([MRRecord class]);
-    OCMStub([_record countTurns]).andReturn(5);
+    OCMStub([_record.turns count]).andReturn(5);
     OCMStub([_record score]).andReturn(rand());
     OCMStub([_record multiplier]).andReturn(rand());
 }

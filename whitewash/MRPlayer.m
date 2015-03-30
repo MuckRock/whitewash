@@ -53,7 +53,7 @@
 - (NSUInteger)countTotalTurns {
     NSUInteger count = 0;
     for (MRRecord *record in _mutableHistory) {
-        count += [record countTurns];
+        count += [record.turns count];
     }
     return count;
 }

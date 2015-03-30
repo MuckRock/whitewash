@@ -17,8 +17,6 @@
 
 @implementation MRRecord
 
-@synthesize multiplier;
-
 - (instancetype)init {
     return [self initWithMultiplier:1];
 }

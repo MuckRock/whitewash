@@ -17,7 +17,7 @@
 
 @implementation MRRuleset
 
-@synthesize rules;
+@synthesize rules, pointsPerTurn, pointMultiplier;
 
 + (MRRuleset *)rulesetWithRules:(NSArray *)rules {
     return [[MRRuleset alloc] initWithRules:rules];
@@ -28,6 +28,8 @@
     if (self) {
         self.rules = theRules;
         self.predicate = [NSPredicate predicateWithFormat:@"SELF IN %@", theRules];
+        self.pointsPerTurn = 1;
+        self.pointMultiplier = 1;
     }
     return self;
 }

@@ -26,7 +26,9 @@
 }
 
 - (MRRuleset *)gameRuleset {
-    return [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"]];
+    MRRuleset *ruleset = [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"]];
+    ruleset.pointsPerTurn = 1;
+    return ruleset;
 }
 
 @end
