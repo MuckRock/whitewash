@@ -11,9 +11,12 @@
 
 @interface MRRuleset : NSObject
 
-@property (nonatomic, strong) NSCompoundPredicate *rules;
+@property (nonatomic, strong) NSArray *rules;
+@property (nonatomic) NSInteger pointsPerTurn;
+@property (nonatomic) NSInteger pointMultiplier;
+
+- (MRTurn *)validateMove:(id)move;
 
 + (MRRuleset *)rulesetWithRules:(NSArray *)rules;
-- (MRTurn *)validateMove:(id)move;
 
 @end

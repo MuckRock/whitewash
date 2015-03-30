@@ -22,9 +22,8 @@
 
 - (void)setUp {
     [super setUp];
-    NSArray *validMoves = @[@"Left", @"Right"];
-    NSPredicate *rule = [NSPredicate predicateWithFormat:@"SELF IN %@", validMoves];
-    self.ruleset = [MRRuleset rulesetWithRules:@[rule]];
+    NSArray *rules = @[@"Left", @"Right"];
+    self.ruleset = [MRRuleset rulesetWithRules:rules];
 }
 
 - (void)testValidateMoveForValidMove {

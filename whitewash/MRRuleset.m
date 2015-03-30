@@ -11,8 +11,7 @@
 
 @interface MRRuleset ()
 
-@property (nonatomic) NSInteger pointsPerTurn;
-@property (nonatomic) NSInteger pointMultiplier;
+@property (nonatomic, strong) NSPredicate *predicate;
 
 @end
 
@@ -27,15 +26,15 @@
 - (instancetype)initWithRules:(NSArray *)theRules {
     self = [super init];
     if (self) {
-        // should be an array of NSPredicates
-        self.rules = [NSCompoundPredicate andPredicateWithSubpredicates:theRules];
+        self.rules = theRules;
+        self.predicate = [NSPredicate predicateWithFormat:@"SELF IN %@", theRules];
     }
     return self;
 }
 
 - (MRTurn *)validateMove:(id)move {
     MRTurn *turn = nil;
-    BOOL validMove = [self.rules evaluateWithObject:move];
+    BOOL validMove = [self.predicate evaluateWithObject:move];
     if (validMove) {
         turn = [[MRTurn alloc] init];
         turn.score = self.pointsPerTurn;
