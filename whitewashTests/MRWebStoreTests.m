@@ -56,7 +56,7 @@
 
 - (void)testUpdateKeyWithValueForNonexistantKey {
     [store updateKey:@"hello" withValue:@1];
-    XCTAssertEqual([store valueForKey:@"hello"], @1);
+    XCTAssertEqual([store.data valueForKey:@"hello"], @1);
 }
 
 @end
