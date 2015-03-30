@@ -12,6 +12,8 @@
 		9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */; };
 		9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D147F501A39FAE9006631F8 /* Images.xcassets */; };
 		9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */; };
+		9D2EF2F51AC9DD2200D28567 /* MRGameDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EF2F41AC9DD2200D28567 /* MRGameDispatcher.m */; };
+		9D2EF2F71AC9DE6F00D28567 /* MRGameDispatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EF2F61AC9DE6F00D28567 /* MRGameDispatcherTests.m */; };
 		9D3D9E2F1AB0CC5C001BA0A4 /* MRGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D9E2E1AB0CC5C001BA0A4 /* MRGameData.m */; };
 		9D3D9E311AB0CE11001BA0A4 /* MRGameDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D9E301AB0CE11001BA0A4 /* MRGameDataTests.m */; };
 		9D4E1B221AAE42F900BB8618 /* MRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E1B201AAE42F900BB8618 /* MRGameViewController.m */; };
@@ -59,6 +61,9 @@
 		9D147F591A39FAE9006631F8 /* whitewashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = whitewashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D147F5E1A39FAE9006631F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D1E9D2D1A6F21D100B8927F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9D2EF2F31AC9DD2200D28567 /* MRGameDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameDispatcher.h; sourceTree = "<group>"; };
+		9D2EF2F41AC9DD2200D28567 /* MRGameDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameDispatcher.m; sourceTree = "<group>"; };
+		9D2EF2F61AC9DE6F00D28567 /* MRGameDispatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameDispatcherTests.m; sourceTree = "<group>"; };
 		9D3D9E2D1AB0CC5C001BA0A4 /* MRGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameData.h; sourceTree = "<group>"; };
 		9D3D9E2E1AB0CC5C001BA0A4 /* MRGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameData.m; sourceTree = "<group>"; };
 		9D3D9E301AB0CE11001BA0A4 /* MRGameDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameDataTests.m; sourceTree = "<group>"; };
@@ -196,6 +201,7 @@
 		9D2EF2F21AC9D14100D28567 /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9D2EF2F61AC9DE6F00D28567 /* MRGameDispatcherTests.m */,
 				9D53164E1AAA6EB100B79B44 /* MRGameTests.m */,
 				9D3D9E301AB0CE11001BA0A4 /* MRGameDataTests.m */,
 				9D53164C1AAA6E0D00B79B44 /* MRWebStoreTests.m */,
@@ -209,6 +215,8 @@
 		9D5316551AAA80BE00B79B44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9D2EF2F31AC9DD2200D28567 /* MRGameDispatcher.h */,
+				9D2EF2F41AC9DD2200D28567 /* MRGameDispatcher.m */,
 				9D6531CB1AC4C9E700277480 /* MRTurn.h */,
 				9D6531CC1AC4C9E700277480 /* MRTurn.m */,
 				9D5316441AAA5AAB00B79B44 /* MRGame.h */,
@@ -386,6 +394,7 @@
 				9D147F431A39FAE9006631F8 /* main.m in Sources */,
 				9D5316411AAA2D1000B79B44 /* MRRecord.m in Sources */,
 				9D6531CD1AC4C9E700277480 /* MRTurn.m in Sources */,
+				9D2EF2F51AC9DD2200D28567 /* MRGameDispatcher.m in Sources */,
 				9D5316461AAA5AAB00B79B44 /* MRGame.m in Sources */,
 				9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */,
 				9D4E1B221AAE42F900BB8618 /* MRGameViewController.m in Sources */,
@@ -406,6 +415,7 @@
 				9D3D9E311AB0CE11001BA0A4 /* MRGameDataTests.m in Sources */,
 				9D53163E1AAA277400B79B44 /* MRPlayerTests.m in Sources */,
 				9D5316431AAA382F00B79B44 /* MRRecordTests.m in Sources */,
+				9D2EF2F71AC9DE6F00D28567 /* MRGameDispatcherTests.m in Sources */,
 				9D53164F1AAA6EB100B79B44 /* MRGameTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
