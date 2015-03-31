@@ -194,7 +194,7 @@
     // Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167
 
     UIView *contentView =
-    [[[NSBundle mainBundle] loadNibNamed:@"CardContentView"
+    [[[NSBundle mainBundle] loadNibNamed:self.game.ruleset.nibName
                                    owner:self
                                  options:nil] objectAtIndex:0];
     contentView.translatesAutoresizingMaskIntoConstraints = NO;

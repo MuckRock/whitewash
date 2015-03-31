@@ -14,9 +14,10 @@
 @property (nonatomic, strong) NSArray *rules;
 @property (nonatomic) NSInteger pointsPerTurn;
 @property (nonatomic) NSInteger pointMultiplier;
+@property (nonatomic, strong) NSString *nibName;
 
 - (MRTurn *)validateMove:(id)move;
 
-+ (MRRuleset *)rulesetWithRules:(NSArray *)rules;
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules andNib:(NSString *)nib;
 
 @end

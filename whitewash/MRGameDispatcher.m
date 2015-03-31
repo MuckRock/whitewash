@@ -35,7 +35,7 @@
 }
 
 - (MRRuleset *)gameRuleset {
-    MRRuleset *ruleset = (self.rand == 0) ? [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"]] : [MRRuleset rulesetWithRules:@[@"Former", @"Latter"]];
+    MRRuleset *ruleset = (self.rand == 0) ? [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"] andNib:@"SpamCard"] : [MRRuleset rulesetWithRules:@[@"Former", @"Latter"] andNib:@"CompletedCard"];
     ruleset.pointsPerTurn = 1;
     return ruleset;
 }

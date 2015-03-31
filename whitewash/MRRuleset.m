@@ -17,17 +17,18 @@
 
 @implementation MRRuleset
 
-@synthesize rules, pointsPerTurn, pointMultiplier;
+@synthesize rules, pointsPerTurn, pointMultiplier, nibName;
 
-+ (MRRuleset *)rulesetWithRules:(NSArray *)rules {
-    return [[MRRuleset alloc] initWithRules:rules];
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules andNib:(NSString *)nib {
+    return [[MRRuleset alloc] initWithRules:rules andNib:nib];
 }
 
-- (instancetype)initWithRules:(NSArray *)theRules {
+- (instancetype)initWithRules:(NSArray *)theRules andNib:(NSString *)nib {
     self = [super init];
     if (self) {
         self.rules = theRules;
         self.predicate = [NSPredicate predicateWithFormat:@"SELF IN %@", theRules];
+        self.nibName = nib;
         self.pointsPerTurn = 1;
         self.pointMultiplier = 1;
     }

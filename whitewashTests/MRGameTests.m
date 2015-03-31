@@ -25,7 +25,7 @@
     [super setUp];
     url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
     NSArray *rules = @[@"Left", @"Right"];
-    ruleset = [MRRuleset rulesetWithRules:rules];
+    ruleset = [MRRuleset rulesetWithRules:rules andNib:@"SpamCard"];
     game = [MRGame gameWithURL:url andRuleset:ruleset];
 }
 
