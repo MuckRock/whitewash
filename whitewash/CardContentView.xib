@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MRGameViewController">
             <connections>
                 <outlet property="cardBody" destination="gbx-80-GEJ" id="oB6-Er-UjT"/>
-                <outlet property="cardFiles" destination="v8w-6r-TqH" id="WsE-wn-jI4"/>
                 <outlet property="cardName" destination="SFw-na-Huo" id="Z28-oN-XyU"/>
             </connections>
         </placeholder>
@@ -16,43 +15,41 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Files" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8w-6r-TqH">
-                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbx-80-GEJ">
+                    <rect key="frame" x="8" y="37" width="584" height="555"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0e-Vo-lKF">
+                    <rect key="frame" x="570" y="8" width="22" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="qKb-s0-3Cs"/>
+                        <constraint firstAttribute="width" constant="22" id="CBy-h1-rUA"/>
+                        <constraint firstAttribute="height" constant="22" id="z1Z-CI-nYY"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.9450981021" green="0.9450981021" blue="0.9450981021" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFw-na-Huo">
-                    <rect key="frame" x="8" y="8" width="584" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFw-na-Huo">
+                    <rect key="frame" x="14" y="9" width="548" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbx-80-GEJ">
-                    <rect key="frame" x="8" y="37" width="584" height="511"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Q0e-Vo-lKF" secondAttribute="trailing" constant="8" id="1hZ-cS-Us3"/>
                 <constraint firstItem="gbx-80-GEJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="2EX-md-Rys"/>
-                <constraint firstItem="v8w-6r-TqH" firstAttribute="top" secondItem="gbx-80-GEJ" secondAttribute="bottom" constant="8" id="3ss-u0-lFY"/>
-                <constraint firstAttribute="trailing" secondItem="v8w-6r-TqH" secondAttribute="trailing" id="4ii-ef-MAX"/>
+                <constraint firstAttribute="trailing" secondItem="SFw-na-Huo" secondAttribute="trailing" constant="38" id="3El-Ft-bVU"/>
+                <constraint firstAttribute="bottom" secondItem="gbx-80-GEJ" secondAttribute="bottom" constant="8" id="AaI-ly-naW"/>
                 <constraint firstAttribute="trailing" secondItem="gbx-80-GEJ" secondAttribute="trailing" constant="8" id="D1U-8d-QUB"/>
-                <constraint firstAttribute="centerX" secondItem="SFw-na-Huo" secondAttribute="centerX" id="JNH-s2-Snz"/>
-                <constraint firstAttribute="trailing" secondItem="SFw-na-Huo" secondAttribute="trailing" constant="8" id="Qxm-bD-IYZ"/>
-                <constraint firstAttribute="bottom" secondItem="v8w-6r-TqH" secondAttribute="bottom" id="bgg-0U-css"/>
-                <constraint firstItem="gbx-80-GEJ" firstAttribute="top" secondItem="SFw-na-Huo" secondAttribute="bottom" constant="8" id="dMY-cJ-7hY"/>
-                <constraint firstItem="SFw-na-Huo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="xDR-ya-deW"/>
-                <constraint firstItem="SFw-na-Huo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xXM-oS-4FN"/>
-                <constraint firstItem="v8w-6r-TqH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zIg-Dn-Lzz"/>
+                <constraint firstItem="gbx-80-GEJ" firstAttribute="top" secondItem="SFw-na-Huo" secondAttribute="bottom" constant="7" id="dMY-cJ-7hY"/>
+                <constraint firstItem="Q0e-Vo-lKF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="wQL-ir-gXA"/>
+                <constraint firstItem="SFw-na-Huo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="xDR-ya-deW"/>
+                <constraint firstItem="SFw-na-Huo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="xXM-oS-4FN"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="422" y="416"/>
