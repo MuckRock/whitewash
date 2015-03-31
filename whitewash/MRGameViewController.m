@@ -169,6 +169,12 @@
     [_swipeableView swipeTopViewToLeft];
 }
 
+- (IBAction)passTurn:(id)sender {
+    [_swipeableView swipeTopViewToDown];
+    // taking a turn with a nil move is the same as passing that turn
+    [self.game takeTurnWithMove:nil];
+}
+
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
@@ -210,10 +216,8 @@
     */
     [view addSubview:contentView];
 
-    NSDictionary *metrics = @{
-                              @"height" : @(view.bounds.size.height),
-                              @"width" : @(view.bounds.size.width)
-                              };
+    NSDictionary *metrics = @{@"height" : @(view.bounds.size.height),
+                              @"width" : @(view.bounds.size.width)};
     NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
     [view addConstraints:
      [NSLayoutConstraint

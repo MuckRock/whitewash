@@ -37,13 +37,19 @@
 
 - (MRTurn *)validateMove:(id)move {
     MRTurn *turn = nil;
-    BOOL validMove = [self.predicate evaluateWithObject:move];
-    if (validMove) {
+    if (move == nil) { // if move is nil, consider it a passed turn
         turn = [[MRTurn alloc] init];
-        turn.score = self.pointsPerTurn;
+        turn.score = 0;
         turn.multiplier = self.pointMultiplier;
-        turn.move = move;
-        return turn;
+        turn.move = nil;
+    } else {
+        BOOL validMove = [self.predicate evaluateWithObject:move];
+        if (validMove) {
+            turn = [[MRTurn alloc] init];
+            turn.score = self.pointsPerTurn;
+            turn.multiplier = self.pointMultiplier;
+            turn.move = move;
+        }
     }
     return turn;
 }
