@@ -76,7 +76,7 @@
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
-    [_inputAction setTitle:@"Info" forState:UIControlStateNormal];
+    [_inputAction setTitle:@"Pass" forState:UIControlStateNormal];
 
     // 5. Set labels based on rules
     NSString *outputA = self.game.ruleset.rules[0];
@@ -129,14 +129,14 @@
     BOOL isSpam = NO;
     switch (swipe) {
         case left:
-            [self.game takeTurnWithMove:@"Spam"];
+            [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
             _turnsLeft += 1;
             [self addBounce:_outputACounter];
             [self addBounce:_outputAAction];
             isSpam = YES;
             break;
         case right:
-            [self.game takeTurnWithMove:@"Legit"];
+            [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
             _turnsRight += 1;
             [self addBounce:_outputBCounter];
             [self addBounce:_outputBAction];
