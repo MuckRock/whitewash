@@ -11,10 +11,18 @@
 #import "MRGame.h"
 #import "MRRuleset.h"
 
+@interface MRGameDispatcher ()
+
+@property (nonatomic) int rand;
+
+@end
+
 @implementation MRGameDispatcher
 
 + (MRGameDispatcher *)newDispatcher {
-    return [[MRGameDispatcher alloc] init];
+    MRGameDispatcher *dispatcher = [[MRGameDispatcher alloc] init];
+    dispatcher.rand = arc4random() % 2;
+    return dispatcher;
 }
 
 - (MRGame *)newGame {
@@ -22,11 +30,12 @@
 }
 
 - (NSURL *)gameURL {
-    return [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
+    NSString *path = (self.rand == 0) ? @"communications" : @"completed";
+    return [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:path ofType:@"json"]];
 }
 
 - (MRRuleset *)gameRuleset {
-    MRRuleset *ruleset = [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"]];
+    MRRuleset *ruleset = (self.rand == 0) ? [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"]] : [MRRuleset rulesetWithRules:@[@"Former", @"Latter"]];
     ruleset.pointsPerTurn = 1;
     return ruleset;
 }
