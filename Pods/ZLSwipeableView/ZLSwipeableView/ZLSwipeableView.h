@@ -82,4 +82,10 @@
 /// Swipe top view to the right programmatically
 -(void)swipeTopViewToRight;
 
+/// Swipe top view to the up programmatically
+- (void)swipeTopViewToUp;
+
+/// Swipe top view to the down programmatically
+- (void)swipeTopViewToDown;
+
 @end

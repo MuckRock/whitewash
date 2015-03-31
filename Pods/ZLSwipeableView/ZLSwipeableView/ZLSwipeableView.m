@@ -239,14 +239,52 @@ const NSUInteger kNumPrefetchedViews = 3;
     [self swipeTopViewToLeft:NO];
 }
 
+- (void)swipeTopViewToUp {
+    [self swipeTopViewToUp:YES];
+}
+
+- (void)swipeTopViewToDown {
+    [self swipeTopViewToUp:NO];
+}
+
 - (void)swipeTopViewToLeft:(BOOL)left {
     UIView *topSwipeableView = [self topSwipeableView];
-    if (!topSwipeableView) {return;}
+    if (!topSwipeableView) {
+        return;
+    }
+    
+    CGPoint location = CGPointMake(
+                                   topSwipeableView.center.x,
+                                   topSwipeableView.center.y *
+                                   (1 + self.manualSwipeRotationRelativeYOffsetFromCenter));
+    [self createAnchorViewForCover:topSwipeableView
+                        atLocation:location
+     shouldAttachAnchorViewToPoint:YES];
+    CGVector direction =
+    CGVectorMake((left ? -1 : 1) * self.escapeVelocityThreshold, 0);
+    [self pushAnchorViewForCover:topSwipeableView
+                     inDirection:direction
+                andCollideInRect:self.collisionRect];
+}
 
-    CGPoint location = CGPointMake(topSwipeableView.center.x, topSwipeableView.center.y*(1+self.manualSwipeRotationRelativeYOffsetFromCenter));
-    [self createAnchorViewForCover:topSwipeableView atLocation:location shouldAttachAnchorViewToPoint:YES];
-    CGVector direction = CGVectorMake((left?-1:1)*self.escapeVelocityThreshold, 0);
-    [self pushAnchorViewForCover:topSwipeableView inDirection:direction andCollideInRect:self.collisionRect];
+- (void)swipeTopViewToUp:(BOOL)up {
+    UIView *topSwipeableView = [self topSwipeableView];
+    if (!topSwipeableView) {
+        return;
+    }
+    
+    CGPoint location = CGPointMake(
+                                   topSwipeableView.center.x,
+                                   topSwipeableView.center.y *
+                                   (1 + self.manualSwipeRotationRelativeYOffsetFromCenter));
+    [self createAnchorViewForCover:topSwipeableView
+                        atLocation:location
+     shouldAttachAnchorViewToPoint:YES];
+    CGVector direction =
+    CGVectorMake(0, (up ? -1 : 1) * self.escapeVelocityThreshold);
+    [self pushAnchorViewForCover:topSwipeableView
+                     inDirection:direction
+                andCollideInRect:self.collisionRect];
 }
 
 
