@@ -18,13 +18,11 @@
 @interface MRGameViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
 # pragma -
-
 @property (nonatomic) NSUInteger turns;
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
 @property (nonatomic) NSUInteger turnsRight;
 @property (nonatomic, strong) NSMutableArray *viewDataMapping;
-
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UILabel *inputCounter;
@@ -40,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cardName;
 @property (weak, nonatomic) IBOutlet UITextView *cardBody;
 @property (weak, nonatomic) IBOutlet UILabel *cardFiles;
-
+# pragma mark Private Methods
 - (void)updateCounters;
 - (void)endGame;
 
