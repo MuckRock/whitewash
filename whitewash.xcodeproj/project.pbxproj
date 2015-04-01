@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D0C93AA1ACC9E1400C523CE /* TutorialCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C93A91ACC9E1400C523CE /* TutorialCard.xib */; };
 		9D147F431A39FAE9006631F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F421A39FAE9006631F8 /* main.m */; };
 		9D147F461A39FAE9006631F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F451A39FAE9006631F8 /* AppDelegate.m */; };
 		9D147F491A39FAE9006631F8 /* whitewash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D147F471A39FAE9006631F8 /* whitewash.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		55CD1DBBC66F6DD4D9E6CC95 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		84891F4238620B0F6794F681 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D0C93A91ACC9E1400C523CE /* TutorialCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialCard.xib; sourceTree = "<group>"; };
 		9D147F3D1A39FAE9006631F8 /* whitewash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whitewash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D147F411A39FAE9006631F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D147F421A39FAE9006631F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		9D2C8F051ACB2E1F00AFE72A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D0C93A91ACC9E1400C523CE /* TutorialCard.xib */,
 				9D83914B1AAF85F30048288F /* SpamCard.xib */,
 				9D2C8F061ACB34C100AFE72A /* CompletedCard.xib */,
 				9D4E1B211AAE42F900BB8618 /* MRGameViewController.xib */,
@@ -343,6 +346,7 @@
 				9DFE26601A8D578E00483A86 /* LaunchScreen.xib in Resources */,
 				9D147F511A39FAE9006631F8 /* Images.xcassets in Resources */,
 				9D83914C1AAF85F30048288F /* SpamCard.xib in Resources */,
+				9D0C93AA1ACC9E1400C523CE /* TutorialCard.xib in Resources */,
 				9D2C8F041ACB14AD00AFE72A /* completed.json in Resources */,
 				9D1E9D2E1A6F21D100B8927F /* Default-568h@2x.png in Resources */,
 				9D2C8F071ACB34C100AFE72A /* CompletedCard.xib in Resources */,
