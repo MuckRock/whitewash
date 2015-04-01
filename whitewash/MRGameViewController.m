@@ -170,7 +170,7 @@
 }
 
 - (IBAction)passTurn:(id)sender {
-    [_swipeableView swipeTopViewToDown];
+    [_swipeableView swipeTopViewToUp];
     // taking a turn with a nil move is the same as passing that turn
     [self.game takeTurnWithMove:nil];
 }
@@ -193,6 +193,11 @@
     
     // configure subviews
     NSArray *subviews = card.subviews;
+    
+    for (UIView *subview in subviews) {
+        
+        continue;
+    }
     
     // for each subview:
     //      try getting data for that subview's name from the webstore
