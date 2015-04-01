@@ -34,11 +34,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputBCounter;
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
-# pragma mark Card Properties
-@property (weak, nonatomic) IBOutlet UILabel *cardName;
-@property (weak, nonatomic) IBOutlet UITextView *cardBody;
-@property (weak, nonatomic) IBOutlet UILabel *cardFiles;
 # pragma mark Private Methods
+- (UIView *)getCardView;
 - (void)updateCounters;
 - (void)endGame;
 
@@ -177,6 +174,25 @@
 
 #pragma mark - ZLSwipeableViewDataSource
 
+- (UIView *)getCardView {
+    UIView *card = [[[NSBundle mainBundle] loadNibNamed:self.game.ruleset.nibName
+                                                  owner:self
+                                                options:nil] objectAtIndex:0];
+    card.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    /* Pop data from input store and apply to card
+     NSDictionary *data = [_game.store.data];
+     [_viewDataMapping addObject:data];
+     NSUInteger index = [_viewDataMapping indexOfObject:data];
+     view.tag = index;
+     _cardName.text = data.name;
+     _cardBody.text = data.body;
+     _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
+     */
+    
+    return card;
+}
+
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
 
     // test the base case where the input data store is empty
@@ -199,21 +215,8 @@
 
     // Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167
 
-    UIView *contentView =
-    [[[NSBundle mainBundle] loadNibNamed:self.game.ruleset.nibName
-                                   owner:self
-                                 options:nil] objectAtIndex:0];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    /* Pop data from input store and apply to card
-    NSDictionary *data = [_game.store.data];
-    [_viewDataMapping addObject:data];
-    NSUInteger index = [_viewDataMapping indexOfObject:data];
-    view.tag = index;
-    _cardName.text = data.name;
-    _cardBody.text = data.body;
-    _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
-    */
+    UIView *contentView = [self getCardView];
+    
     [view addSubview:contentView];
 
     NSDictionary *metrics = @{@"height" : @(view.bounds.size.height),
