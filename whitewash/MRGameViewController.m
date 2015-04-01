@@ -23,6 +23,7 @@
 @property (nonatomic) NSUInteger turnsLeft;
 @property (nonatomic) NSUInteger turnsRight;
 @property (nonatomic, strong) NSMutableArray *viewDataMapping;
+@property (nonatomic) NSUInteger cardsRendered;
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UILabel *inputCounter;
@@ -35,7 +36,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
 # pragma mark Private Methods
-- (UIView *)getCardView;
+- (UIView *)getTutorialCard;
+- (UIView *)getCard;
 - (void)updateCounters;
 - (void)endGame;
 
@@ -65,6 +67,7 @@
     self.turnsTaken = 0;
     self.turnsLeft = 0;
     self.turnsRight = 0;
+    self.cardsRendered = 0;
 
     // 4. Create a mapping between card views and game data
     _viewDataMapping = [[NSMutableArray alloc] init];
@@ -174,21 +177,29 @@
 
 #pragma mark - ZLSwipeableViewDataSource
 
-- (UIView *)getCardView {
+- (UIView *)getTutorialCard {
+    UIView *card = [[[NSBundle mainBundle] loadNibNamed:@"TutorialCard"
+                                                  owner:self
+                                                options:nil] objectAtIndex:0];
+    card.translatesAutoresizingMaskIntoConstraints = NO;
+    return card;
+}
+
+- (UIView *)getCard {
     UIView *card = [[[NSBundle mainBundle] loadNibNamed:self.game.ruleset.nibName
                                                   owner:self
                                                 options:nil] objectAtIndex:0];
     card.translatesAutoresizingMaskIntoConstraints = NO;
     
-    /* Pop data from input store and apply to card
-     NSDictionary *data = [_game.store.data];
-     [_viewDataMapping addObject:data];
-     NSUInteger index = [_viewDataMapping indexOfObject:data];
-     view.tag = index;
-     _cardName.text = data.name;
-     _cardBody.text = data.body;
-     _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
-     */
+    // configure subviews
+    NSArray *subviews = card.subviews;
+    
+    // for each subview:
+    //      try getting data for that subview's name from the webstore
+    //      if data exists:
+    //          populate subview with that data
+    //      else:
+    //          remove the subview from the view (I guess?)
     
     return card;
 }
@@ -215,8 +226,14 @@
 
     // Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167
 
-    UIView *contentView = [self getCardView];
-    
+    // If no turns played, render tutorial card. Otherwise, render game card.
+    UIView *contentView;
+    if (self.cardsRendered == 0) {
+        contentView = [self getTutorialCard];
+    } else {
+        contentView = [self getCard];
+    }
+    self.cardsRendered += 1;
     [view addSubview:contentView];
 
     NSDictionary *metrics = @{@"height" : @(view.bounds.size.height),
