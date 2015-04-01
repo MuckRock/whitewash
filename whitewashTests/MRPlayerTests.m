@@ -12,91 +12,95 @@
 #import <OCMock/OCMock.h>
 
 #import "MRPlayer.h"
+#import "MRRecord.h"
 
 @interface MRPlayerTests : XCTestCase
 
-@property (nonatomic) MRPlayer *player;
-@property (nonatomic) MRRecord *record;
-
 @end
 
-@implementation MRPlayerTests
+@implementation MRPlayerTests {
+    MRPlayer *player;
+    MRRecord *record;
+}
 
 - (void)setUp {
     [super setUp];
-    _player = [MRPlayer newPlayerWithName:@"Bob"];
-    _record = OCMClassMock([MRRecord class]);
-    OCMStub([_record.turns count]).andReturn(5);
-    OCMStub([_record score]).andReturn(rand());
-    OCMStub([_record multiplier]).andReturn(rand());
+    player = [MRPlayer newPlayerWithName:@"Bob"];
+    record = [MRRecord newRecord];
+    MRTurn *mockTurn = OCMClassMock([MRTurn class]);
+    OCMStub([record score]).andReturn(5);
+    OCMStub([mockTurn score]).andReturn(1);
+    OCMStub([mockTurn multiplier]).andReturn(1);
+    [record addTurn:mockTurn];
+    
 }
 
 - (void)tearDown {
     [super tearDown];
-    _player = nil;
-    _record = nil;
+    player = nil;
+    record = nil;
 }
 
 - (void)testNewPlayerWithName {
-    XCTAssertNotNil(_player, @"Calling new player should return a new player");
-    XCTAssertEqual(_player.name, @"Bob",
+    XCTAssertNotNil(player, @"Calling new player should return a new player");
+    XCTAssertEqual(player.name, @"Bob",
                    @"New players should be given the name passed to them");
 }
 
 - (void)testHistory {
-    XCTAssertNotNil(_player.history,
+    XCTAssertNotNil(player.history,
                     @"New players should have a history");
-    XCTAssertEqual([_player.history count], 0,
+    XCTAssertEqual([player.history count], 0,
                    @"Player history should start empty");
 }
 
 - (void)testAddRecordToHistory {
-    [_player addRecordToHistory:_record];
-    XCTAssertEqual([_player.history count], 1,
+    [player addRecordToHistory:record];
+    XCTAssertEqual([player.history count], 1,
                    @"Records should be added to the player history array");
-    XCTAssertEqualObjects(_player.history[0], _record,
+    XCTAssertEqualObjects(player.history[0], record,
                           @"The same record should exist inside the array");
 }
 
 - (void)testRemoveRecordFromHistory {
-    XCTAssertNoThrow([_player removeRecordFromHistory:_record]);
-    [_player addRecordToHistory:_record];
-    [_player removeRecordFromHistory:_record];
-    XCTAssertEqual([_player.history count], 0);
+    XCTAssertNoThrow([player removeRecordFromHistory:record]);
+    [player addRecordToHistory:record];
+    [player removeRecordFromHistory:record];
+    XCTAssertEqual([player.history count], 0);
 }
 
 - (void)testCountTotalTurns {
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    XCTAssertEqual([_player countTotalTurns], 25,
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    XCTAssertEqual([player countTotalTurns], 5,
                    @"Player should know how many turns they've taken");
 }
 
 - (void)testCountTotalGames {
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    XCTAssertEqual([_player countTotalGames], 5,
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    XCTAssertEqual([player countTotalGames], 5,
                    @"Player should know how many games they've played");
 }
 
 - (void)testBestScore {
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    XCTAssertGreaterThan([_player bestScore], 0);
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    XCTAssertGreaterThan([player bestScore], 0);
 }
 
 - (void)testBestMultiplier {
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    [_player addRecordToHistory:_record];
-    XCTAssertGreaterThan([_player bestMultiplier], 1);
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    [player addRecordToHistory:record];
+    XCTAssertGreaterThan([player bestMultiplier], 1);
 }
 
 @end
