@@ -10,6 +10,8 @@
 
 #import "MRGame.h"
 #import "MRGameViewController.h"
+#import "MRSpamGameViewController.h"
+#import "MRCompletedGameViewController.h"
 #import "MRRuleset.h"
 
 @interface MRGameDispatcher ()
@@ -27,7 +29,9 @@
 }
 
 - (MRGameViewController *)newGame {
-    MRGameViewController *newGame = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
+    MRGameViewController *newGame = (self.rand == 0) ?
+        [[MRSpamGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]] :
+        [[MRCompletedGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
     newGame.game = [MRGame gameWithURL:[self gameURL] andRuleset:[self gameRuleset]];
     return newGame;
 }
