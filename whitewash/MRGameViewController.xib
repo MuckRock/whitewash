@@ -102,14 +102,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnE-T6-EFC" customClass="ZLSwipeableView">
-                    <rect key="frame" x="16" y="140" width="568" height="374"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="374" id="WxK-Vc-1Xp"/>
-                        <constraint firstAttribute="width" constant="568" id="ncW-n8-aIv"/>
-                    </constraints>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s87-CF-kV4">
                     <rect key="frame" x="16" y="28" width="96" height="54"/>
                     <color key="tintColor" red="0.89019607840000003" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,6 +113,14 @@
                     <color key="textColor" red="0.89019607840000003" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnE-T6-EFC" customClass="ZLSwipeableView">
+                    <rect key="frame" x="16" y="140" width="568" height="374"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="374" id="WxK-Vc-1Xp"/>
+                        <constraint firstAttribute="width" constant="568" id="ncW-n8-aIv"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
