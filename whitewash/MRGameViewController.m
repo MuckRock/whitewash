@@ -36,8 +36,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
 # pragma mark Private Methods
-- (UIView *)getTutorialCard;
-- (UIView *)getCard;
 - (void)updateCounters;
 - (void)endGame;
 

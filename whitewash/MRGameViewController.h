@@ -25,5 +25,7 @@
 @property (nonatomic) NSInteger multiplier;
 @property (nonatomic, weak) id <MRGameViewContollerDelegate> delegate;
 
+- (UIView *)getTutorialCard;
+- (UIView *)getCard;
 
 @end
