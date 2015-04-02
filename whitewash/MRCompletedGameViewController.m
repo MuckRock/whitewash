@@ -9,6 +9,8 @@
 #import "MRCompletedGameViewController.h"
 
 @interface MRCompletedGameViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *request1Title;
+@property (weak, nonatomic) IBOutlet UILabel * request2Title;
 
 @end
 
@@ -19,6 +21,9 @@
     
     // get data from store and map to game-specific card.
     // in this case, CompletedCard.xib
+    
+    self.request1Title.text = @"A Cool Request";
+    self.request2Title.text = @"Another request";
     
     return card;
 }
