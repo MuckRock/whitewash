@@ -9,6 +9,7 @@
 #import "MRSpamGameViewController.h"
 
 @interface MRSpamGameViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *orphanSubject;
 
 @end
 
@@ -19,6 +20,8 @@
     
     // get data from store and map to game-specific card.
     // in this case, SpamCard.xib
+    
+    self.orphanSubject.text = @"Subject";
     
     return card;
 }
