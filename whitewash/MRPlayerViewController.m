@@ -11,6 +11,7 @@
 #import "MRPlayer.h"
 #import "MRRecord.h"
 #import "MRGame.h"
+#import "MRGameDispatcher.h"
 #import "MRGameViewController.h"
 
 @interface MRPlayerViewController ()
@@ -63,7 +64,8 @@
 
 - (IBAction)playGame:(id)sender {
     // TODO: Have GVC returned from a GameViewDispatcher object
-    MRGameViewController *gameViewController = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
+    MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
+    MRGameViewController *gameViewController = [dispatcher newGame];
     gameViewController.delegate = self;
     gameViewController.multiplier = [_player todayMultiplier];
     [self presentViewController:gameViewController animated:YES completion:nil];

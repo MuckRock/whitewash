@@ -54,9 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // 1. Get new game
-    MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
-    self.game = [dispatcher newGame];
+    // 1. Set multiplier
     self.game.ruleset.pointMultiplier = self.multiplier;
 
     // 2. Set delegate
@@ -190,22 +188,6 @@
                                                   owner:self
                                                 options:nil] objectAtIndex:0];
     card.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    // configure subviews
-    NSArray *subviews = card.subviews;
-    
-    for (UIView *subview in subviews) {
-        
-        continue;
-    }
-    
-    // for each subview:
-    //      try getting data for that subview's name from the webstore
-    //      if data exists:
-    //          populate subview with that data
-    //      else:
-    //          remove the subview from the view (I guess?)
-    
     return card;
 }
 

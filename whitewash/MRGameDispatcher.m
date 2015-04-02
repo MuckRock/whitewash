@@ -9,6 +9,7 @@
 #import "MRGameDispatcher.h"
 
 #import "MRGame.h"
+#import "MRGameViewController.h"
 #import "MRRuleset.h"
 
 @interface MRGameDispatcher ()
@@ -25,8 +26,10 @@
     return dispatcher;
 }
 
-- (MRGame *)newGame {
-    return [MRGame gameWithURL:[self gameURL] andRuleset:[self gameRuleset]];
+- (MRGameViewController *)newGame {
+    MRGameViewController *newGame = [[MRGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
+    newGame.game = [MRGame gameWithURL:[self gameURL] andRuleset:[self gameRuleset]];
+    return newGame;
 }
 
 - (NSURL *)gameURL {
