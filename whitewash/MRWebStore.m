@@ -8,6 +8,8 @@
 
 #import "MRWebStore.h"
 
+#import "MRGame.h"
+
 @interface MRWebStore ()
 
 @property (nonatomic, strong) NSMutableDictionary *mutableData;
@@ -18,7 +20,7 @@
 
 # pragma mark Getters & Setters
 
-@synthesize url;
+@synthesize url, delegate;
 
 - (NSArray *)data {
     return [self.mutableData copy];
@@ -48,6 +50,13 @@
 
 - (void)pushData {
     // POST self.mutableData to self.url
+}
+
+- (void)enqueueData {
+    NSArray *results = [self.data valueForKey:@"results"];
+    for (NSDictionary *result in results) {
+        [self.delegate.dataQueue enqueue:result];
+    }
 }
 
 # pragma mark Mutator Methods

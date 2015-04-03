@@ -15,7 +15,7 @@
 #import "MRGameDispatcher.h"
 #import "MRGameViewController.h"
 
-@interface MRGameViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+@interface MRGameViewController () <ZLSwipeableViewDelegate, ZLSwipeableViewDataSource>
 
 # pragma -
 @property (nonatomic) NSUInteger turns;
@@ -192,7 +192,7 @@
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
 
     // test the base case where the input data store is empty
-    if ([self.game.store.data count] < 1) {
+    if ([self.game.dataQueue.queue count] < 1) {
         return nil;
     }
 

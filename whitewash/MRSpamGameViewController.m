@@ -8,6 +8,10 @@
 
 #import "MRSpamGameViewController.h"
 
+#import "MRGame.h"
+#import "MRGameDataQueue.h"
+#import "MRWebStore.h"
+
 @interface MRSpamGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *orphanSubject;
 
@@ -17,13 +21,16 @@
 
 - (UIView *)getCard {
     UIView *card = [super getCard];
-    
     // get data from store and map to game-specific card.
     // in this case, SpamCard.xib
-    
-    self.orphanSubject.text = @"Subject";
-    
+    MRGameDataQueue *queue = self.game.dataQueue;
+    NSDictionary *data = [queue dequeue];
+    if (data != nil) {
+        self.orphanSubject.text = [data valueForKeyPath:@"from_who"];
+    }
     return card;
 }
+
+
 
 @end

@@ -35,6 +35,7 @@
 		9D98CC511AADFB78006FDE2B /* MRPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D98CC501AADFB78006FDE2B /* MRPlayerViewController.m */; };
 		9DBF4D391ACD94C800084633 /* MRSpamGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF4D381ACD94C800084633 /* MRSpamGameViewController.m */; };
 		9DBF4D3C1ACD957200084633 /* MRCompletedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF4D3B1ACD957200084633 /* MRCompletedGameViewController.m */; };
+		9DD7388B1ACF14EE00D0E949 /* MRGameDataQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD7388A1ACF14EE00D0E949 /* MRGameDataQueue.m */; };
 		9DF089A51A9E42120080F0DE /* communications.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DF089A41A9E42120080F0DE /* communications.json */; };
 		9DFE262C1A8D56FE00483A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE262B1A8D56FE00483A86 /* Main.storyboard */; };
 		9DFE26601A8D578E00483A86 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE265F1A8D578E00483A86 /* LaunchScreen.xib */; };
@@ -99,6 +100,8 @@
 		9DBF4D381ACD94C800084633 /* MRSpamGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSpamGameViewController.m; sourceTree = "<group>"; };
 		9DBF4D3A1ACD957200084633 /* MRCompletedGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCompletedGameViewController.h; sourceTree = "<group>"; };
 		9DBF4D3B1ACD957200084633 /* MRCompletedGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCompletedGameViewController.m; sourceTree = "<group>"; };
+		9DD738891ACF14EE00D0E949 /* MRGameDataQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRGameDataQueue.h; sourceTree = "<group>"; };
+		9DD7388A1ACF14EE00D0E949 /* MRGameDataQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRGameDataQueue.m; sourceTree = "<group>"; };
 		9DF089A41A9E42120080F0DE /* communications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = communications.json; sourceTree = "<group>"; };
 		9DFE262B1A8D56FE00483A86 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9DFE265F1A8D578E00483A86 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				9D6531CC1AC4C9E700277480 /* MRTurn.m */,
 				9D5316441AAA5AAB00B79B44 /* MRGame.h */,
 				9D5316451AAA5AAB00B79B44 /* MRGame.m */,
+				9DD738891ACF14EE00D0E949 /* MRGameDataQueue.h */,
+				9DD7388A1ACF14EE00D0E949 /* MRGameDataQueue.m */,
 				9D2EF2F31AC9DD2200D28567 /* MRGameDispatcher.h */,
 				9D2EF2F41AC9DD2200D28567 /* MRGameDispatcher.m */,
 				9D5316391AAA261E00B79B44 /* MRPlayer.h */,
@@ -417,6 +422,7 @@
 				9DBF4D3C1ACD957200084633 /* MRCompletedGameViewController.m in Sources */,
 				9D147F431A39FAE9006631F8 /* main.m in Sources */,
 				9D5316411AAA2D1000B79B44 /* MRRecord.m in Sources */,
+				9DD7388B1ACF14EE00D0E949 /* MRGameDataQueue.m in Sources */,
 				9D6531CD1AC4C9E700277480 /* MRTurn.m in Sources */,
 				9D2EF2F51AC9DD2200D28567 /* MRGameDispatcher.m in Sources */,
 				9D5316461AAA5AAB00B79B44 /* MRGame.m in Sources */,

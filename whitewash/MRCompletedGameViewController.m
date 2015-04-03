@@ -8,6 +8,10 @@
 
 #import "MRCompletedGameViewController.h"
 
+#import "MRGame.h"
+#import "MRGameDataQueue.h"
+#import "MRWebStore.h"
+
 @interface MRCompletedGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *formerRequestTitle;
@@ -21,10 +25,19 @@
 
 - (UIView *)getCard {
     UIView *card = [super getCard];
-    
-    // get data from store and map to game-specific card.
+    // get data from queue and map to game-specific card.
     // in this case, CompletedCard.xib
-    
+    MRGameDataQueue *queue = self.game.dataQueue;
+    NSDictionary *former = [queue dequeue];
+    NSDictionary *latter = [queue dequeue];
+    if (former && latter) {
+        self.formerRequestTitle.text = [former valueForKey:@"title"];
+        self.latterRequestTitle.text = [latter valueForKey:@"title"];
+        
+        self.formerRequestAgency.text = [NSString stringWithFormat:@"%@", [former valueForKey:@"agency"]];
+        self.latterRequestAgency.text = [NSString stringWithFormat:@"%@", [latter valueForKey:@"agency"]];
+        
+    }
     return card;
 }
 
