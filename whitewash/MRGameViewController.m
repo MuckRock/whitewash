@@ -18,7 +18,7 @@
 @interface MRGameViewController () <ZLSwipeableViewDelegate, ZLSwipeableViewDataSource>
 
 # pragma -
-@property (nonatomic) NSUInteger turns;
+
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
 @property (nonatomic) NSUInteger turnsRight;
@@ -59,7 +59,7 @@
     self.swipeableView.delegate = self;
 
     // 3. Set counters
-    self.turns = [self.game.store.data count];
+    self.turns = [self.game.dataQueue.queue count];
     self.turnsTaken = 0;
     self.turnsLeft = 0;
     self.turnsRight = 0;
@@ -144,7 +144,7 @@
 }
 
 - (void)updateCounters {
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", self.turns - self.turnsTaken];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)[self.game.dataQueue.queue count]];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
 }

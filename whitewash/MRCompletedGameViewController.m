@@ -23,6 +23,12 @@
 
 @implementation MRCompletedGameViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.turns = self.turns/2;
+    self.game.ruleset.pointsPerTurn = 2;
+}
+
 - (UIView *)getCard {
     UIView *card = [super getCard];
     // get data from queue and map to game-specific card.
