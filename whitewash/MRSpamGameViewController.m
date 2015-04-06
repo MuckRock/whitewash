@@ -28,6 +28,14 @@
     return gvc;
 }
 
+- (UIView *)getTutorialCard {
+    UIView *card = [[[NSBundle mainBundle] loadNibNamed:@"SpamTutorialCard"
+                                                  owner:self
+                                                options:nil] objectAtIndex:0];
+    card.translatesAutoresizingMaskIntoConstraints = NO;
+    return card;
+}
+
 - (UIView *)getCard {
     UIView *card = [super getCard];
     // get data from store and map to game-specific card.
