@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputBCounter;
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
+@property (weak, nonatomic) IBOutlet UIButton *defaultAction;
 # pragma mark Private Methods
 - (void)updateCounters;
 - (void)endGame;
@@ -118,31 +119,6 @@
 
 # pragma mark - Gameplay Handlers
 
-- (void)takeTurn:(enum direction)swipe forView:(UIView *)view {
-    // TODO: update game data store based on turn
-    BOOL isSpam = NO;
-    switch (swipe) {
-        case left:
-            [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
-            _turnsLeft += 1;
-            [self addBounce:_outputACounter];
-            [self addBounce:_outputAAction];
-            isSpam = YES;
-            break;
-        case right:
-            [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
-            _turnsRight += 1;
-            [self addBounce:_outputBCounter];
-            [self addBounce:_outputBAction];
-            break;
-    }
-    _turnsTaken += 1;
-    [self updateCounters];
-    if (_turnsTaken == _turns) {
-        [self endGame];
-    }
-}
-
 - (void)updateCounters {
     _inputCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)[self.game.dataQueue.queue count]];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
@@ -167,8 +143,6 @@
 
 - (IBAction)passTurn:(id)sender {
     [_swipeableView swipeTopViewToUp];
-    // taking a turn with a nil move is the same as passing that turn
-    [self.game takeTurnWithMove:nil];
 }
 
 #pragma mark - ZLSwipeableViewDataSource
@@ -244,12 +218,32 @@
 
 #pragma mark ZLSwipeableViewDelegate
 
-- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
-    [self takeTurn:left forView:view];
-}
-
-- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
-    [self takeTurn:right forView:view];
+- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeView:(UIView *)view inDirection:(ZLSwipeableViewDirection)direction {
+    switch (direction) {
+        case ZLSwipeableViewDirectionLeft:
+            [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
+            _turnsLeft += 1;
+            [self addBounce:_outputACounter];
+            [self addBounce:_outputAAction];
+            break;
+        case ZLSwipeableViewDirectionRight:
+            [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
+            _turnsRight += 1;
+            [self addBounce:_outputBCounter];
+            [self addBounce:_outputBAction];
+            break;
+        case ZLSwipeableViewDirectionUp:
+            [self.game takeTurnWithMove:nil];
+            [self addBounce:_defaultAction];
+        default:
+            [self.game takeTurnWithMove:nil];
+            break;
+    }
+    _turnsTaken += 1;
+    [self updateCounters];
+    if (_turnsTaken == _turns) {
+        [self endGame];
+    }
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
