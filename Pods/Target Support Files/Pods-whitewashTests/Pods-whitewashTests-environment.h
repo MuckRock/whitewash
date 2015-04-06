@@ -22,7 +22,7 @@
 #define COCOAPODS_POD_AVAILABLE_ZLSwipeableView
 #define COCOAPODS_VERSION_MAJOR_ZLSwipeableView 0
 #define COCOAPODS_VERSION_MINOR_ZLSwipeableView 0
-#define COCOAPODS_VERSION_PATCH_ZLSwipeableView 6
+#define COCOAPODS_VERSION_PATCH_ZLSwipeableView 7
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop
