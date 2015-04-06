@@ -13,7 +13,10 @@
 #import "MRWebStore.h"
 
 @interface MRSpamGameViewController () <MRGameViewControllerProtocol>
-@property (weak, nonatomic) IBOutlet UILabel *orphanSubject;
+
+@property (weak, nonatomic) IBOutlet UILabel *orphanFromWho;
+@property (weak, nonatomic) IBOutlet UILabel *orphanToWho;
+@property (weak, nonatomic) IBOutlet UITextView *orphanMessage;
 
 @end
 
@@ -43,8 +46,11 @@
     MRGameDataQueue *queue = self.game.dataQueue;
     NSDictionary *data = [queue dequeue];
     if (data != nil) {
-        self.orphanSubject.text = [data valueForKeyPath:@"from_who"];
+        self.orphanFromWho.text = [data valueForKeyPath:@"from_who"];
+        self.orphanToWho.text = [data valueForKey:@"to_who"];
+        self.orphanMessage.text = [data valueForKey:@"communication"];
     }
+    [self.orphanMessage scrollRangeToVisible:NSMakeRange(0, 0)];
     return card;
 }
 
