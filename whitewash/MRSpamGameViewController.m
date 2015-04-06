@@ -12,12 +12,21 @@
 #import "MRGameDataQueue.h"
 #import "MRWebStore.h"
 
-@interface MRSpamGameViewController ()
+@interface MRSpamGameViewController () <MRGameViewControllerProtocol>
 @property (weak, nonatomic) IBOutlet UILabel *orphanSubject;
 
 @end
 
 @implementation MRSpamGameViewController
+
++ (MRGameViewController *)newGameViewController {
+    MRSpamGameViewController *gvc = [[MRSpamGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
+    NSURL *gameURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"communications" ofType:@"json"]];
+    MRRuleset *gameRuleset = [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"] andNib:@"SpamCard"];
+    gameRuleset.pointsPerTurn = 1;
+    gvc.game = [MRGame gameWithURL:gameURL andRuleset:gameRuleset];
+    return gvc;
+}
 
 - (UIView *)getCard {
     UIView *card = [super getCard];

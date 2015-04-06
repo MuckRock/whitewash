@@ -29,22 +29,14 @@
 }
 
 - (MRGameViewController *)newGame {
-    MRGameViewController *newGame = (self.rand == 0) ?
-        [[MRSpamGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]] :
-        [[MRCompletedGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
-    newGame.game = [MRGame gameWithURL:[self gameURL] andRuleset:[self gameRuleset]];
-    return newGame;
-}
-
-- (NSURL *)gameURL {
-    NSString *path = (self.rand == 0) ? @"communications" : @"completed";
-    return [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:path ofType:@"json"]];
-}
-
-- (MRRuleset *)gameRuleset {
-    MRRuleset *ruleset = (self.rand == 0) ? [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"] andNib:@"SpamCard"] : [MRRuleset rulesetWithRules:@[@"Former", @"Latter"] andNib:@"CompletedCard"];
-    ruleset.pointsPerTurn = 1;
-    return ruleset;
+    if (self.rand == 0)
+    {
+        return [MRSpamGameViewController newGameViewController];
+    }
+    else
+    {
+        return [MRCompletedGameViewController newGameViewController];
+    }
 }
 
 @end

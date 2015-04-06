@@ -12,7 +12,7 @@
 #import "MRGameDataQueue.h"
 #import "MRWebStore.h"
 
-@interface MRCompletedGameViewController ()
+@interface MRCompletedGameViewController () <MRGameViewControllerProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *formerRequestTitle;
 @property (weak, nonatomic) IBOutlet UILabel *formerRequestAgency;
@@ -22,6 +22,15 @@
 @end
 
 @implementation MRCompletedGameViewController
+
++ (MRGameViewController *)newGameViewController {
+    MRCompletedGameViewController *gvc = [[MRCompletedGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
+    NSURL *gameURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"completed" ofType:@"json"]];
+    MRRuleset *gameRuleset = [MRRuleset rulesetWithRules:@[@"Former", @"Latter"] andNib:@"CompletedCard"];
+    gameRuleset.pointsPerTurn = 1;
+    gvc.game = [MRGame gameWithURL:gameURL andRuleset:gameRuleset];
+    return gvc;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

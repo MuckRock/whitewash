@@ -8,6 +8,6 @@
 
 #import "MRGameViewController.h"
 
-@interface MRCompletedGameViewController : MRGameViewController
+@interface MRCompletedGameViewController : MRGameViewController <MRGameViewControllerProtocol>
 
 @end

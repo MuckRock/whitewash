@@ -19,6 +19,12 @@
 
 @end
 
+@protocol MRGameViewControllerProtocol <NSObject>
+
++ (MRGameViewController *)newGameViewController;
+
+@end
+
 @interface MRGameViewController : UIViewController
 
 @property (nonatomic, strong) MRGame *game;
