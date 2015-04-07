@@ -22,7 +22,6 @@
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
 @property (nonatomic) NSUInteger turnsRight;
-@property (nonatomic, strong) NSMutableArray *viewDataMapping;
 @property (nonatomic) NSUInteger cardsRendered;
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
@@ -65,9 +64,6 @@
     self.turnsLeft = 0;
     self.turnsRight = 0;
     self.cardsRendered = 0;
-
-    // 4. Create a mapping between card views and game data
-    _viewDataMapping = [[NSMutableArray alloc] init];
 
     NSString *input = @"Remaining";
     _inputLabel.text = input;
