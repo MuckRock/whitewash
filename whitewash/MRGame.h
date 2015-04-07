@@ -18,6 +18,7 @@
 @property (nonatomic, strong) MRRuleset *ruleset;
 @property (nonatomic, strong) MRWebStore *store;
 @property (nonatomic, strong) MRGameDataQueue *dataQueue;
+@property (nonatomic, strong) NSMutableArray *dataCardMap;
 
 + (MRGame *)gameWithURL:(NSURL *)someURL andRuleset:(MRRuleset *)someRuleset;
 - (void)takeTurnWithMove:(id)move;

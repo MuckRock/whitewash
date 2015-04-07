@@ -25,7 +25,6 @@
 
 + (MRGameViewController *)newGameViewController {
     MRCompletedGameViewController *gvc = [[MRCompletedGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
-    gvc.turns = gvc.turns/2;
     NSURL *gameURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"completed" ofType:@"json"]];
     MRRuleset *gameRuleset = [MRRuleset rulesetWithRules:@[@"Former", @"Latter"] andNib:@"CompletedCard"];
     gameRuleset.pointsPerTurn = 1;
@@ -34,11 +33,17 @@
     return gvc;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.turns = self.turns/2;
+}
+
 - (UIView *)getTutorialCard {
     UIView *card = [[[NSBundle mainBundle] loadNibNamed:@"CompletedTutorialCard"
                                                   owner:self
                                                 options:nil] objectAtIndex:0];
     card.translatesAutoresizingMaskIntoConstraints = NO;
+    card.tag = -1;
     return card;
 }
 
@@ -57,6 +62,8 @@
         self.latterRequestAgency.text = [NSString stringWithFormat:@"%@", [latter valueForKey:@"agency"]];
         
     }
+    card.tag = [self.game.dataCardMap count];
+    [self.game.dataCardMap addObject:@[former, latter]];
     return card;
 }
 

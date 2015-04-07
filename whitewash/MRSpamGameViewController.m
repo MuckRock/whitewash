@@ -36,6 +36,7 @@
                                                   owner:self
                                                 options:nil] objectAtIndex:0];
     card.translatesAutoresizingMaskIntoConstraints = NO;
+    card.tag = -1;
     return card;
 }
 
@@ -51,6 +52,10 @@
         self.orphanMessage.text = [data valueForKey:@"communication"];
     }
     [self.orphanMessage scrollRangeToVisible:NSMakeRange(0, 0)];
+    
+    card.tag = [self.game.dataCardMap count];
+    [self.game.dataCardMap addObject:data];
+    
     return card;
 }
 

@@ -14,7 +14,7 @@
 
 @implementation MRGame
 
-@synthesize record, ruleset, store, dataQueue;
+@synthesize record, ruleset, store, dataQueue, dataCardMap;
 
 - (instancetype)init {
     return [self initWithURL:nil andRuleset:nil];

@@ -41,7 +41,7 @@
         turn = [[MRTurn alloc] init];
         turn.score = 0;
         turn.multiplier = self.pointMultiplier;
-        turn.move = nil;
+        turn.move = @"Pass";
     } else {
         BOOL validMove = [self.predicate evaluateWithObject:move];
         if (validMove) {
