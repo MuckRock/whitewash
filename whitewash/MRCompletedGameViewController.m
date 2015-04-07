@@ -39,6 +39,7 @@
                                                   owner:self
                                                 options:nil] objectAtIndex:0];
     card.translatesAutoresizingMaskIntoConstraints = NO;
+    card.tag = -1;
     return card;
 }
 
@@ -57,6 +58,8 @@
         self.latterRequestAgency.text = [NSString stringWithFormat:@"%@", [latter valueForKey:@"agency"]];
         
     }
+    card.tag = [self.game.dataCardMap count];
+    [self.game.dataCardMap addObject:@[former, latter]];
     return card;
 }
 

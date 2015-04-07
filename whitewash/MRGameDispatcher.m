@@ -29,7 +29,6 @@
 }
 
 - (MRGameViewController *)newGame {
-    /* Couldn't bugfix counting in time, had to hide CompletedGameViewController for now
     if (self.rand == 0)
     {
         return [MRSpamGameViewController newGameViewController];
@@ -38,8 +37,6 @@
     {
         return [MRCompletedGameViewController newGameViewController];
     }
-    */
-    return [MRSpamGameViewController newGameViewController];
 }
 
 @end

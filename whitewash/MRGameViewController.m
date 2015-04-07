@@ -120,7 +120,7 @@
 # pragma mark - Gameplay Handlers
 
 - (void)updateCounters {
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)[self.game.dataQueue.queue count]];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_turns - _turnsTaken)];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
 }
@@ -142,7 +142,7 @@
 }
 
 - (IBAction)passTurn:(id)sender {
-    [_swipeableView swipeTopViewToUp];
+    [_swipeableView swipeTopViewToDown];
 }
 
 #pragma mark - ZLSwipeableViewDataSource
@@ -219,30 +219,38 @@
 #pragma mark ZLSwipeableViewDelegate
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeView:(UIView *)view inDirection:(ZLSwipeableViewDirection)direction {
-    switch (direction) {
-        case ZLSwipeableViewDirectionLeft:
-            [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
-            _turnsLeft += 1;
-            [self addBounce:_outputACounter];
-            [self addBounce:_outputAAction];
-            break;
-        case ZLSwipeableViewDirectionRight:
-            [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
-            _turnsRight += 1;
-            [self addBounce:_outputBCounter];
-            [self addBounce:_outputBAction];
-            break;
-        case ZLSwipeableViewDirectionUp:
-            [self.game takeTurnWithMove:nil];
-            [self addBounce:_defaultAction];
-        default:
-            [self.game takeTurnWithMove:nil];
-            break;
-    }
-    _turnsTaken += 1;
-    [self updateCounters];
-    if (_turnsTaken == _turns) {
-        [self endGame];
+    
+    // non playable cards (tutorial, story, whatever) have a tag of -1
+    UIView *card = view.subviews.firstObject;
+    if (card.tag < 0) {
+        return;
+    } else {
+        switch (direction) {
+            case ZLSwipeableViewDirectionLeft:
+                [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
+                _turnsLeft += 1;
+                [self addBounce:_outputACounter];
+                [self addBounce:_outputAAction];
+                break;
+            case ZLSwipeableViewDirectionRight:
+                [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
+                _turnsRight += 1;
+                [self addBounce:_outputBCounter];
+                [self addBounce:_outputBAction];
+                break;
+            case ZLSwipeableViewDirectionVertical:
+                [self.game takeTurnWithMove:@"Pass"];
+                [self addBounce:_defaultAction];
+            default:
+                [self.game takeTurnWithMove:nil];
+                break;
+        }
+        _turnsTaken += 1;
+        [self updateCounters];
+        if (_turnsTaken == _turns) {
+            [self endGame];
+        }
+        return;
     }
 }
 
