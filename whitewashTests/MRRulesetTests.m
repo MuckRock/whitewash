@@ -23,7 +23,7 @@
 - (void)setUp {
     [super setUp];
     NSArray *rules = @[@"Left", @"Right"];
-    self.ruleset = [MRRuleset rulesetWithRules:rules];
+    self.ruleset = [MRRuleset rulesetWithRules:rules andNib:nil];
 }
 
 - (void)testValidateMoveForValidMove {

@@ -17,17 +17,18 @@
 
 @implementation MRRuleset
 
-@synthesize rules, pointsPerTurn, pointMultiplier;
+@synthesize rules, pointsPerTurn, pointMultiplier, nibName;
 
-+ (MRRuleset *)rulesetWithRules:(NSArray *)rules {
-    return [[MRRuleset alloc] initWithRules:rules];
++ (MRRuleset *)rulesetWithRules:(NSArray *)rules andNib:(NSString *)nib {
+    return [[MRRuleset alloc] initWithRules:rules andNib:nib];
 }
 
-- (instancetype)initWithRules:(NSArray *)theRules {
+- (instancetype)initWithRules:(NSArray *)theRules andNib:(NSString *)nib {
     self = [super init];
     if (self) {
         self.rules = theRules;
         self.predicate = [NSPredicate predicateWithFormat:@"SELF IN %@", theRules];
+        self.nibName = nib;
         self.pointsPerTurn = 1;
         self.pointMultiplier = 1;
     }
@@ -36,13 +37,19 @@
 
 - (MRTurn *)validateMove:(id)move {
     MRTurn *turn = nil;
-    BOOL validMove = [self.predicate evaluateWithObject:move];
-    if (validMove) {
+    if (move == nil) { // if move is nil, consider it a passed turn
         turn = [[MRTurn alloc] init];
-        turn.score = self.pointsPerTurn;
+        turn.score = 0;
         turn.multiplier = self.pointMultiplier;
-        turn.move = move;
-        return turn;
+        turn.move = nil;
+    } else {
+        BOOL validMove = [self.predicate evaluateWithObject:move];
+        if (validMove) {
+            turn = [[MRTurn alloc] init];
+            turn.score = self.pointsPerTurn;
+            turn.multiplier = self.pointMultiplier;
+            turn.move = move;
+        }
     }
     return turn;
 }

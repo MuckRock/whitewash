@@ -10,10 +10,11 @@
 #import "MRRecord.h"
 #import "MRRuleset.h"
 #import "MRWebStore.h"
+#import "MRGameDataQueue.h"
 
 @implementation MRGame
 
-@synthesize record, ruleset, store;
+@synthesize record, ruleset, store, dataQueue;
 
 - (instancetype)init {
     return [self initWithURL:nil andRuleset:nil];
@@ -24,7 +25,10 @@
     if (self) {
         self.ruleset = someRuleset;
         self.record = [MRRecord newRecord];
+        self.dataQueue = [MRGameDataQueue newQueue];
         self.store = [MRWebStore webStoreWithURL:someURL];
+        self.store.delegate = self;
+        [self.store enqueueData];
     }
     return self;
 }

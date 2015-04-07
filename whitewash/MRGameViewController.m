@@ -15,16 +15,15 @@
 #import "MRGameDispatcher.h"
 #import "MRGameViewController.h"
 
-@interface MRGameViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+@interface MRGameViewController () <ZLSwipeableViewDelegate, ZLSwipeableViewDataSource>
 
 # pragma -
 
-@property (nonatomic) NSUInteger turns;
 @property (nonatomic) NSUInteger turnsTaken;
 @property (nonatomic) NSUInteger turnsLeft;
 @property (nonatomic) NSUInteger turnsRight;
 @property (nonatomic, strong) NSMutableArray *viewDataMapping;
-
+@property (nonatomic) NSUInteger cardsRendered;
 #pragma mark View Properties
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UILabel *inputCounter;
@@ -36,11 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputBCounter;
 @property (weak, nonatomic) IBOutlet UILabel *outputBLabel;
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
-# pragma mark Card Properties
-@property (weak, nonatomic) IBOutlet UILabel *cardName;
-@property (weak, nonatomic) IBOutlet UITextView *cardBody;
-@property (weak, nonatomic) IBOutlet UILabel *cardFiles;
-
+@property (weak, nonatomic) IBOutlet UIButton *defaultAction;
+# pragma mark Private Methods
 - (void)updateCounters;
 - (void)endGame;
 
@@ -57,19 +53,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // 1. Get new game
-    MRGameDispatcher *dispatcher = [MRGameDispatcher newDispatcher];
-    self.game = [dispatcher newGame];
+    // 1. Set multiplier
     self.game.ruleset.pointMultiplier = self.multiplier;
 
     // 2. Set delegate
     self.swipeableView.delegate = self;
 
     // 3. Set counters
-    self.turns = [self.game.store.data count];
+    self.turns = [self.game.dataQueue.queue count];
     self.turnsTaken = 0;
     self.turnsLeft = 0;
     self.turnsRight = 0;
+    self.cardsRendered = 0;
 
     // 4. Create a mapping between card views and game data
     _viewDataMapping = [[NSMutableArray alloc] init];
@@ -124,33 +119,8 @@
 
 # pragma mark - Gameplay Handlers
 
-- (void)takeTurn:(enum direction)swipe forView:(UIView *)view {
-    // TODO: update game data store based on turn
-    BOOL isSpam = NO;
-    switch (swipe) {
-        case left:
-            [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
-            _turnsLeft += 1;
-            [self addBounce:_outputACounter];
-            [self addBounce:_outputAAction];
-            isSpam = YES;
-            break;
-        case right:
-            [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
-            _turnsRight += 1;
-            [self addBounce:_outputBCounter];
-            [self addBounce:_outputBAction];
-            break;
-    }
-    _turnsTaken += 1;
-    [self updateCounters];
-    if (_turnsTaken == _turns) {
-        [self endGame];
-    }
-}
-
 - (void)updateCounters {
-    _inputCounter.text = [NSString stringWithFormat:@"%lu", self.turns - self.turnsTaken];
+    _inputCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)[self.game.dataQueue.queue count]];
     _outputACounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsLeft];
     _outputBCounter.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.turnsRight];
 }
@@ -171,12 +141,32 @@
     [_swipeableView swipeTopViewToLeft];
 }
 
+- (IBAction)passTurn:(id)sender {
+    [_swipeableView swipeTopViewToUp];
+}
+
 #pragma mark - ZLSwipeableViewDataSource
+
+- (UIView *)getTutorialCard {
+    UIView *card = [[[NSBundle mainBundle] loadNibNamed:@"TutorialCard"
+                                                  owner:self
+                                                options:nil] objectAtIndex:0];
+    card.translatesAutoresizingMaskIntoConstraints = NO;
+    return card;
+}
+
+- (UIView *)getCard {
+    UIView *card = [[[NSBundle mainBundle] loadNibNamed:self.game.ruleset.nibName
+                                                  owner:self
+                                                options:nil] objectAtIndex:0];
+    card.translatesAutoresizingMaskIntoConstraints = NO;
+    return card;
+}
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
 
     // test the base case where the input data store is empty
-    if ([self.game.store.data count] < 1) {
+    if ([self.game.dataQueue.queue count] < 1) {
         return nil;
     }
 
@@ -195,27 +185,18 @@
 
     // Adds contentView XIB to card, taken from: https://github.com/zhxnlai/ZLSwipeableView/blob/master/ZLSwipeableViewDemo/ZLSwipeableViewDemo/ViewController.m#L142-L167
 
-    UIView *contentView =
-    [[[NSBundle mainBundle] loadNibNamed:@"CardContentView"
-                                   owner:self
-                                 options:nil] objectAtIndex:0];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    /* Pop data from input store and apply to card
-    NSDictionary *data = [_game.store.data];
-    [_viewDataMapping addObject:data];
-    NSUInteger index = [_viewDataMapping indexOfObject:data];
-    view.tag = index;
-    _cardName.text = data.name;
-    _cardBody.text = data.body;
-    _cardFiles.text = [NSString stringWithFormat:@"%li Files", (unsigned long)[data.files count]];
-    */
+    // If no turns played, render tutorial card. Otherwise, render game card.
+    UIView *contentView;
+    if (self.cardsRendered == 0) {
+        contentView = [self getTutorialCard];
+    } else {
+        contentView = [self getCard];
+    }
+    self.cardsRendered += 1;
     [view addSubview:contentView];
 
-    NSDictionary *metrics = @{
-                              @"height" : @(view.bounds.size.height),
-                              @"width" : @(view.bounds.size.width)
-                              };
+    NSDictionary *metrics = @{@"height" : @(view.bounds.size.height),
+                              @"width" : @(view.bounds.size.width)};
     NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
     [view addConstraints:
      [NSLayoutConstraint
@@ -237,12 +218,32 @@
 
 #pragma mark ZLSwipeableViewDelegate
 
-- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
-    [self takeTurn:left forView:view];
-}
-
-- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
-    [self takeTurn:right forView:view];
+- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeView:(UIView *)view inDirection:(ZLSwipeableViewDirection)direction {
+    switch (direction) {
+        case ZLSwipeableViewDirectionLeft:
+            [self.game takeTurnWithMove:self.game.ruleset.rules[0]];
+            _turnsLeft += 1;
+            [self addBounce:_outputACounter];
+            [self addBounce:_outputAAction];
+            break;
+        case ZLSwipeableViewDirectionRight:
+            [self.game takeTurnWithMove:self.game.ruleset.rules[1]];
+            _turnsRight += 1;
+            [self addBounce:_outputBCounter];
+            [self addBounce:_outputBAction];
+            break;
+        case ZLSwipeableViewDirectionUp:
+            [self.game takeTurnWithMove:nil];
+            [self addBounce:_defaultAction];
+        default:
+            [self.game takeTurnWithMove:nil];
+            break;
+    }
+    _turnsTaken += 1;
+    [self updateCounters];
+    if (_turnsTaken == _turns) {
+        [self endGame];
+    }
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {

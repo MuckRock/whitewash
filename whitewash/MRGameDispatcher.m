@@ -9,6 +9,9 @@
 #import "MRGameDispatcher.h"
 
 #import "MRGame.h"
+#import "MRGameViewController.h"
+#import "MRSpamGameViewController.h"
+#import "MRCompletedGameViewController.h"
 #import "MRRuleset.h"
 
 @interface MRGameDispatcher ()
@@ -25,19 +28,18 @@
     return dispatcher;
 }
 
-- (MRGame *)newGame {
-    return [MRGame gameWithURL:[self gameURL] andRuleset:[self gameRuleset]];
-}
-
-- (NSURL *)gameURL {
-    NSString *path = (self.rand == 0) ? @"communications" : @"completed";
-    return [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:path ofType:@"json"]];
-}
-
-- (MRRuleset *)gameRuleset {
-    MRRuleset *ruleset = (self.rand == 0) ? [MRRuleset rulesetWithRules:@[@"Spam", @"Legit"]] : [MRRuleset rulesetWithRules:@[@"Former", @"Latter"]];
-    ruleset.pointsPerTurn = 1;
-    return ruleset;
+- (MRGameViewController *)newGame {
+    /* Couldn't bugfix counting in time, had to hide CompletedGameViewController for now
+    if (self.rand == 0)
+    {
+        return [MRSpamGameViewController newGameViewController];
+    }
+    else
+    {
+        return [MRCompletedGameViewController newGameViewController];
+    }
+    */
+    return [MRSpamGameViewController newGameViewController];
 }
 
 @end

@@ -19,11 +19,20 @@
 
 @end
 
+@protocol MRGameViewControllerProtocol <NSObject>
+
++ (MRGameViewController *)newGameViewController;
+
+@end
+
 @interface MRGameViewController : UIViewController
 
 @property (nonatomic, strong) MRGame *game;
 @property (nonatomic) NSInteger multiplier;
 @property (nonatomic, weak) id <MRGameViewContollerDelegate> delegate;
+@property (nonatomic) NSUInteger turns;
 
+- (UIView *)getTutorialCard;
+- (UIView *)getCard;
 
 @end

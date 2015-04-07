@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class MRGame;
+@class MRGameViewController;
 
 @interface MRGameDispatcher : NSObject
 
 + (MRGameDispatcher *)newDispatcher;
-- (MRGame *)newGame;
+- (MRGameViewController *)newGame;
 
 @end

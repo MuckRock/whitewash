@@ -1,5 +1,8 @@
 ZLSwipeableView
 ===============
+[![Build Status](https://travis-ci.org/zhxnlai/ZLSwipeableView.svg?branch=master)](https://travis-ci.org/zhxnlai/ZLSwipeableView)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zhxnlai/ZLSwipeableView?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A simple view for building card like interface like [Tinder](http://www.gotinder.com/) and [Potluck](https://www.potluck.it/). ZLSwipeableView was originally developed for [Murmur](http://zhxnlai.github.io/#/murmur).
 
 Preview
@@ -23,7 +26,7 @@ Usage
 ---
 Check out the [demo app](https://github.com/zhxnlai/ZLSwipeableView/archive/master.zip) for an example.
 
-`ZLSwipeableView` can be added to storyboard or initialized programmatically:
+`ZLSwipeableView` can be added to storyboard or instantiated programmatically:
 ~~~objective-c
 ZLSwipeableView *swipeableView = [[ZLSwipeableView alloc] initWithFrame:self.view.frame];
 [self.view addSubview:swipeableView];
@@ -39,17 +42,30 @@ self.swipeableView.dataSource = self;
   return [[UIView alloc] init];
 }
 ~~~
+The demo app includes examples of both creating views programmatically and loading views from Xib files that [use Auto Layout](https://github.com/zhxnlai/ZLSwipeableView/issues/9).
+
 A `ZLSwipeableView` can have an optional delegate to receive callback.
 ~~~objective-c
 // optional delegate
 self.swipeableView.delegate = self;
 
 #pragma mark - ZLSwipeableViewDelegate
+- (void)swipeableView:(ZLSwipeableView *)swipeableView
+           didSwipeUp:(UIView *)view {
+    NSLog(@"did swipe up");
+}
+- (void)swipeableView:(ZLSwipeableView *)swipeableView
+         didSwipeDown:(UIView *)view {
+    NSLog(@"did swipe down");
+}
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view {
     NSLog(@"did swipe left");
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view {
     NSLog(@"did swipe right");
+}
+- (void)swipeableView:(ZLSwipeableView *)swipeableView didCancelSwipe:(UIView *)view {
+  NSLog(@"did cancel swipe");
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didStartSwipingView:(UIView *)view atLocation:(CGPoint)location {
     NSLog(@"did start swiping at location: x %f, y%f", location.x, location.y);
@@ -66,6 +82,7 @@ To swipe the top view programmatically:
 ~~~objective-c
 [self.swipeableView swipeTopViewToLeft];
 [self.swipeableView swipeTopViewToRight];
+...
 ~~~
 
 To discard all views and reload programmatically:

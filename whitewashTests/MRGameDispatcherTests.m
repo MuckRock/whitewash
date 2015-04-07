@@ -18,7 +18,7 @@
 
 @implementation MRGameDispatcherTests {
     MRGameDispatcher *dispatcher;
-    MRGame *game;
+    MRGameViewController *game;
 }
 
 - (void)setUp {

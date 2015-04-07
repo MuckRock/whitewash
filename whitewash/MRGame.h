@@ -10,12 +10,14 @@
 #import "MRRecord.h"
 #import "MRRuleset.h"
 #import "MRWebStore.h"
+#import "MRGameDataQueue.h"
 
 @interface MRGame : NSObject
 
 @property (nonatomic, strong) MRRecord *record;
 @property (nonatomic, strong) MRRuleset *ruleset;
 @property (nonatomic, strong) MRWebStore *store;
+@property (nonatomic, strong) MRGameDataQueue *dataQueue;
 
 + (MRGame *)gameWithURL:(NSURL *)someURL andRuleset:(MRRuleset *)someRuleset;
 - (void)takeTurnWithMove:(id)move;

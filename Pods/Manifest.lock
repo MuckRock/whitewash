@@ -2,7 +2,7 @@ PODS:
   - OCMock (3.1.2)
   - pop (1.0.7)
   - Tweaks (1.1.0)
-  - ZLSwipeableView (0.0.6)
+  - ZLSwipeableView (0.0.7)
 
 DEPENDENCIES:
   - OCMock (~> 3.1.2)
@@ -11,9 +11,9 @@ DEPENDENCIES:
   - ZLSwipeableView (~> 0.0.6)
 
 SPEC CHECKSUMS:
-  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
-  Tweaks: 05b197d4a1247288f576587546bc1932189d8c98
-  ZLSwipeableView: 9e956c587f9aecd16596544a7d079fb86b9c8c3d
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  Tweaks: fea40672d34a7185051b7786be0d587cd76d253c
+  ZLSwipeableView: acf50179911c5f1e6150e0a279561344fbcda839
 
 COCOAPODS: 0.35.0
