@@ -25,13 +25,17 @@
 
 + (MRGameViewController *)newGameViewController {
     MRCompletedGameViewController *gvc = [[MRCompletedGameViewController alloc] initWithNibName:@"MRGameViewController" bundle:[NSBundle mainBundle]];
-    gvc.turns = gvc.turns/2;
     NSURL *gameURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"completed" ofType:@"json"]];
     MRRuleset *gameRuleset = [MRRuleset rulesetWithRules:@[@"Former", @"Latter"] andNib:@"CompletedCard"];
     gameRuleset.pointsPerTurn = 1;
     gvc.game = [MRGame gameWithURL:gameURL andRuleset:gameRuleset];
     gvc.game.ruleset.pointsPerTurn = 2;
     return gvc;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.turns = self.turns/2;
 }
 
 - (UIView *)getTutorialCard {
