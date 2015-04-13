@@ -47,8 +47,7 @@
     MRGameDataQueue *queue = self.game.dataQueue;
     NSDictionary *data = [queue dequeue];
     if (data != nil) {
-        self.orphanFromWho.text = [data valueForKeyPath:@"from_who"];
-        self.orphanToWho.text = [data valueForKey:@"to_who"];
+        self.orphanFromWho.text = [data valueForKeyPath:@"from"];
         self.orphanMessage.text = [data valueForKey:@"communication"];
     }
     [self.orphanMessage scrollRangeToVisible:NSMakeRange(0, 0)];
