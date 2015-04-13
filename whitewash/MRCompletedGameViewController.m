@@ -16,8 +16,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *formerRequestTitle;
 @property (weak, nonatomic) IBOutlet UILabel *formerRequestAgency;
+@property (weak, nonatomic) IBOutlet UITextView *formerRequestDescription;
 @property (weak, nonatomic) IBOutlet UILabel *latterRequestTitle;
 @property (weak, nonatomic) IBOutlet UILabel *latterRequestAgency;
+@property (weak, nonatomic) IBOutlet UITextView *latterRequestDescription;
 
 @end
 
@@ -60,6 +62,9 @@
         
         self.formerRequestAgency.text = [NSString stringWithFormat:@"%@", [former valueForKey:@"agency"]];
         self.latterRequestAgency.text = [NSString stringWithFormat:@"%@", [latter valueForKey:@"agency"]];
+        
+        self.formerRequestDescription.text = [NSString stringWithFormat:@"%@", [former valueForKey:@"description"]];
+        self.latterRequestDescription.text = [NSString stringWithFormat:@"%@", [latter valueForKey:@"description"]];
         
     }
     card.tag = [self.game.dataCardMap count];
