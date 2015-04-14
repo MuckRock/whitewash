@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.turns = self.turns/2;
+    [super updateCounters];
 }
 
 - (UIView *)getTutorialCard {

@@ -32,6 +32,8 @@
 @property (nonatomic, weak) id <MRGameViewContollerDelegate> delegate;
 @property (nonatomic) NSUInteger turns;
 
+- (void)updateCounters;
+
 - (UIView *)getTutorialCard;
 - (UIView *)getCard;
 
