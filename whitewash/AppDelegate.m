@@ -16,6 +16,7 @@
 
 @implementation AppDelegate
 
+/* Uncomment to enable FBTweaks
 - (UIWindow *)window
 {
     if (!_window) {
@@ -24,6 +25,7 @@
     
     return _window;
 }
+*/
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     return YES;
