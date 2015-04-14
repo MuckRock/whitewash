@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *history;
+@property (nonatomic) NSInteger rank;
 
 - (instancetype)initWithName:(NSString *)playerName;
 + (MRPlayer *)newPlayerWithName:(NSString *)playerName;
@@ -26,5 +27,8 @@
 - (NSInteger)bestMultiplier;
 - (NSInteger)todayScore;
 - (NSInteger)todayMultiplier;
+
+- (NSInteger)gamesNeededForNextRank;
+- (float)progressToNextRank;
 
 @end

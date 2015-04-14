@@ -8,6 +8,7 @@
 
 #import "MRPlayer.h"
 #import "MRRecord.h"
+#import <math.h>
 
 @interface MRPlayer ()
 
@@ -17,7 +18,7 @@
 
 @implementation MRPlayer
 
-@synthesize name;
+@synthesize name, rank;
 
 - (instancetype)init {
     return [self initWithName:@"New Player"];
@@ -28,6 +29,7 @@
     if (self) {
         self.name = playerName;
         self.mutableHistory = [[NSMutableArray alloc] init];
+        self.rank = 0;
     }
     return self;
 }
@@ -113,6 +115,14 @@
                                      fromDate:now];
     NSDate *today = [cal dateFromComponents:comps];
     return today;
+}
+
+- (NSInteger)gamesNeededForNextRank {
+    return pow(3, (int)self.rank + 1);
+}
+
+- (float)progressToNextRank {
+    return (float)[self countTotalGames]/(float)[self gamesNeededForNextRank];
 }
 
 @end

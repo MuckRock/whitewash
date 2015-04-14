@@ -138,7 +138,7 @@
                                     <constraint firstItem="agv-yp-151" firstAttribute="leading" secondItem="xxK-Su-pyq" secondAttribute="leading" id="xaR-g5-D1I"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Complete jobs to earn points, increase your rank, and contribute to actual journalism investigations." translatesAutoresizingMaskIntoConstraints="NO" id="6sQ-Ub-BLB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Complete jobs to earn points, increase your rank, and contribute to actual journalism investigations." translatesAutoresizingMaskIntoConstraints="NO" id="6sQ-Ub-BLB">
                                 <rect key="frame" x="16" y="208" width="568" height="113"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -147,27 +147,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play X more games to take it to the next level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ih-JM-R1K">
+                                <rect key="frame" x="16" y="329" width="568" height="99"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UAJ-c1-ZCE" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="1ep-ka-ljR"/>
                             <constraint firstItem="UAJ-c1-ZCE" firstAttribute="trailing" secondItem="PuM-da-XeL" secondAttribute="trailingMargin" id="4hU-K5-gt9"/>
+                            <constraint firstItem="xxK-Su-pyq" firstAttribute="top" secondItem="7Ih-JM-R1K" secondAttribute="bottom" constant="8" id="EcY-Ie-maj"/>
                             <constraint firstItem="6sQ-Ub-BLB" firstAttribute="top" secondItem="P3p-BO-tWS" secondAttribute="bottom" constant="8" id="Kne-HY-cCn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xxK-Su-pyq" secondAttribute="trailing" id="SAN-O9-16u"/>
                             <constraint firstItem="UAJ-c1-ZCE" firstAttribute="top" secondItem="xxK-Su-pyq" secondAttribute="bottom" constant="8" id="VrN-cx-Tei"/>
+                            <constraint firstItem="7Ih-JM-R1K" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="W1K-Re-tyi"/>
                             <constraint firstItem="xxK-Su-pyq" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="aSv-BF-pqN"/>
                             <constraint firstItem="P3p-BO-tWS" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leading" id="fDo-p2-nGI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P3p-BO-tWS" secondAttribute="trailing" constant="-16" id="g4S-T4-6Mj"/>
                             <constraint firstItem="P3p-BO-tWS" firstAttribute="top" secondItem="PuM-da-XeL" secondAttribute="top" id="iq2-9U-3Lx"/>
+                            <constraint firstItem="7Ih-JM-R1K" firstAttribute="top" secondItem="6sQ-Ub-BLB" secondAttribute="bottom" constant="8" id="k51-3c-33N"/>
                             <constraint firstItem="P3p-BO-tWS" firstAttribute="top" secondItem="PuM-da-XeL" secondAttribute="topMargin" id="kf4-az-z0J"/>
                             <constraint firstAttribute="trailing" secondItem="P3p-BO-tWS" secondAttribute="trailing" id="nTM-hY-iuI"/>
                             <constraint firstItem="Jy0-yl-2Yo" firstAttribute="top" secondItem="UAJ-c1-ZCE" secondAttribute="bottom" constant="20" id="v3g-Ps-xP5"/>
+                            <constraint firstItem="7Ih-JM-R1K" firstAttribute="trailing" secondItem="PuM-da-XeL" secondAttribute="trailingMargin" id="v4R-Rn-phy"/>
                             <constraint firstItem="6sQ-Ub-BLB" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" id="yA2-WR-F74"/>
                             <constraint firstItem="6sQ-Ub-BLB" firstAttribute="trailing" secondItem="PuM-da-XeL" secondAttribute="trailingMargin" id="yKa-pP-BPa"/>
                             <constraint firstItem="P3p-BO-tWS" firstAttribute="leading" secondItem="PuM-da-XeL" secondAttribute="leadingMargin" constant="-16" id="zTu-HK-gVz"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="levelUpMotivation" destination="7Ih-JM-R1K" id="Dcv-Ib-BD1"/>
                         <outlet property="playerImage" destination="cVY-pB-qFc" id="rx1-Zu-JbG"/>
                         <outlet property="playerName" destination="I8E-u6-Lvl" id="C0f-ea-L84"/>
                         <outlet property="playerRank" destination="Cgf-eb-ffL" id="tnX-Lu-euN"/>
