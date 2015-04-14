@@ -36,7 +36,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *outputBAction;
 @property (weak, nonatomic) IBOutlet UIButton *defaultAction;
 # pragma mark Private Methods
-- (void)updateCounters;
 - (void)endGame;
 
 @end

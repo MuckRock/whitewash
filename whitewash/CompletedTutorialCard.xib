@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,15 +10,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-Fd-9Z7">
-                    <rect key="frame" x="8" y="207" width="584" height="97"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="97" id="i5r-vr-f4c"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
-                    <color key="textColor" red="0.33381718397140503" green="0.68535971641540527" blue="0.98592787981033325" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Orange" translatesAutoresizingMaskIntoConstraints="NO" id="YdI-nw-73w">
                     <rect key="frame" x="507" y="475" width="64" height="58"/>
                     <constraints>
@@ -45,9 +36,25 @@
                         <constraint firstAttribute="width" constant="63" id="ZiG-af-HQq"/>
                     </constraints>
                 </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="There's no right or wrong answers in this game. Just pick which of the two completed requests sounds more interesting to you!" translatesAutoresizingMaskIntoConstraints="NO" id="Jng-rQ-ZnJ">
+                    <rect key="frame" x="8" y="113" width="584" height="349"/>
+                    <color key="textColor" red="0.088193722069263458" green="0.32114353775978088" blue="0.52983194589614868" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-Fd-9Z7">
+                    <rect key="frame" x="8" y="8" width="584" height="97"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="97" id="i5r-vr-f4c"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                    <color key="textColor" red="0.33381718397140503" green="0.68535971641540527" blue="0.98592787981033325" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.80387437343597412" green="0.90777397155761719" blue="0.99369865655899048" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Jng-rQ-ZnJ" secondAttribute="trailing" constant="8" id="3Xz-Dg-jSy"/>
                 <constraint firstItem="yZf-Fd-9Z7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="4eY-b4-2Th"/>
                 <constraint firstItem="J39-FU-GLk" firstAttribute="height" secondItem="DBt-4a-fej" secondAttribute="height" id="8pl-Gd-oOq"/>
                 <constraint firstAttribute="bottom" secondItem="DBt-4a-fej" secondAttribute="bottom" constant="8" id="G4i-1h-TeR"/>
@@ -58,13 +65,16 @@
                 <constraint firstItem="8wx-wy-rz4" firstAttribute="centerY" secondItem="YdI-nw-73w" secondAttribute="centerY" constant="-0.5" id="QUh-eB-wEU"/>
                 <constraint firstItem="J39-FU-GLk" firstAttribute="top" secondItem="YdI-nw-73w" secondAttribute="bottom" constant="8" id="SS5-ff-gIE"/>
                 <constraint firstAttribute="trailing" secondItem="yZf-Fd-9Z7" secondAttribute="trailing" constant="8" id="USF-Cd-Ic3"/>
+                <constraint firstItem="8wx-wy-rz4" firstAttribute="top" secondItem="Jng-rQ-ZnJ" secondAttribute="bottom" constant="8" id="f1v-Fb-dCn"/>
                 <constraint firstItem="DBt-4a-fej" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="fIX-D8-8os"/>
-                <constraint firstAttribute="centerY" secondItem="yZf-Fd-9Z7" secondAttribute="centerY" constant="44.5" id="h2h-xg-LYg"/>
                 <constraint firstItem="J39-FU-GLk" firstAttribute="width" secondItem="DBt-4a-fej" secondAttribute="width" id="iQ9-7p-g9Z"/>
+                <constraint firstItem="yZf-Fd-9Z7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="lGJ-g1-1iE"/>
+                <constraint firstItem="Jng-rQ-ZnJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="nuW-HF-NjM"/>
+                <constraint firstItem="Jng-rQ-ZnJ" firstAttribute="top" secondItem="yZf-Fd-9Z7" secondAttribute="bottom" constant="8" id="uJ8-i2-T31"/>
                 <constraint firstAttribute="trailing" secondItem="J39-FU-GLk" secondAttribute="trailing" constant="8" id="wio-wt-h9V"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="403.5" y="274"/>
+            <point key="canvasLocation" x="403" y="274"/>
         </view>
     </objects>
     <resources>
